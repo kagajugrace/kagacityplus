@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="">
 <Nav1/>
-<Body1/>
+
 
 <Router>
         <Switch>
