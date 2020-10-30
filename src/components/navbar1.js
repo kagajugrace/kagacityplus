@@ -18,13 +18,13 @@ import close from '../images/close-outline.svg'
  }    
 return(
     <div>
-    <nav className="flex shadow-lg">
+    <nav className="flex shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
 <div className="w-1/2 md:ml-10"><img src={logo}  className="ml-2 w-16 h-16"/></div>
-<div className="w-1/2 text-right   text-underline hover:no-underline  text-xl font-bold py-4 hidden md:block">
-    <a className="p-4 cursor-pointer text-gray-700 hover:text-blue-700">Home</a>
-    <a className="p-4 cursor-pointer text-gray-700 hover:text-blue-700">About</a>
-    <a className="p-4 cursor-pointer  text-gray-700 hover:text-blue-700">Religion Service</a>
-    <a className="mr-8 border-2  text-gray-700 hover:text-white border-blue-700 py-2 px-2 rounded hover:bg-blue-700 hover:border-none cursor-pointer">Education Service</a>
+<div className="w-1/2 text-right   text-underline hover:no-underline     py-4 hidden md:block">
+    <a className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">Home</a>
+    <a className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
+    <a className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
+    <a className="mr-8 border  text-gray-900 font-semibold text-md hover:text-white border-blue-700 py-2 px-2 rounded hover:bg-blue-700 hover:border-none cursor-pointer">Education</a>
     </div>
     <div className="w-1/2 text-right text-white hover:text-white text-underline hover:no-underline  text-xl font-bold py-4 block md:hidden">
 

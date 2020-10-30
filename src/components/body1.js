@@ -3,7 +3,7 @@ function Body1(){
 
     return(
         <div className="bgimg w-full">
-            <div className="bg-black bg-opacity-75 h-auto ">
+            <div className="bg-black bg-opacity-75    h-auto ">
 
 <h1 className="text-4xl md:text-5xl  text-center font-bold text-white py-16">Facilitate data collection for Religions and Academic Prevents COVID-19 Spreading.</h1>
 <h1 className="text-xl text-center text-white italic" >Use the .underline utility to underline text.</h1>
