@@ -24,9 +24,9 @@ return(
     <a href="/"className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md" >Home</a>
     <a className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
     <a className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
-    <a href="/Login" className="mr-8 border  text-gray-900 font-semibold text-md hover:text-white border-blue-700 py-2 px-2 rounded hover:bg-blue-700 hover:border-none cursor-pointer">Education</a>
+    <a href="/Login" className="mr-8 border  text-gray-900 font-semibold text-md hover:text-white border-blue-700 py-2 px-2 rounded hover:bg-blue-700 hover:border-none cursor-pointer hover:no-underline">Education</a>
     </div>
-    <div className="w-1/2 text-right text-white hover:text-white text-underline hover:no-underline  text-xl font-bold py-4 block md:hidden">
+    <div className="w-1/2 text-right text-white hover:text-white  text-underline hover:no-underline  text-xl font-bold py-4 block md:hidden">
 
 
    {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-10 h-10 ml-24" /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-10 h-10 ml-24" /></a>}
