@@ -57,9 +57,9 @@ function Login(){
                     <form onSubmit={handleLogin} className="w-full md:w-5/6 ">
                     <label><p className="text-gray-600 mb-2">Username</p></label>
                     <input type="text"  name="username" value={username} onChange={event=>setUsername(event.target.value)} placeholder="" 
-                    className="w-full border py-2 px-3 rounded-md"/>
+                    className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"/>
                     <label><p className="text-gray-600 mb-2 mt-2">Password</p></label>
-                    <input type="password"  name="password" value={password} onChange={event=>setPassword(event.target.value)} placeholder=""className="w-full border py-2 px-3 rounded-md"/>
+                    <input type="password"  name="password" value={password} onChange={event=>setPassword(event.target.value)} placeholder="" className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"/>
                     <button name="" type="submit" className="w-full bg-blue-500 rounded-lg py-2 px-4 mt-4 text-white font-bold hover:bg-blue-700">{loading?<span>please wait...</span>:<span> Login</span>}</button>
                 </form>
 
