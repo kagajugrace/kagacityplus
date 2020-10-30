@@ -1,7 +1,10 @@
 import React,{useState} from 'react';
+import Nav1 from '../components/navbar1';
 function Body1(){
 
     return(
+        <>
+        <Nav1/>
         <div className="bgimg w-full">
             <div className="bg-black bg-opacity-75    h-auto ">
 
@@ -47,7 +50,7 @@ Copyright , Allright reserved - <a  className="hover:text-blue-800 underline cur
 
 
 
-        </div>
+        </div></>
     )
 }
 export default Body1;

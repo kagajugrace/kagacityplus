@@ -14,7 +14,6 @@ import {
 function App() {
   return (
     <div className="">
-<Nav1/>
 
 
 <Router>
