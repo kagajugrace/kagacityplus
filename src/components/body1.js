@@ -16,7 +16,7 @@ function Body1(){
   </a>
   </div>
   <div className=" mt-2 md:mt-20">
-<a className=" md:ml-2 ">
+<a href="/Login" className=" md:ml-2 ">
   <button className="bg-gray-100 w-full md:w-auto   py-4 px-16 md:px-24 bg-opacity-75 cursor-pointer  hover:bg-opacity-100 text-md md:text-xl font-bold rounded text-gray-700">Education Service</button>
   </a>
   </div>
