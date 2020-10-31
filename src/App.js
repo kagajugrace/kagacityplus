@@ -5,6 +5,7 @@ import Nav1 from './components/navbar1.js';
 import Body1 from './components/body1';
 import Login from './components/users/Login';
 import Home from './components/users/home';
+import About from './components/users/About';
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,12 +27,18 @@ function App() {
           <Route exact path="/login">
           <Login/>
           </Route>
+<<<<<<< HEAD
 
           
           <Route exact path="/Home/educucation">
           <Home/>
           </Route>
 
+=======
+          <Route exact path="/about">
+          <About/>
+          </Route>
+>>>>>>> 87397634d83ff475158ea65e6601e614931ddecc
           </Switch>
           </Router>
     </div>
