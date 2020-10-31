@@ -27,18 +27,15 @@ function App() {
           <Route exact path="/login">
           <Login/>
           </Route>
-<<<<<<< HEAD
 
           
           <Route exact path="/Home/educucation">
           <Home/>
           </Route>
 
-=======
           <Route exact path="/about">
           <About/>
           </Route>
->>>>>>> 87397634d83ff475158ea65e6601e614931ddecc
           </Switch>
           </Router>
     </div>
