@@ -4,6 +4,7 @@ import './App.css'
 import Nav1 from './components/navbar1.js';
 import Body1 from './components/body1';
 import Login from './components/users/Login';
+import Home from './components/users/home';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,6 +25,11 @@ function App() {
 
           <Route exact path="/login">
           <Login/>
+          </Route>
+
+          
+          <Route exact path="/Home/educucation">
+          <Home/>
           </Route>
 
           </Switch>
