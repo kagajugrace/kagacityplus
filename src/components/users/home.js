@@ -19,7 +19,7 @@ function Home(){
         <div className="flex gap-2 float-right mr-4 text-gray-700 ">
         <div className="px-4 py-2  "><a className="cursor-pointer hover:text-blue-500 hover:no-underline">Home</a></div>
         <div className="px-4 py-2 "><a className="cursor-pointer hover:text-blue-500 hover:no-underline">Eduction Service</a></div>
-        <div className="px-4 py-2 "><a className="cursor-pointer hover:text-blue-500 hover:no-underline">Login</a></div>
+        <div className="px-4 py-2 "><a href="/login" className="cursor-pointer hover:text-blue-500 hover:no-underline">Login</a></div>
         <div className="px-4 bg-blue-500 text-white py-2  cursor-pointer rounded hover:bg-blue-700"><a>Get Start</a></div>
     </div></div>
 </div>
@@ -35,7 +35,7 @@ function Home(){
             <span className="text-gray-700 ">Facilitate</span> data collection for  Academic Prevents COVID-19 Spreading.</h1>
             <div className=" flex float-right bg-none">
                 <div className="mr-64">
-                <button className=" hover:bg-blue-500 hover:text-white bg-none border-2 border-blue-500 py-3 px-8 text-gray-700 font-semibold rounded-md">Login</button>
+                <button className=" hover:bg-blue-500 hover:text-white bg-none border-2 border-blue-500 py-3 px-8 text-gray-700 font-semibold rounded-md"> <a href="/login"> Login </a> </button>
 
 
                 </div>
