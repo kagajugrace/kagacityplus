@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import Nav1 from '../components/navbar1';
+
 function Body1(){
 
     return(
