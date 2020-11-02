@@ -4,6 +4,7 @@ import './App.css'
 import Nav1 from './components/navbar1.js';
 import Body1 from './components/body1';
 import Login from './components/users/Login';
+import Signup from './components/users/Signup'
 import Home from './components/users/home';
 import About from './components/users/About';
 
@@ -25,9 +26,16 @@ function App() {
           <Body1/>
           </Route>
 
-          <Route exact path="/login">
+          <Route  path="/login">
           <Login/>
           </Route>
+          <Route  path="/user-signup">
+          <Signup/>
+          </Route>
+{/* 
+          <Route exact path="/account">
+          <Signup/>
+          </Route> */}
 
           
           <Route exact path="/Home/educucation">

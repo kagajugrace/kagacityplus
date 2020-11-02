@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import logo from '../../images/City Plus.png';
 import menu from '../../images/menu-outline.svg';
 import close from '../../images/close-outline.svg'
+
  function Nav(){
      const[drop,setDrop]=useState(false);
      const[dropdown,setDropmenu]=useState(0);
@@ -25,7 +26,7 @@ return(
     <a href="/about" className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
     <a href="https://cityplus.rw/" className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
     <a href="/login" className=" p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Login</a>
-    <a href="" className="mr-8 px-4 bg-blue-500 text-white py-2  cursor-pointer rounded hover:bg-blue-700">Get Start</a>
+    <a href="/user-signup" className="mr-8 px-4 bg-blue-500 text-white py-2  cursor-pointer rounded hover:bg-blue-700">Get Start</a>
 
     </div>
     <div className="w-1/2 text-right text-white hover:text-white  text-underline hover:no-underline  text-xl font-bold py-4 block md:hidden">

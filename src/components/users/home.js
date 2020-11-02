@@ -53,7 +53,7 @@ function Home(){
         <div className="px-4 py-2  "><a href="/Home/educucation" className="cursor-pointer hover:text-blue-500 hover:no-underline">Home</a></div>
         <div className="px-4 py-2 "><a className="cursor-pointer hover:text-blue-500 hover:no-underline">Eduction Service</a></div>
         <div className="px-4 py-2 "><a href="/login" className="cursor-pointer hover:text-blue-500 hover:no-underline">Login</a></div>
-        <div className="px-4 bg-blue-500 text-white py-2  cursor-pointer rounded hover:bg-blue-700"><a>Get Start</a></div>
+        <div className="px-4 bg-blue-500 text-white py-2  cursor-pointer rounded hover:bg-blue-700"><a href="/user-signup">Get Start</a></div>
     </div></div>
 </div>
 
@@ -74,7 +74,7 @@ function Home(){
 
                 </div>
              
-                <button className=" hover:bg-blue-900 bg-blue-500 py-3 px-4 text-white font-semibold rounded-md">   <a >Get Start  </a></button>
+                <button className=" hover:bg-blue-900 bg-blue-500 py-3 px-4 text-white font-semibold rounded-md">   <a href="/user-signup" >Get Start  </a></button>
               
             </div>
  
