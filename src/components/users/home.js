@@ -3,7 +3,8 @@ import kids from '../../images/toppng.com-african-american-kids-playing-with-fra
 import logo from '../../images/City Plus.png';
 import classroom from '../../images/toppng.com-school-classroom-with-blackboard-and-deskspicture-6168x3937.png' ;
 import hischool from '../../images/toppng.com-indian-school-students-png-download-college-students-in-uniform-1000x830.png';
-import univ from '../../images/toppng.com-students-1058x684.png'
+import univ from '../../images/toppng.com-students-1058x684.png';
+import Footer from './footer'
 function Home(){
     return(
 <div className="bg-gray-200">
@@ -82,37 +83,135 @@ function Home(){
       </div>
 </div>
 
+
+
+
+
+<div class=" grid grid-flow-row sm:grid-flow-row md:grid-flow-col lg:grid-flow-row-dense xl:grid-flow-col text-white text-center font-semibold  gap-4 sm:pl-0 md:pl-20 xl:pl-20 sm:pr-0 md:pr-20 xl:pr-20 mb-4">
+<div className="bg-white mt-4 rounded-md ">
+    <img src={logo} className="h-32" />
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 className="font-bold text-center w-full text-gray-700 mt-2 mb-2">Our Payment Details</h1>
+<div class=" grid grid-flow-row sm:grid-flow-row md:grid-flow-col lg:grid-flow-row-dense xl:grid-flow-col text-white text-center font-semibold  gap-4 sm:pl-0 md:pl-20 xl:pl-20 sm:pr-0 md:pr-20 xl:pr-20 mb-4">
+
+<div className="bg-white mb-4 rounded-md shadow-lg">
+
+    <h1  className="text-center text-gray-800 font-bold underline text-xl">Free Trail Account</h1>
+    <div className="text-gray-700 text-left px-12 py-2 font-semibold capitalize">
+  <h3>Register your Client</h3>
+  <h3>Record Temperature</h3>
+
+    </div>
+</div>
+
+<div  className="bg-white mb-4 rounded-md shadow-lg">
+
+<h1 className="text-center text-gray-800 font-bold underline text-xl">$5 Acount</h1>
+    <div className="text-gray-700 text-left px-12 py-2 font-semibold capitalize">
+  <h3>Register your Client</h3>
+  <h3>Record Temperature</h3>
+  <h3>Upload csv files</h3>
+  <h3>10 sms</h3>
+  <h3>pdf report Month</h3>
+  <h3>Excel Document</h3>
+    </div>
+</div>
+
+<div className="bg-white mb-4 rounded-md shadow-lg" >
+
+<h1  className="text-center text-gray-800 font-bold underline text-xl">$10 Account</h1>
+    <div className="text-gray-700 text-left px-12 py-2 font-semibold capitalize">
+    <h3>Register your Client</h3>
+    <h3>Record Temperature</h3>
+  <h3>Upload csv files</h3>
+  <h3>100 sms</h3>
+  <h3>pdf report Month</h3>
+  <h3>Excel Document</h3>
+    
+</div>
+</div>
+<div className="bg-white mb-4 rounded-md shadow-lg" >
+
+<h1  className="text-center text-gray-800 font-bold underline text-xl">Premium Account</h1>
+    <div className="text-gray-700 text-left px-12 py-2 font-semibold capitalize">
+  <h3>Register your Client</h3>
+  <h3>Record Temperature</h3>
+  <h3>Upload csv files</h3>
+  <h3>unlimited  sms</h3>
+  <h3>pdf report Month</h3>
+  <h3>Excel Document</h3>
+    </div>
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h1 className="font-bold text-center w-full text-gray-700 mt-2 mb-2">Our Patrnership Schools</h1>
 <div class=" grid grid-flow-row sm:grid-flow-row md:grid-flow-col lg:grid-flow-row-dense xl:grid-flow-col text-white text-center font-semibold  gap-4 sm:pl-0 md:pl-20 xl:pl-20 sm:pr-0 md:pr-20 xl:pr-20  mb-4">
 
-<div className="bg-white mb-4 rounded-md">
+<div className="bg-white mb-4 rounded-md shadow-lg">
     <img src={logo} className=""/>
 </div>
 
-<div  className="bg-white mb-4 rounded-md">
+<div  className="bg-white mb-4 rounded-md shadow-lg">
 <img src={logo}/>
 </div>
 
-<div className="bg-white mb-4 rounded-md" >
+<div className="bg-white mb-4 rounded-md shadow-lg" >
 <img src={logo}/>
 </div>
 
-<div className="bg-white mb-4 rounded-md" >
+<div className="bg-white mb-4 rounded-md shadow-lg" >
 <img src={logo}/>
 </div>
 
-<div className="bg-white mb-4 rounded-md" >
+<div className="bg-white mb-4 rounded-md shadow-lg" >
 <img src={logo}/>
 </div>
 
-<div className="bg-white mb-4 rounded-md" >
+<div className="bg-white mb-4 rounded-md shadow-lg" >
 <img src={logo}/>
 </div>
 
-<div className="bg-white mb-4 rounded-md" >
+<div className="bg-white mb-4 rounded-md shadow-lg" >
 <img src={logo}/>
 </div>
 </div>
+
+<Footer/>
+
 
 </div>
 
