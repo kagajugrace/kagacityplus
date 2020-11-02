@@ -9,9 +9,10 @@ import '../../App.css';
 import Nav from './Navbar';
 function About(){
     return(
- <div className="container">
+<div className="bg-gray-200">
    <Nav/>
-<div className=" one bg-gray-200 p-6">
+   <div className="container-fluid">
+<div className=" one ">
     <h1 className=" first text-center text-blue-400 text-4xl">About us</h1>
     <h2 className="text-2xl   text-center  text-blue-400  font-semibold py-6">What is City Plus</h2>
     <div className="two p-6 ">
@@ -90,6 +91,7 @@ function About(){
 </div>
 <div>
 
+</div>
 </div>
 </div>
     )
