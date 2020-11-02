@@ -22,10 +22,12 @@ return(
     <nav className="flex shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
 <div className="w-1/2 "><a href="/"><img src={logo}  className=" w-16 h-16"/></a></div>
 <div className="w-1/2 text-right   text-underline hover:no-underline     py-4 hidden md:block">
-    <a href="/"className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md" >Home</a>
-    <a className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
-    <a className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
-    <a href="/Login" className="mr-8 border  text-gray-900 font-semibold text-md hover:text-white border-blue-700 py-2 px-2 rounded hover:bg-blue-700 hover:border-none cursor-pointer hover:no-underline">Education</a>
+    <a href="/Home/educucation"className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md" >Home</a>
+    <a href="/about" className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
+    <a href="https://cityplus.rw/" className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
+    <a href="/login" className=" p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Login</a>
+    <a href="/user-signup" className="mr-8 px-4 bg-blue-500 text-white py-2  cursor-pointer rounded hover:bg-blue-700">Get Start</a>
+
     </div>
     <div className="w-1/2 text-right text-white hover:text-white  text-underline hover:no-underline  text-xl font-bold py-4 block md:hidden">
 
