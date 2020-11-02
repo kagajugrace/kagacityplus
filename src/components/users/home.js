@@ -69,7 +69,7 @@ function Home(){
             <span className="text-gray-700 ">Facilitate</span> data collection for  Academic Prevents COVID-19 Spreading.</h1>
             <div className=" flex float-right bg-none">
                 <div className="mr-64">
-                <button className=" hover:bg-blue-500 hover:text-white bg-none border-2 border-blue-500 py-3 px-8 text-gray-700 font-semibold rounded-md">Login</button>
+                <button className=" hover:bg-blue-500 hover:text-white bg-none border-2 border-blue-500 py-3 px-8 text-gray-700 font-semibold rounded-md"> <a href="/login"> Login </a> </button>
 
 
                 </div>
