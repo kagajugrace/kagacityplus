@@ -24,7 +24,7 @@ return(
     <a href="/Home/educucation"className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md" >Home</a>
     <a href="/about" className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
     <a href="https://cityplus.rw/" className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
-    <a href="/Login" className=" p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Login</a>
+    <a href="/login" className=" p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Login</a>
     <a href="" className="mr-8 px-4 bg-blue-500 text-white py-2  cursor-pointer rounded hover:bg-blue-700">Get Start</a>
 
     </div>
