@@ -13,8 +13,8 @@ function Body1(){
 
 <div class=" md:mt-0 grid grid-flow-row sm:grid-flow-row md:grid-flow-col lg:grid-flow-row xl:grid-flow-col ">
   <div className="mt-20  ">
-  <a className="">
-  <button className="bg-blue-500  w-full md:w-auto  md:float-right  py-4 px-16 md:px-24 cursor-pointer text-md md:text-xl hover:bg-blue-900 font-bold rounded text-white">Religion  Service</button>
+  <a className=""><a href="https://cityplus.rw/">
+  <button className="bg-blue-500  w-full md:w-auto  md:float-right  py-4 px-16 md:px-24 cursor-pointer text-md md:text-xl hover:bg-blue-900 font-bold rounded text-white">Religion  Service</button></a>
 
   </a>
   </div>
