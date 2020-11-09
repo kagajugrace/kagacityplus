@@ -7,6 +7,7 @@ import Login from './components/users/Login';
 import Signup from './components/users/Signup'
 import Home from './components/users/home';
 import About from './components/users/About';
+import Update from './components/users/Update';
 
 import {
   BrowserRouter as Router,
@@ -44,6 +45,9 @@ function App() {
 
           <Route exact path="/about">
           <About/>
+          </Route>
+           <Route exact path="/update">
+          <Update/>
           </Route>
           </Switch>
           </Router>

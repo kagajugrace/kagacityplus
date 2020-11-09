@@ -14,9 +14,9 @@ function About(){
    <div className="container-fluid">
 <div className=" one mb-4 rounded-lg  border border-solid shadow-lg p-4">
     <h1 className=" first text-center text-blue-500 text-4xl">About us</h1>
-    <h2 className="text-xl text-blue-500 px-8 font-semibold py-20">What is City Plus</h2>
-    <div className="two flex p-4">
-      <p className="w-1/2 text-lg text-blue-500 text-black px-2 mb-4 py-10">
+    <h2 className="text-xl text-blue-500 px-8 font-semibold py-10">What is City Plus</h2>
+    <div className="two flex p-4 gap-4">
+      <p className="w-1/2 text-lg text-blue-500  text-black   p-10 rounded-lg border">
       City plus is an online platform helping religion and schools across
       the country to easily collecting and recording Basic information
       related to the spread of COVID-19 Pandemic and institution management
@@ -36,8 +36,8 @@ function About(){
     <div><h2 className="text-2xl px-8 font-semibold  text-blue-500 py-12">Why city plus platform</h2></div>
      
      <br/>
-     <div className="flex  px-4">
-     <div className=" w-1/2"><p className=" w-full text-lg text-blue-500 px-4 text-black py-12">
+     <div className="flex gap-4 px-4">
+     <div className=" w-1/2"><p className=" text-lg text-blue-500 rouded-lg border text-black p-10">
             This platform is here for you to save more than 75% of your daily
             expanses in terms of logistics, time consuming, energy, communication
             and reporting within the institution by adopting IT solutions in our 

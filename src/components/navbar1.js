@@ -21,6 +21,7 @@ return(
     <nav className="flex shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
 <div className="w-1/2 "><a href="/"><img src={logo}  className=" w-16 h-16"/></a></div>
 <div className="w-1/2 text-right   text-underline hover:no-underline     py-4 hidden md:block">
+<a href="/update" className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">COVID-19 Updates</a>
     <a href="/"className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md" >Home</a>
     <a href="/about" className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
     <a className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
