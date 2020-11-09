@@ -9,36 +9,9 @@ import Partners from './Partners';
 import Pricing from './Pricing';
 function Home(){
 
-    // window.addEventListener('scroll',()=>{
-    //     const scrolled=document.documentElement.scrollHeight;
-    //     var scrolld=window.innerHeight;
-    //     var dt=scrolled-scrolld;
-    //     var rt=window.scrollY;
-    //     //console.log(rt);
-    //     //console.log('full'+scrolled)
-    //     if (rt>=644){
-    //         $(document).ready(function(){
-    //             $(".tops").show();
-    //               $(".nav2").show();
-    //           });
-  
-    //     }
-    //     else if (rt<=644){
-    //         $(document).ready(function(){
-    //             $(".nav2").hide();
-    //             $(".nav").show();
-    //             $(".tops").hide();
-    //         });
-    //     }
-    //     else{
-  
-    //     }
-        
-    // })
+//TODO:{grace} users/add temparatures/sms notification(integration of bulk sms)//security of routes
+//TODO: {joselyne} reporting (PDF/EXcel)/graph reporting
 
-
-
-//TODO:{Telesphore} adding some new changes 
 
     return(
 <div className="bg-gray-200">

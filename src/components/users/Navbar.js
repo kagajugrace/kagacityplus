@@ -38,10 +38,10 @@ return(
 
 
     </nav>
-    {drop?<div className=" block md:hidden  shadow-lg text-center text-gray-700 hover:text-white text-underline hover:no-underline  text-xl font-bold ">
+    {drop?<div className="block md:hidden  shadow-lg text-center text-gray-700 hover:text-white text-underline hover:no-underline  text-xl font-bold ">
         <div className="">
 <a className=" cursor-pointer hover:text-blue-700">Home</a></div>
-<div className="p-2"> <a className=" cursor-pointer hover:text-blue-700 ">About</a></div>
+<div className="p-2"> <a className=" cursor-pointer hover:text-blue-700 text-gray-300 ">About</a></div>
 <div className="p-2">  <a className=" cursor-pointer hover:text-blue-700 ">Religion Service</a></div>
 <div className="p-4">   <a className="mt-8 border-2 border-blue-700 py-2 px-2 rounded hover:bg-blue-700 hover:border-none cursor-pointer">Education Service</a></div>
 

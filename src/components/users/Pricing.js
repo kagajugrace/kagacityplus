@@ -2,6 +2,9 @@ import React from 'react';
 import '../../css/tailwindcss.css';
 import { FaAngleDoubleDown,FaHandHoldingUsd } from "react-icons/fa";
  //TODO:{telesphore} finish this pricing
+
+ //TODO:{Agathe} finalize Home design -fetch all data from DB--(endpoints) || tomorrow evening 
+
 export default function Pricing(){
   return(
   <>
@@ -57,7 +60,9 @@ export default function Pricing(){
 <div className="bg-white mb-4 rounded-md shadow-lg" data-aos="fade-up"
      data-aos-anchor-placement="center-bottom" >
 
-<h1  className="text-center text-gray-800 font-bold underline text-xl">$10 Account</h1>
+<h1  className="text-center text-gray-800 font-bold underline text-xl pt-24">$10 Pre</h1>
+
+
     <div className="text-gray-700 text-left px-12 py-2 font-semibold capitalize">
     <h3>Register your Client</h3>
     <h3>Record Temperature</h3>
@@ -71,7 +76,7 @@ export default function Pricing(){
 <div className="bg-white mb-4 rounded-md shadow-lg" data-aos="fade-left"
      data-aos-anchor-placement="center-bottom" >
 
-<h1  className="text-center text-gray-800 font-bold underline text-xl">Premium Account</h1>
+<h1  className="text-center text-blue-600 font-bold underline text-xl ">Premium Account</h1>
     <div className="text-gray-700 text-left px-12 py-2 font-semibold capitalize">
   <h3>Register your Client</h3>
   <h3>Record Temperature</h3>

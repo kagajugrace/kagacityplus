@@ -4,8 +4,8 @@ import '../../css/tailwindcss.css';
 import axios from 'axios';
 import undraw from '../../images/undraw.png'
 import Nav from './Navbar';
-
-
+// TODO:{Gisele} Login nd signup ->database, second authentication using email. //login based on pricing // tomorrow evening 
+// TODO:{Frolibert} /admin -->import csv / payment integration/reporting
 function Signup(){
     const[choosecategory,setChoosecategory]=useState("");
     const[schoolname,setSchoolname]=useState("");
@@ -65,7 +65,7 @@ function Signup(){
                 <div className="bg-green-500">{message}</div>
                 <center><hr className="w-64 text green-600"/></center>
 
-                <form onSubmit={handleForm} className="p-12 w-full md:w-5/6">
+                <form onSubmit={handleForm} encType="multipart/form-data" className="p-12 w-full md:w-5/6">
                 
                 <div class="w-full mb-0 md:mb-0">
       <label class="block Lowercase tracking-wide text-gray-900 text-xm mb-0" for="grid-state">
