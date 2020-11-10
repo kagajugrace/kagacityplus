@@ -5,7 +5,7 @@ import close from '../images/close-outline.svg';
 
 import '../../css/Nav.css';
 
- function Nav(){
+ function Navi(){
 
      const[click, setClick]=useState(false);
      const[button, setButton]=useState(true);
@@ -50,10 +50,11 @@ const changeBackground = () => {
 window.addEventListener('scroll', changeBackground);
     
 return(
-    <>
-      <nav className={navbar ? 'navbar1 active' : 'navbar1'} >
+    <div>
+      <nav className={navbar ?<p>'navbar1 active'</p>:<p>'navbar1'</p>} >
           <div className='navbar-container'></div>
       </nav>
+      
     <nav className="flex shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
 <div className="w-1/2 "><a href="/"><img src={logo}  className=" w-16 h-16"/></a></div>
 <div className="w-1/2 text-right   text-underline hover:no-underline     py-4 hidden md:block">
@@ -72,19 +73,15 @@ return(
 
 
     </nav>
-    {drop?
-    <div className=" block md:hidden  shadow-lg text-center text-gray-700 hover:text-white text-underline hover:no-underline  text-xl font-bold ">
-        <div className="">
-<a className=" cursor-pointer hover:text-blue-700">Home</a></div>
+    {drop?    <div className=" block md:hidden  shadow-lg text-center text-gray-700 hover:text-white text-underline hover:no-underline  text-xl font-bold ">
+        <div className=""><a className=" cursor-pointer hover:text-blue-700">Home</a></div>
 <div className="p-2"> <a href="/about" className=" cursor-pointer hover:text-blue-700 ">About</a></div>
 <div className="p-2">  <a href="https://cityplus.rw/" className=" cursor-pointer hover:text-blue-700 ">Religion Service</a></div>
 <div className="p-4">   <a className="mt-8 border-2 border-blue-700 py-2 px-2 rounded hover:bg-blue-700 hover:border-none cursor-pointer">Education Service</a></div>
 
 </div>:<div> </div>}
 
-
-    </>
+    </div>
 )
 }
-
-export default Nav;
+export default Navi;
