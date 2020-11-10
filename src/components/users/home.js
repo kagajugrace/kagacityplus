@@ -37,7 +37,7 @@ function Home(){
 
 <div className="container">
     <div className="row">
-        <div className="col-sm-6 "  data-aos="fade-right"     
+        <div className="col-sm-6 "  data-aos="fade-right"  
      data-aos-easing="ease-in-sine">
         <h1 className="text-4xl md:text-5xl  text-center font-bold text-gray-100 py-16">
             <span className="text-gray-700 ">Facilitate</span> data collection for  Academic Prevents COVID-19 Spreading.</h1>

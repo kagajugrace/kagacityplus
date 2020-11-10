@@ -2,7 +2,7 @@ import React from 'react';
 import './css/tailwindcss.css';
 import './App.css'
 import Nav1 from './components/navbar1.js';
-import Body1 from './components/body1';
+import Body1 from './components/Body1';
 import Login from './components/users/Login';
 import Signup from './components/users/Signup'
 import Home from './components/users/home';
@@ -23,6 +23,7 @@ function App() {
 
 <Router>
         <Switch>
+
           <Route exact path="/">
           <Body1/>
           </Route>
@@ -30,6 +31,7 @@ function App() {
           <Route  path="/login">
           <Login/>
           </Route>
+
           <Route  path="/user-signup">
           <Signup/>
           </Route>
@@ -46,9 +48,11 @@ function App() {
           <Route exact path="/about">
           <About/>
           </Route>
+
            <Route exact path="/update">
           <Update/>
           </Route>
+
           </Switch>
           </Router>
     </div>

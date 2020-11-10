@@ -5,6 +5,7 @@ import tem from '../../images/temp1.jpeg';
 import Nav from './Navbar';
 
 function Update(){
+    
     return(
         < div className="container-fluid bg-blue-200">
             <Nav/>
