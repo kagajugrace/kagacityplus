@@ -12,7 +12,7 @@ function Footer(){
 
 <div >
     <div className="">
-    <h1 className="text-gray-800 text-lg font-bold px-4  ">Follow us on:</h1>
+    <h1 className="text-gray-800 text-sm font-bold px-4  ">Follow us on:</h1>
 
     <div className="flex mt-4">
         <img src={Fb} className="w-8 h-8 "/>
@@ -22,27 +22,27 @@ function Footer(){
 </div>
 
 <div>
-<h3 className="text-gray-900"><a>Support</a></h3>
-<h3 className="text-gray-700"><a>Contact Us</a></h3>
-<h3 className="text-gray-700"><a>School </a></h3>
+<h3 className="text-gray-900 text-base font-bold"><a>Support</a></h3>
+<h3 className="text-gray-700 text-base"><a>Contact Us</a></h3>
+<h3 className="text-gray-700 text-base"><a>School </a></h3>
 </div>
 <div>
-<h3 className="text-gray-900">ADDRESS</h3>
-<h3 className="text-gray-700">Tel: +250 784981685</h3>
-<h3 className="text-gray-700">Email: info@idatech.rw</h3>
+<h3 className="text-gray-900 text-base font-bold">Address</h3>
+<h3 className="text-gray-700 text-base">Tel: +250 784981685</h3>
+<h3 className="text-gray-700 text-base">Email: info@idatech.rw</h3>
 
 </div>
 
 <div className="">
-    <h3>Stay Update</h3>
+    <h3 className="text-base font-bold">Stay Update</h3>
     <input type="text" placeholder="Where Your Email " className="border-b border-blue-700 py-2  px-2 mb-2 focus:border-none" /><br/>
-    <button className="bg-red-500 px-4 py-2 text-white uppercase">subscribe</button>
+    <button className="bg-red-500 px-4 py-2 text-white uppercase float-right">subscribe</button>
 </div>
-
+ 
 
 
 </div>
-<h1 className="text-center text-gray-700 font-semibold">© Copyright Ida Technology Ltd. All Rights Reserved Designed by <span className="text-blue-600">Ida Technology Ltd</span></h1>
+<h1 className="text-center text-gray-700 font-semibold text-base">© Copyright Ida Technology Ltd. All Rights Reserved Designed by <span className="text-blue-600">Ida Technology Ltd</span></h1>
         </div>
     )
     }

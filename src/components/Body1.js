@@ -5,7 +5,7 @@ function Body1(){
 
     return(
         <>
-        <Nav1/>
+        <Nav1 fixed flex w-full/>
         <div className="bgimg w-full">
             <div className="bg-black bg-opacity-75    h-auto ">
 
@@ -36,7 +36,7 @@ function Body1(){
 
 
 
-<div className="text-center text-white font-semibold mt-10  ">
+<div className="text-center text-white font-semibold mt-10 text-sm">
 
 Copyright , Allright reserved - <a  className="hover:text-blue-800 underline cursor-pointer ">Ida technology Ltd</a>
 </div>

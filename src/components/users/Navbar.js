@@ -16,12 +16,13 @@ import close from '../../images/close-outline.svg'
         setDrop(false);
         setDropmenu(0);
     }
- }    
+ } 
+ 
 return(
     <div>
-    <nav className="flex shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
+    <nav className="fixed flex w-full shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
 <div className="w-1/2 "><a href="/"><img src={logo}  className=" w-16 h-16"/></a></div>
-<div className="w-1/2 text-right   text-underline hover:no-underline     py-4 hidden md:block">
+<div className="navbar-container w-1/2 text-right   text-underline hover:no-underline     py-4 hidden md:block">
     <a href="/Home/educucation"className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md" >Home</a>
     <a href="/about" className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
     <a href="https://cityplus.rw/" className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>

@@ -50,7 +50,7 @@ function Signup(){
         <div  className="w-full md:w-1/6 "></div>
             <div className="w-full md:w-2/6 App-signup ">
            
-                <p className="mt-12 text-center text-3xl font-bold text-gray-700"><u>Welcome To Create Account</u></p>
+                <p className="mt-12 text-center text-3xl font-bold text-gray-700 pt-12"><u>Welcome To Create Account</u></p>
                 <div className="p-12  flex justify-center items-center">
                   <img  src={undraw} alt="" />
                   </div>
@@ -58,7 +58,7 @@ function Signup(){
                 </div>
 
 
-            <div className="w-full md:w-3/6">
+            <div className="w-full md:w-3/6 pt-8">
             <div className="flex flex-wrap mt-4">
                
                 <div className="w-full  rounded-lg py-4">

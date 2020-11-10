@@ -48,13 +48,11 @@ function App() {
           <Route path="/about">
           <About/>
           </Route>
-<<<<<<< HEAD
 
            <Route exact path="/update">
           <Update/>
           </Route>
 
-=======
            <Route path="/update">
           <Update/>
           </Route>
@@ -64,7 +62,6 @@ function App() {
           <Dash/>
           </Route>
 
->>>>>>> 452c386f3fd0638c57b52b58ac8b9bf927611951
           </Switch>
           </Router>
     </div>

@@ -1,18 +1,12 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import logo from '../images/City Plus.png';
 import menu from '../images/menu-outline.svg';
 import close from '../images/close-outline.svg';
 
-import '../../css/Nav.css';
 
- function Navi(){
 
-     const[click, setClick]=useState(false);
-     const[button, setButton]=useState(true);
-     const[navbar, setNavbar] =useState(false);
+ function Nav(){
 
-     const handleclick = () => setClick(!click);
-     const closeMobileMenu = () =>setClick(false);
 
      const[drop,setDrop]=useState(false);
      const[dropdown,setDropmenu]=useState(0);
@@ -25,40 +19,24 @@ import '../../css/Nav.css';
     else{
         setDrop(false);
         setDropmenu(0);
+    }
+}
 
- const showButton = () =>{
-     if (window.innerWidth <= 960) {
-         setButton(false);
-         
-     }   else{
-         setButton(true);
-     }
-    };
-useEffect(() =>{
-    showButton();
-}, []);
-window.addEventListener('resize',showButton);
-
-const changeBackground = () => {
- if(window.scrollY >= 80) {
-     setNavbar(true);
- } else {
-     setNavbar(false);
- }
- };  
-
-window.addEventListener('scroll', changeBackground);
-    
 return(
     <div>
-      <nav className={navbar ?<p>'navbar1 active'</p>:<p>'navbar1'</p>} >
-          <div className='navbar-container'></div>
-      </nav>
+
+          
+    
       
-    <nav className="flex shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
+    <nav className="fixed flex w-full shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
+
+
 <div className="w-1/2 "><a href="/"><img src={logo}  className=" w-16 h-16"/></a></div>
-<div className="w-1/2 text-right   text-underline hover:no-underline     py-4 hidden md:block">
+
+<div className="w-1/2 text-right   text-underline hover:no-underline py-4 hidden md:block">
+
 <a href="/update" className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">COVID-19 Updates</a>
+
     <a href="/"className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md" >Home</a>
     <a href="/about" className="p-4 cursor-pointer text-gray-900 hover:text-blue-700 font-bold text-md">About</a>
     <a className="p-4 cursor-pointer  text-gray-900 hover:text-blue-700 font-bold text-md">Religion Service</a>
@@ -73,7 +51,7 @@ return(
 
 
     </nav>
-    {drop?    <div className=" block md:hidden  shadow-lg text-center text-gray-700 hover:text-white text-underline hover:no-underline  text-xl font-bold ">
+    {drop?    <div className="block md:hidden  shadow-lg text-center text-gray-700 hover:text-white text-underline hover:no-underline  text-xl font-bold ">
         <div className=""><a className=" cursor-pointer hover:text-blue-700">Home</a></div>
 <div className="p-2"> <a href="/about" className=" cursor-pointer hover:text-blue-700 ">About</a></div>
 <div className="p-2">  <a href="https://cityplus.rw/" className=" cursor-pointer hover:text-blue-700 ">Religion Service</a></div>
@@ -84,4 +62,4 @@ return(
     </div>
 )
 }
-export default Navi;
+export default Nav;
