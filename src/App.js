@@ -8,7 +8,7 @@ import Signup from './components/users/Signup'
 import Home from './components/users/home';
 import About from './components/users/About';
 import Update from './components/users/Update';
-
+import Dash from './components/users/dasboardadmin/home'
 import {
   BrowserRouter as Router,
   Switch,
@@ -43,12 +43,18 @@ function App() {
           <Home/>
           </Route>
 
-          <Route exact path="/about">
+          <Route path="/about">
           <About/>
           </Route>
-           <Route exact path="/update">
+           <Route path="/update">
           <Update/>
           </Route>
+
+
+          <Route path="/Dashboard-Home">
+          <Dash/>
+          </Route>
+
           </Switch>
           </Router>
     </div>
