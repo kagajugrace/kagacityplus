@@ -7,7 +7,12 @@ function HomeAdmin(){
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
 
+
 const handleclicked=()=>{
+
+
+
+
    if(dropdown===0){
        setDrop(true);
        setDropmenu(1);
@@ -19,7 +24,12 @@ const handleclicked=()=>{
 } 
 
     return(
+      
         <div>
+
+
+
+
 <div class="flex shadow-lg fixed-top md:fixed-none bg-white">
 
     
@@ -68,8 +78,7 @@ const handleclicked=()=>{
 
 
 
-  {drop?
-  <div class="modal-content mt-24  shadow-lg h-full absolute block md:hidden">
+  {drop? <div class="modal-content mt-24  shadow-lg h-full absolute block md:hidden">
 
             <nav class="mt-2">
               <a class="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
@@ -295,7 +304,7 @@ const handleclicked=()=>{
        <center>footer</center> 
       </div>
       </div>  
-        </div>
+          </div>
        
     )
 }
