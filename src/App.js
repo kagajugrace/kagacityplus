@@ -8,7 +8,8 @@ import Signup from './components/users/Signup'
 import Home from './components/users/home';
 import About from './components/users/About';
 import Update from './components/users/Update';
-import Dash from './components/users/dasboardadmin/home'
+import Dash from './components/users/dasboardadmin/home';
+import Logout from'./components/users/dasboardadmin/logout';
 import {
   BrowserRouter as Router,
   Switch,
@@ -47,6 +48,11 @@ function App() {
 
           <Route path="/about">
           <About/>
+          </Route>
+
+
+          <Route path="/logout">
+          <Logout/>
           </Route>
 
            <Route exact path="/update">

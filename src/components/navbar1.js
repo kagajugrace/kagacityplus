@@ -28,7 +28,7 @@ return(
           
     
       
-    <nav className="fixed flex w-full shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
+    <nav className="fixed-top  flex w-full shadow-lg bg-gradient-to-r from-blue-200 via-gray-200 to-gray-100">
 
 
 <div className="w-1/2 "><a href="/"><img src={logo}  className=" w-16 h-16"/></a></div>
