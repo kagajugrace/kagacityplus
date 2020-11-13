@@ -195,7 +195,7 @@ function Signup(){
                     <label>Telephone number</label>
                     <input type="text"name="schoolname"value={telephonenumber} onChange={event=>setTelephonenumber(event.target.value)} placeholder="Enter your telephone number" className="w-full rounded-lg border py-2 px-3 "/>
                     <label>Email</label>
-                    <input type="password"name="email"value={email} onChange={event=>setEmail(event.target.value)} placeholder="Enter your Email" className="w-full rounded-lg border py-2 px-3"/>
+                    <input type="text"name="email"value={email} onChange={event=>setEmail(event.target.value)} placeholder="Enter your Email" className="w-full rounded-lg border py-2 px-3"/>
                     <label>Password</label>
                     <input type="password"name="password"value={password} onChange={event=>setPassword(event.target.value)} placeholder="Enter your Password" className="w-full rounded-lg border py-2 px-3"/>
                     <label>Confirm Password</label>

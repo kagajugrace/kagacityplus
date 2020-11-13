@@ -10,6 +10,7 @@ import About from './components/users/About';
 import Update from './components/users/Update';
 import Dash from './components/users/dasboardadmin/home';
 import Logout from'./components/users/dasboardadmin/logout';
+import RegStusent from './components/users/dasboardadmin/regist';
 import {
   BrowserRouter as Router,
   Switch,
@@ -28,6 +29,11 @@ function App() {
           <Route exact path="/">
           <Body1/>
           </Route>
+
+          <Route  path="/registartion-student">
+          <RegStusent/>
+          </Route>
+
 
           <Route  path="/login">
           <Login/>
