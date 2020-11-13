@@ -178,7 +178,7 @@ const handleclicked=()=>{
 
 
   <div className="grid grid-cols-5 h-full pt-12 ">
-        <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block overflow-y-scroll h-screen">
+        <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block h-auto">
           <div className="flex items-center justify-center ">
 
             <img src={login} className="w-24 h-24 rounded-full mt-4 "/>
@@ -274,7 +274,7 @@ const handleclicked=()=>{
 
 
 
-        <div className=" col-span-6 md:col-span-4 w-full mt-16 justify-center">
+        <div className=" col-span-6 md:col-span-4 w-full mt-16 md:mt-4 justify-center">
           <div className="w-full">
   {/* Side Body */}
 <div className="flex w-full">
@@ -284,10 +284,16 @@ const handleclicked=()=>{
 
         {/* start form section */}
         <div className="w-full max-w-xlg ">
-  <form className=" shadow-md rounded px-8 pt-6 pb-8 mb-4 bg-blue-100">
+        <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
+      Student Registration
+      </label>
+  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+
+
+
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
         First name
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
@@ -354,32 +360,88 @@ const handleclicked=()=>{
     </div>
 
 
+    <div className="mb-6">
+      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Date of Birth
+      </label>
+      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="date"/>
 
-
-
-
-
-
-
-
+    </div>
 
 
 
 
     <div className="mb-6">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Password
+        Identification Number
       </label>
-      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************"/>
+      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
 
     </div>
+
+    <div className="md:flex lg:flex  gap-2 mb-4">
+        <div className="w-2/2 md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+        Father name
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      </div>
+      <div className=" md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+    Mother name
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      </div>
+    
+    </div>
+
+
+
+
+    <div className="md:flex lg:flex  gap-2 mb-4">
+        <div className="w-2/2 md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+        Email
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
+      </div>
+      <div className=" md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+    Telephone Number
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      </div>
+    
+    </div>
+
+
+
+
     <div className="flex items-center justify-between">
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-        SUbmit
+        Submit
       </button>
  
     </div>
   </form>
+
+  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+
+<div className="md:flex lg:flex  gap-2 mb-4">
+    <div className="md:w-auto lg:w-full">
+  <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+    Csv File
+  </label>
+  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="file" />
+  </div>
+  <div className=" md:w-32 lg:w-32">
+<div className="py-4 mt-2">
+  <button className="bg-red-500 py-2 px-2 text-white font-semibold shadow rounded">Import CSV</button></div>
+  </div>
+
+</div>
+</form>
+
 
 </div>
 
@@ -398,8 +460,11 @@ const handleclicked=()=>{
 
 
 {/* endbody */}
-          </div>    
-       <center>footer</center> 
+          </div >    
+          <div className="text-center">
+                        Copyright , Allright reserved - <a  className="hover:text-blue-800 underline cursor-pointer ">Ida technology Ltd</a>
+                        </div>
+
       </div>
       </div>  
           </div>
