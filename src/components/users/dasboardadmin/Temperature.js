@@ -349,6 +349,37 @@ const handleclicked=()=>{
 </form>
 
 
+<div className="table">
+  <table id="example" className="border p-4 rounded-lg " >
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Telephone</th>
+                <th>Code</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger</td>
+                <td>Nixon</td>
+                <td>078465858</td>
+                <td>885258</td>
+               
+                <td>
+                  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+      
+  </div>
+
+
 </div>
 
         {/* endform section */}
