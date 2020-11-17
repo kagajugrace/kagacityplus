@@ -87,7 +87,7 @@ const handleclicked=()=>{
                   <span class="mx-4 font-medium">Home</span>
               </a>
         
-              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'user'%}">
+              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/registartion-student">
                 <ion-icon class="text-2xl" name="people-outline"></ion-icon>
         
                   <span class="mx-4 font-medium">Register</span>
@@ -121,9 +121,9 @@ const handleclicked=()=>{
                 <span class="mx-4 font-medium">List of Member</span>
             </a>
 
-            <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
               <ion-icon class="text-2xl" name="person-outline"></ion-icon>
-              <span class="mx-4 font-medium">Booked List</span>
+              <span class="mx-4 font-medium">Temperature</span>
           </a>
         
             <a class="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
@@ -192,7 +192,7 @@ const handleclicked=()=>{
                   <span class="mx-4 font-medium">Home</span>
               </a>
         
-              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'user'%}">
+              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/registartion-student">
                 <ion-icon class="text-2xl" name="people-outline"></ion-icon>
         
                   <span class="mx-4 font-medium">Register</span>
@@ -225,10 +225,10 @@ const handleclicked=()=>{
                 <span class="mx-4 font-medium">Users</span>
             </a>
         
-            <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
 
               <ion-icon class="text-2xl" name="document-text-outline"></ion-icon>
-              <span class="mx-4 font-medium">Booked List</span>
+              <span class="mx-4 font-medium">Temperature</span>
           </a>
 
 

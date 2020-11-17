@@ -17,6 +17,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Temperature from './components/users/dasboardadmin/Temperature';
+import Temp from'./components/users/dasboardadmin/Temp'
 
 function App() {
   return (
@@ -72,6 +74,14 @@ function App() {
 
           <Route path="/Dashboard-Home">
           <Dash/>
+          </Route>
+
+          <Route path="/Temperature-page">
+          <Temperature/>
+          </Route>
+
+          <Route path="/Temp-page">
+          <Temp/>
           </Route>
 
           </Switch>

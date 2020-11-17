@@ -4,9 +4,15 @@ import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
 import '../../../css/tailwindcss.css'; 
-function HomeAdmin(){
+import {Button} from 'react-bootstrap'
+import {Modal}  from 'react-bootstrap'
+function Temperature(){
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
 const handleclicked=()=>{
@@ -285,7 +291,7 @@ const handleclicked=()=>{
         {/* start form section */}
         <div className="w-full max-w-xlg ">
         <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
-      Student Registration
+      Temperature
       </label>
   <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
@@ -294,152 +300,52 @@ const handleclicked=()=>{
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
-        First name
+       Code Form
       </label>
       <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
       </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Last name
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
+      <Button variant="primary" onClick={handleShow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline">
+        Check
+      </Button>
 
-    <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       Gender
-      </label>
-      <div className="md:flex lg:flex gap-2">
-          <div className=" flex  gap-4 w-1/2">
-              <input type="radio" name="gender" className="mt-1" />
-<label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       Male
-      </label>
-      </div>
-
-      <div className="w-1/2 flex gap-4">
-          <input type="radio" name="gender" className="mt-1" />
-<label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       FeMale
-      </label>
-      </div>
-
-
-
-
-</div>
-    </div>
-
-
-    <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Borning Place
-      </label>
-    <div className="md:flex lg:flex  gap-2 mb-4">
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Dear Hertier</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you the one </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Decline
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+          <a href="/Temp-page" >
+            Accept
+            </a>
+          </Button>
+        </Modal.Footer>
+      </Modal>
   
-        <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        District
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-      </div>
-      <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Village
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-      <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Country
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
-
-
-    <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Date of Birth
-      </label>
-      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="date"/>
-
-    </div>
-
-
-
-
-    <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Identification Number
-      </label>
-      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
-
-    </div>
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Father name
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-    Mother name
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
-
-
-
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Email
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-    Telephone Number
-      </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
-
-
-
-
-    <div className="flex items-center justify-between">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-        Submit
-      </button>
  
     </div>
+    
   </form>
 
   <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
-<div className="md:flex lg:flex  gap-2 mb-4">
-    <div className="md:w-auto lg:w-full">
-  <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
-    Csv File
-  </label>
-  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="file" />
-  </div>
-  <div className=" md:w-32 lg:w-32">
-<div className="py-4 mt-2">
-  <button className="bg-red-500 py-2 px-2 text-white font-semibold shadow rounded">Import CSV</button></div>
-  </div>
-
-</div>
+  <div className="md:flex lg:flex  gap-2 mb-4">
+        <div className="w-2/2 md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+        Phone Number
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      </div>
+      <div className="flex items-center justify-between">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" type="button">
+      Check
+      </button>
+      
+    </div>
+    </div>
 </form>
 
 
@@ -471,4 +377,4 @@ const handleclicked=()=>{
        
     )
 }
-export default HomeAdmin;
+export default Temperature;
