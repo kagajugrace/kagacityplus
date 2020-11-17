@@ -4,75 +4,26 @@ import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
 import '../../../css/tailwindcss.css'; 
-import axios from 'axios';
-function HomeAdmin(){
-  const[drop,setDrop]=useState(false);
-  const[dropdown,setDropmenu]=useState(0);
-
-  const[loading,setLoading]=useState(false);
-  const[message,setMessage]=useState("");
-  const[firstname,setFirstname]=useState("");
-  const[lastname,setLastname]=useState("");
- 
-  const[gender,setGender]=useState("");
-  // const[female,setFemale]=useState("");
-  const[district,setDistrict]=useState("");
-  const[village,setVillage]=useState("");
-  const[country,setCountry]=useState("");
-  const[dateofbirth,setDateofbirth]=useState("");
-  const[identification,setIdentification]=useState("");
-  const[fathername,setFathername]=useState("");
-  const[mothername,setMothername]=useState("");
-  const[email,setEmail]=useState("");
-  const[telephone,setTelephone]=useState("");
+import {Button} from 'react-bootstrap'
+import {Modal}  from 'react-bootstrap'
+function Temp(){
+    const[drop,setDrop]=useState(false);
+    const[dropdown,setDropmenu]=useState(0);
+    const [show, setShow] = useState(false);
 
 
-  const handleForm =(e)=>{
-    setLoading(true);
-    e.preventDefault();
-    const data={
-      "firstname" : firstname,
-      "lastname": lastname,
-      
-      "gender": gender, 
-      // "gender": female,
-      "district":district,
-      "village":village,
-      "country":country,
-      "dateofbirth":dateofbirth,
-      "identification_number": identification,
-      "fathername": fathername,
-      "mothername": mothername,
-      "email": email,
-      "telephone": telephone,
-      "regSchools":"123",
-      "studentcode":"0",
-
-    }
-
-  axios.post("http://127.0.0.1:8000/student-creation/",data)
-  .then((res)=>{
-    console.log(res.data)
-    setLoading(false)
-    setMessage("Registration successful!")
-          
-      })
-  .catch((err)=>{
-    console.log(err)
-    setLoading(false)
-    setMessage("Registration failed!")
-      })   
-  }
+const handleclicked=()=>{
 
 
-  const handleclicked=()=>{
-    if(dropdown===0){
-      setDrop(true);
-      setDropmenu(1);
+
+
+   if(dropdown===0){
+       setDrop(true);
+       setDropmenu(1);
    }
-    else{
-      setDrop(false);
-      setDropmenu(0);
+   else{
+       setDrop(false);
+       setDropmenu(0);
    }
 } 
 
@@ -337,167 +288,28 @@ function HomeAdmin(){
         {/* start form section */}
         <div className="w-full max-w-xlg ">
         <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
-      Student Registration
+      Input Daily Temperature
       </label>
-
-  <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
-  <div className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
-
-  <form  onSubmit={handleForm} >
-
-
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
-        First name
-      </label>
-      <input name="firstname" value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Last name
-      </label>
-      <input name="lastname"value={lastname} onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
-
-    <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       Gender
-      </label>
-      <div className="md:flex lg:flex gap-2">
-          <div className=" flex  gap-4 w-1/2">
-              <input value="male" onChange={event=>setGender(event.target.value)} type="radio" name="gender" className="mt-1" />
-<label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       Male
-      </label>
-      </div>
-
-      <div className="w-1/2 flex gap-4">
-          <input value="female" onChange={event=>setGender(event.target.value)} type="radio" name="gender" className="mt-1" />
-<label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       FeMale
-      </label>
-      </div>
-
-
-
-
-</div>
-    </div>
-
-
-    <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Borning Place
-      </label>
-    <div className="md:flex lg:flex  gap-2 mb-4">
-  
-        <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        District
-      </label>
-      <input name="district" value={district} onChange={event=>setDistrict(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-      </div>
-      <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Village
-      </label>
-      <input name="village" value={village} onChange={event=>setVillage(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-      <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Country
-      </label>
-      <input name="country" value={country} onChange={event=>setCountry(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
-
-
-    <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Date of Birth
-      </label>
-      <input name="dateofbirth" value={dateofbirth} onChange={event=>setDateofbirth(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="date"/>
-
-    </div>
-
-
-
-
-    <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Identification Number
-      </label>
-      <input name="identification" value={identification} onChange={event=>setIdentification(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
-
-    </div>
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Father name
-      </label>
-      <input name="fathername" value={fathername} onChange={event=>setFathername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-    Mother name
-      </label>
-      <input name="mothername"value={mothername} onChange={event=>setMothername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
-
-
-
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-        Email
-      </label>
-      <input name="email" value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
-    Telephone Number
-      </label>
-      <input name="telephone" value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
-      </div>
-    
-    </div>
-
-
-
-
-    <div className="flex items-center justify-between">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-      {loading?<span>Please wait...</span>:<span>Submit</span>}
-      </button>
- 
-    </div>
-  </form>
-  </div>
 
   <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
-<div className="md:flex lg:flex  gap-2 mb-4">
-    <div className="md:w-auto lg:w-full">
-  <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
-    Csv File
-  </label>
-  <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="file" />
-  </div>
-  <div className=" md:w-32 lg:w-32">
-<div className="py-4 mt-2">
-  <button className="bg-red-500 py-2 px-2 text-white font-semibold shadow rounded">Import CSV</button></div>
-  </div>
-
-</div>
+  <div className="md:flex lg:flex  gap-2 mb-4">
+        <div className="w-2/2 md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+       Temperature
+      </label>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      </div>
+      <div className="flex items-center justify-between">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" type="button">
+      Send
+      </button>
+      
+    </div>
+    </div>
 </form>
+
+
 
 
 </div>
@@ -528,4 +340,4 @@ function HomeAdmin(){
        
     )
 }
-export default HomeAdmin;
+export default Temp;

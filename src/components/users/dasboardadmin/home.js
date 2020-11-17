@@ -110,9 +110,9 @@ const handleclicked=()=>{
         
                   <span class="mx-4 font-medium">Codes</span>
               </a>
-              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon class="text-2xl" name="person-outline"></ion-icon>
-                <span class="mx-4 font-medium">Users</span>
+                <span class="mx-4 font-medium">Addteacher</span>
             </a>
 
             <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
@@ -121,9 +121,9 @@ const handleclicked=()=>{
                 <span class="mx-4 font-medium">List of Member</span>
             </a>
 
-            <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
               <ion-icon class="text-2xl" name="person-outline"></ion-icon>
-              <span class="mx-4 font-medium">Booked List</span>
+              <span class="mx-4 font-medium">Temperature</span>
           </a>
         
             <a class="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
@@ -220,15 +220,15 @@ const handleclicked=()=>{
         
                   <span class="mx-4 font-medium">Codes</span>
               </a>
-              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon class="text-2xl" name="person-outline"></ion-icon>
-                <span class="mx-4 font-medium">Users</span>
+                <span class="mx-4 font-medium">Addteacher</span>
             </a>
         
-            <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
 
               <ion-icon class="text-2xl" name="document-text-outline"></ion-icon>
-              <span class="mx-4 font-medium">Booked List</span>
+              <span class="mx-4 font-medium">Temperature</span>
           </a>
 
 
