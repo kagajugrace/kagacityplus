@@ -8,13 +8,19 @@ import Signup from './components/users/Signup'
 import Home from './components/users/home';
 import About from './components/users/About';
 import Update from './components/users/Update';
-import Dash from './components/users/dasboardadmin/home'
+import Dash from './components/users/dasboardadmin/home';
+import Logout from'./components/users/dasboardadmin/logout';
+import RegStusent from './components/users/dasboardadmin/regist';
+import AddTeacher from './components/users/dasboardadmin/addteacher';
+import UpdateTeacher from './components/users/dasboardadmin/updateteacher';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
+import Temperature from './components/users/dasboardadmin/Temperature';
+import Temp from'./components/users/dasboardadmin/Temp'
 
 function App() {
   return (
@@ -27,6 +33,11 @@ function App() {
           <Route exact path="/">
           <Body1/>
           </Route>
+
+          <Route  path="/registartion-student">
+          <RegStusent/>
+          </Route>
+
 
           <Route  path="/login">
           <Login/>
@@ -49,6 +60,11 @@ function App() {
           <About/>
           </Route>
 
+
+          <Route path="/logout">
+          <Logout/>
+          </Route>
+
            <Route exact path="/update">
           <Update/>
           </Route>
@@ -60,6 +76,20 @@ function App() {
 
           <Route path="/Dashboard-Home">
           <Dash/>
+          </Route>
+          <Route path="/Dashboard-addteacher">
+          <AddTeacher/>
+          </Route>
+          <Route path="/Dashboard-updateteacher">
+          <UpdateTeacher/>
+          </Route>
+
+          <Route path="/Temperature-page">
+          <Temperature/>
+          </Route>
+
+          <Route path="/Temp-page">
+          <Temp/>
           </Route>
 
           </Switch>

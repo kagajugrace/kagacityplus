@@ -7,7 +7,12 @@ function HomeAdmin(){
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
 
+
 const handleclicked=()=>{
+
+
+
+
    if(dropdown===0){
        setDrop(true);
        setDropmenu(1);
@@ -19,7 +24,12 @@ const handleclicked=()=>{
 } 
 
     return(
+      
         <div>
+
+
+
+
 <div class="flex shadow-lg fixed-top md:fixed-none bg-white">
 
     
@@ -68,8 +78,7 @@ const handleclicked=()=>{
 
 
 
-  {drop?
-  <div class="modal-content mt-24  shadow-lg h-full absolute block md:hidden">
+  {drop? <div class="modal-content mt-24  shadow-lg h-full absolute block md:hidden">
 
             <nav class="mt-2">
               <a class="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
@@ -78,7 +87,7 @@ const handleclicked=()=>{
                   <span class="mx-4 font-medium">Home</span>
               </a>
         
-              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'user'%}">
+              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/registartion-student">
                 <ion-icon class="text-2xl" name="people-outline"></ion-icon>
         
                   <span class="mx-4 font-medium">Register</span>
@@ -101,9 +110,9 @@ const handleclicked=()=>{
         
                   <span class="mx-4 font-medium">Codes</span>
               </a>
-              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon class="text-2xl" name="person-outline"></ion-icon>
-                <span class="mx-4 font-medium">Users</span>
+                <span class="mx-4 font-medium">Addteacher</span>
             </a>
 
             <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
@@ -112,9 +121,9 @@ const handleclicked=()=>{
                 <span class="mx-4 font-medium">List of Member</span>
             </a>
 
-            <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
               <ion-icon class="text-2xl" name="person-outline"></ion-icon>
-              <span class="mx-4 font-medium">Booked List</span>
+              <span class="mx-4 font-medium">Temperature</span>
           </a>
         
             <a class="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
@@ -131,7 +140,7 @@ const handleclicked=()=>{
 
       
         
-          <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="{% url 'logout'%}" >
+          <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
          
               <ion-icon class="text-2xl text-white" name="log-out-outline"></ion-icon>
         
@@ -183,7 +192,7 @@ const handleclicked=()=>{
                   <span class="mx-4 font-medium">Home</span>
               </a>
         
-              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'user'%}">
+              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/registartion-student">
                 <ion-icon class="text-2xl" name="people-outline"></ion-icon>
         
                   <span class="mx-4 font-medium">Register</span>
@@ -211,15 +220,15 @@ const handleclicked=()=>{
         
                   <span class="mx-4 font-medium">Codes</span>
               </a>
-              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon class="text-2xl" name="person-outline"></ion-icon>
-                <span class="mx-4 font-medium">Users</span>
+                <span class="mx-4 font-medium">Addteacher</span>
             </a>
         
-            <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
 
               <ion-icon class="text-2xl" name="document-text-outline"></ion-icon>
-              <span class="mx-4 font-medium">Booked List</span>
+              <span class="mx-4 font-medium">Temperature</span>
           </a>
 
 
@@ -238,7 +247,7 @@ const handleclicked=()=>{
 
 
 
-          <a class="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="{% url 'logout'%}" >
+          <a class="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
          
               <ion-icon class="text-2xl text-white" name="log-out-outline"></ion-icon>
         
@@ -295,7 +304,7 @@ const handleclicked=()=>{
        <center>footer</center> 
       </div>
       </div>  
-        </div>
+          </div>
        
     )
 }
