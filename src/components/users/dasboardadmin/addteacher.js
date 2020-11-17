@@ -1,12 +1,77 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import logo from '../../../images/City Plus.png'
 import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
-import '../../../css/tailwindcss.css'; 
+import '../../../css/tailwindcss.css';
+import axios from 'axios'; 
 function AddTeacher(){
-    const[drop,setDrop]=useState(false);
-    const[dropdown,setDropmenu]=useState(0);
+  const[drop,setDrop]=useState(false);
+  const[dropdown,setDropmenu]=useState(0);
+
+  const[loading,setLoading]=useState(false);
+  const[message,setMessage]=useState("");
+  const[firstname,setFirstname]=useState("");
+  const[lastname,setLastname]=useState("");
+  const[email,setEmail]=useState("");
+  const[telephone,setTelephone]=useState("");
+  const[faculity,setFaculity]=useState("");
+  const[year,setYear]=useState("");
+
+
+  
+
+
+  const handleForm =(e)=>{
+    setLoading(true);
+    e.preventDefault();
+    const data={
+      "username":email,
+      "first_name" : firstname,
+      "last_name": lastname,
+      "email": email,
+      "password":"kagaju",
+      
+
+      "Teach":{
+        "faculity": faculity,
+        "classteach": year,
+        "companyid":"124",
+        "companyname":"KING",
+        "phone": telephone,
+    }
+    }
+
+  axios.post("http://127.0.0.1:8000/Teachaccount-creation/",data)
+  .then((res)=>{
+    console.log(res.data)
+    setLoading(false)
+    setMessage("Account created successful!")
+          
+      })
+  .catch((err)=>{
+    console.log(err)
+    setLoading(false)
+    setMessage("Account created failed!")
+      }) 
+  
+  }
+
+
+
+  const [data, setData] = useState([]);useEffect( ()=>{
+    // async await
+   const response = axios.get('http://127.0.0.1:8000/Teachaccount-creation/')
+  //  print(response);
+   .then(res=>{
+     setData(res.data);
+     console.log(res)
+   })
+   .catch((err)=>{
+     console.log(err)
+   })
+ },[]
+ );
 
 
 const handleclicked=()=>{
@@ -127,10 +192,10 @@ const handleclicked=()=>{
               <span className="mx-4 font-medium">Booked List</span>
           </a>
         
-            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Add Teacher</span>
           </a>
 
           <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
@@ -233,10 +298,10 @@ const handleclicked=()=>{
           </a>
 
 
-            <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+            <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Add Teacher</span>
 
           </a>
 
@@ -287,7 +352,8 @@ const handleclicked=()=>{
         <label className="block text-gray-800 text-xl  text-center font-bold  py-2" for="username">
          Register New Teacher
       </label>
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+      <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
+  <form onSubmit={handleForm} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
 
 
@@ -296,13 +362,13 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
         First name
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
         Last name
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input value={lastname} onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
       </div>
     
     </div>
@@ -312,28 +378,28 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
         Email
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
+      <input value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
     Telephone Number
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
       </div>
     
     </div>
     <div className="mb-6">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Facility
+        Faculity
       </label>
-      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
+      <input value={faculity} onChange={event=>setFaculity(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
 
     </div>
     <div className="mb-6">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
         Year
       </label>
-      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
+      <input value={year} onChange={event=>setYear(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
 
     </div>
 
@@ -341,8 +407,8 @@ const handleclicked=()=>{
 
 
     <div className="flex items-center justify-between">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-        Submit
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+      {loading?<span>Please wait...</span>:<span>Submit</span>}
       </button>
  
     </div>
@@ -356,25 +422,33 @@ const handleclicked=()=>{
                 <th>Last name</th>
                 <th>Telephone</th>
                 <th>Email</th>
-                <th>Facility</th>
+                <th>Faculity</th>
                 <th>Year</th>
                 <th>Option</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Tiger</td>
-                <td>Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
+        {/* <tbody> */}
+        {data.map((item,key)=>{
+            return(
+                <tbody>
+                    <tr key={key}>
+           
+                <td>{item.firstname}</td>
+                <td>{item.lastname}</td>
+                <td>{item.telephone}</td>
+                <td>{item.email}</td>
+                <td>{item.faculity}</td>
+                <td>{item.year}</td>
                 <td>
                   <a href="#" className="bg-red-500 hover:bg-red-700 text-white mr-1 font-bold py-2 px-4 rounded">Delete</a>
                   <a href="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Update</a>
                 </td>
             </tr>
         </tbody>
+        )
+      }
+      )}
+
     </table>
 
 
