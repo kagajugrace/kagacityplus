@@ -40,7 +40,7 @@ function Login(){
     return(
         <>
         <Nav/>
-        {/* <Navbar/> */}
+     
 
 <div className="container">
     <div className="row">
@@ -49,12 +49,12 @@ function Login(){
 
         </div>
         <div className="col-sm-6 pt-8">
-        <div className=" w-full mt-12 ">
+        <div className=" w-full-lg mt-12 ">
                 <div className=" rounded-lg">
                     <h3 className="text-2xl text-center mb-8 font-bold text-gray-600  ">Login</h3>
                 </div>
                 <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
-                    <form onSubmit={handleLogin} className="w-full md:w-5/6">
+                    <form onSubmit={handleLogin} className="w-full md:w-5/6 lg:w-5/6">
                     <label><p className="text-gray-600 mb-2">Username</p></label>
                     <input type="text"  name="username" value={username} onChange={event=>setUsername(event.target.value)} placeholder="" 
                     className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"/>
@@ -72,7 +72,7 @@ function Login(){
 
 
         </div>
-        <div className="col-sm-6 mt-4 md:mt-0">
+        <div className="col-sm-6 mt-4 md:mt-0 lg:mt-0">
         <a href="signup"  className="text-blue-500 font-semibold hover:text-blue-700 ">Create An Account</a>
 
         </div>
