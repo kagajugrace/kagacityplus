@@ -7,10 +7,15 @@ import univ from '../../images/toppng.com-students-1058x684.png';
 import Footer from './footer';
 import Partners from './Partners';
 import Pricing from './Pricing';
+
+
+
+
+
+
 function Home(){
 
-//TODO:{grace} users/add temparatures/sms notification(integration of bulk sms)//security of routes
-//TODO: {joselyne} reporting (PDF/EXcel)/graph reporting
+
 
 
     return(

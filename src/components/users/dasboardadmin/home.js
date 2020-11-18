@@ -3,9 +3,32 @@ import logo from '../../../images/City Plus.png'
 import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
+import {useHistory} from "react-router-dom";
+
 function HomeAdmin(){
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
+    const user=localStorage.getItem("username")
+
+    let history=useHistory();
+
+    function logout(){
+      localStorage.removeItem();
+      history.push("/login")
+      }
+
+
+
+
+
+
+
+
+
+
+      if(!user){
+          history.push("/login");
+      }
 
 
 const handleclicked=()=>{
@@ -87,7 +110,7 @@ const handleclicked=()=>{
                   <span class="mx-4 font-medium">Home</span>
               </a>
         
-              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'user'%}">
+              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/registartion-student">
                 <ion-icon class="text-2xl" name="people-outline"></ion-icon>
         
                   <span class="mx-4 font-medium">Register</span>
@@ -140,7 +163,7 @@ const handleclicked=()=>{
 
       
         
-          <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" onClick={logout} >
          
               <ion-icon class="text-2xl text-white" name="log-out-outline"></ion-icon>
         
@@ -192,7 +215,7 @@ const handleclicked=()=>{
                   <span class="mx-4 font-medium">Home</span>
               </a>
         
-              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'user'%}">
+              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/registartion-student">
                 <ion-icon class="text-2xl" name="people-outline"></ion-icon>
         
                   <span class="mx-4 font-medium">Register</span>
@@ -247,7 +270,7 @@ const handleclicked=()=>{
 
 
 
-          <a class="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a class="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" onClick={logout} >
          
               <ion-icon class="text-2xl text-white" name="log-out-outline"></ion-icon>
         

@@ -4,25 +4,104 @@ import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
 import '../../../css/tailwindcss.css'; 
+import axios from 'axios';
+import {useHistory} from "react-router-dom";
+
 function HomeAdmin(){
-    const[drop,setDrop]=useState(false);
-    const[dropdown,setDropmenu]=useState(0);
+
+  const auth=localStorage.getItem("username")
+  const token=localStorage.getItem("token")
+  const fname=localStorage.getItem("first_name")
+  const id=localStorage.getItem("id")
+  const lname=localStorage.getItem("last_name")
   
 
 
 
-const handleclicked=()=>{
+  const[drop,setDrop]=useState(false);
+  const[dropdown,setDropmenu]=useState(0);
+  let history=useHistory();
+  const[loading,setLoading]=useState(false);
+  const[message,setMessage]=useState("");
+  const[firstname,setFirstname]=useState("");
+  const[lastname,setLastname]=useState("");
+ 
+  const[gender,setGender]=useState("");
+
+  const[district,setDistrict]=useState("");
+  const[village,setVillage]=useState("");
+  const[country,setCountry]=useState("");
+  const[dateofbirth,setDateofbirth]=useState("");
+  const[identification,setIdentification]=useState("");
+  const[fathername,setFathername]=useState("");
+  const[mothername,setMothername]=useState("");
+  const[email,setEmail]=useState("");
+  const[telephone,setTelephone]=useState("");
 
 
 
 
-   if(dropdown===0){
-       setDrop(true);
-       setDropmenu(1);
+
+
+
+  if(!auth){
+      history.push("/login");
+  }
+
+  function logout(){
+    localStorage.removeItem("username");
+    localStorage.removeItem("token");
+    localStorage.removeItem("first_name")
+    localStorage.removeItem("id")
+    localStorage.removeItem("last_name")
+    history.push("/login")
+    }
+
+
+  const handleForm =(e)=>{
+    setLoading(true);
+    e.preventDefault();
+    const data={
+      "firstname" : firstname,
+      "lastname": lastname,
+      "gender": gender, 
+      "district":district,
+      "village":village,
+      "country":country,
+      "dateofbirth":dateofbirth,
+      "identification_number": identification,
+      "fathername": fathername,
+      "mothername": mothername,
+      "email": email,
+      "telephone": telephone,
+      "regSchools":auth,
+      "studentcode":"0",
+
+    }
+
+  axios.post("http://127.0.0.1:8000/student-creation/",data)
+  .then((res)=>{
+    console.log(res.data)
+    setLoading(false)
+    setMessage("Registration successful!")
+          
+      })
+  .catch((err)=>{
+    console.log(err)
+    setLoading(false)
+    setMessage("Registration failed!")
+      })   
+  }
+
+
+  const handleclicked=()=>{
+    if(dropdown===0){
+      setDrop(true);
+      setDropmenu(1);
    }
-   else{
-       setDrop(false);
-       setDropmenu(0);
+    else{
+      setDrop(false);
+      setDropmenu(0);
    }
 } 
 
@@ -143,11 +222,11 @@ const handleclicked=()=>{
 
       
         
-          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  >
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
-            <span className="mx-4 pb-4 font-medium">Logout</span>
+            <span className="mx-4 pb-4 font-medium"  onClick={logout}>Logout</span>
         </a>
           </nav>
        </div>:<div></div>}
@@ -250,11 +329,11 @@ const handleclicked=()=>{
 
 
 
-          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  >
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
-            <span className="mx-4 font-medium ">Logout</span>
+            <span className="mx-4 font-medium"  onClick={logout}>Logout</span>
         </a>
           </nav>
         
@@ -286,25 +365,29 @@ const handleclicked=()=>{
 
         {/* start form section */}
         <div className="w-full max-w-xlg ">
-        <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
-      Student Registration
+        <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" >
+    Welcome <span className="capitalize text-blue-700">{auth} </span> to Student Registration
       </label>
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+
+  <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
+  <div className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+
+  <form  onSubmit={handleForm} >
 
 
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" >
         First name
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input  value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Last name
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input  value={lastname}  onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -315,14 +398,14 @@ const handleclicked=()=>{
       </label>
       <div className="md:flex lg:flex gap-2">
           <div className=" flex  gap-4 w-1/2">
-              <input type="radio" name="gender" className="mt-1" />
+              <input value="male" onChange={event=>setGender(event.target.value)} type="radio" name="gender" className="mt-1" />
 <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
        Male
       </label>
       </div>
 
       <div className="w-1/2 flex gap-4">
-          <input type="radio" name="gender" className="mt-1" />
+          <input value="female" onChange={event=>setGender(event.target.value)} type="radio" name="gender" className="mt-1" />
 <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
        FeMale
       </label>
@@ -335,28 +418,28 @@ const handleclicked=()=>{
     </div>
 
 
-    <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+    <label className="block text-gray-700 text-sm font-bold mb-2" >
         Borning Place
       </label>
     <div className="md:flex lg:flex  gap-2 mb-4">
   
         <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         District
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input  value={district} onChange={event=>setDistrict(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Village
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input  value={village} onChange={event=>setVillage(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
       <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Country
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="country" value={country} onChange={event=>setCountry(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -366,7 +449,7 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
         Date of Birth
       </label>
-      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="date"/>
+      <input name="dateofbirth" value={dateofbirth} onChange={event=>setDateofbirth(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="date"/>
 
     </div>
 
@@ -377,22 +460,22 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
         Identification Number
       </label>
-      <input className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
+      <input name="identification" value={identification} onChange={event=>setIdentification(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
 
     </div>
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Father name
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input name="fathername" value={fathername} onChange={event=>setFathername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
     Mother name
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="mothername" value={mothername} onChange={event=>setMothername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -402,16 +485,16 @@ const handleclicked=()=>{
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Email
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
+      <input name="email" value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="email" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
     Telephone Number
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="telephone" value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -420,21 +503,27 @@ const handleclicked=()=>{
 
 
     <div className="flex items-center justify-between">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-        Submit
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+      {loading?<span>Please wait...</span>:<span>Submit</span>}
       </button>
  
     </div>
   </form>
+  </div>
+
+
+
+
+
 
   <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
 <div className="md:flex lg:flex  gap-2 mb-4">
     <div className="md:w-auto lg:w-full">
-  <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+  <label className="block text-gray-700 text-sm font-semibold mb-2" >
     Csv File
   </label>
-  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="file" />
+  <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="file" />
   </div>
   <div className=" md:w-32 lg:w-32">
 <div className="py-4 mt-2">
