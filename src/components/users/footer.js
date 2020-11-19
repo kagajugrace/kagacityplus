@@ -36,7 +36,7 @@ function Footer(){
 <div className="">
     <h3 className="text-base font-bold">Stay Update</h3>
     <input type="text" placeholder="Where Your Email " className="border-b border-blue-700 py-2  px-2 mb-2 focus:border-none" /><br/>
-    <button className="bg-red-500 px-4 py-2 text-white uppercase float-right">subscribe</button>
+    <button className="px-4 bg-red-500 text-white py-2  cursor-pointer rounded hover:bg-blue-500 float-right">subscribe</button>
 </div>
  
 
