@@ -9,9 +9,23 @@ import login from '../../../images/login.png';
 import { FaHome} from 'react-icons/fa';
 import{FaAddressBook} from 'react-icons/fa';
 import{FaBook} from 'react-icons/fa';
+import {useHistory} from "react-router-dom";
 const Students = () => {
+  const auth=sessionStorage.getItem("username")
   const[user,setUser]=useState("");
   const [students,setStudents] = useState(''); 
+  let history=useHistory();
+
+  function logout(){
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("token");
+    history.push("/login")
+    }
+
+
+  if(!auth){
+    history.push("/login");
+}
  
   const getAllStudents = async () => {
     try {
@@ -39,19 +53,19 @@ const Students = () => {
     </div>
     <div>
     <button type="button"> 
-<img src={login} className="w-20" /></button>
+    <a href="/upload"><img src={login} className="w-20" /></a></button> 
     </div>
     {/* icons */}
     <div  className="">
     <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Home</span></button></a>
     <a href="/registartion-student"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">register</span></button></a>
-    <a href="/Dashboard-addteacher"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">users</span></button></a>
-    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Religious Services</span></button></a>
-    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">Codes</span></button></a>
+    <a href="/students"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">Report</span></button></a>
+    {/* <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Religious Services</span></button></a> */}
+    <a href="/Dashboard-addteacher"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">Add Teacher</span></button></a>
     <a href="/temperature-page"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">Temperature</span></button></a>
-    <a href="/students"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Reports</span></button></a>
-    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">list of member</span></button></a>
-    <a href="/Dashboard-addteacher"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">edit user</span></button></a>
+    {/* <a href="/students"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Reports</span></button></a>
+    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">list of member</span></button></a> */}
+    <a onClick={logout}><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">Logout</span></button></a>
     </div>
       </div>
   
