@@ -163,7 +163,7 @@ function HomeAdmin(){
   {drop? <div className="modal-content mt-24  shadow-lg h-full absolute block md:hidden">
 
             <nav className="mt-2">
-              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
+              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="/Dashboard-Home">
                 <span className="text-white text-2xl"><ion-icon  name="home-outline"></ion-icon> </span>
         
                   <span className="mx-4 font-medium">Home</span>
@@ -174,12 +174,12 @@ function HomeAdmin(){
         
                   <span className="mx-4 font-medium">Register</span>
               </a>
-              <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice'%}">
+              {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice'%}">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
                   <span className="mx-4 font-medium">Religion Services</span>
-              </a>
+              </a> */}
               <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
@@ -187,38 +187,38 @@ function HomeAdmin(){
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Codes</span>
-              </a>
-              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              </a> */}
+              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
-                <span className="mx-4 font-medium">Users</span>
+                <span className="mx-4 font-medium">Add Teacher</span>
             </a>
 
-            <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
+            {/* <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
               <ion-icon className="text-2xl" name="people-outline"></ion-icon>
       
                 <span className="mx-4 font-medium">List of Member</span>
-            </a>
+            </a> */}
 
-            <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            {/* <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
               <ion-icon className="text-2xl" name="person-outline"></ion-icon>
               <span className="mx-4 font-medium">Booked List</span>
-          </a>
+          </a> */}
         
-            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Temperature</span>
           </a>
 
-          <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-updateteacher">
             <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
       
-            <span className="mx-4 font-medium">Edit User</span>
-        </a>
+            <span className="mx-4 font-medium">Update Teacher</span>
+        </a> */}
 
       
         
@@ -268,7 +268,7 @@ function HomeAdmin(){
           </div>
         
           <nav className="mt-2 ">
-              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
+              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="/Dashboard-Home">
                 <span className="text-white text-2xl"><ion-icon  name="home-outline"></ion-icon> </span>
         
                   <span className="mx-4 font-medium">Home</span>
@@ -279,7 +279,7 @@ function HomeAdmin(){
         
                   <span className="mx-4 font-medium">Register</span>
               </a>
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice' %}">
+              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice' %}">
                 <ion-icon className="text-2xl" name="people-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Religion Services</span>
@@ -288,7 +288,7 @@ function HomeAdmin(){
                 <ion-icon className="text-2xl" name="people-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">List of Member</span>
-              </a>
+              </a> */}
         
               <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
@@ -297,14 +297,14 @@ function HomeAdmin(){
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Codes</span>
-              </a>
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              </a> */}
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
-                <span className="mx-4 font-medium">Users</span>
+                <span className="mx-4 font-medium">Add Teacher</span>
             </a>
         
             <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
@@ -314,18 +314,18 @@ function HomeAdmin(){
           </a>
 
 
-            <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+            {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-updateteacher">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Update Teacher</span>
 
-          </a>
+          </a> */}
 
-          <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
             
             <ion-icon className="text-2xl" name="create-outline"></ion-icon>
             <span className="mx-4 font-medium">Edit User</span>
-        </a>
+        </a> */}
 
 
 
