@@ -66,15 +66,15 @@ const handleclicked=()=>{
 
 
 
-    <a href="/upload"> <button type="button" class="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
+    <button type="button" class="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-      <span class="group flex"><img src={login} class="w-12 h-12 rounded-full  "/><span className="px-1 py-2"> 
+      <span class="group flex"><a href="/upload"> <img src={login} class="w-12 h-12 rounded-full  "/></a><span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
         
         </span></span>
         
     
-      </button></a>
+      </button>
 
 
 

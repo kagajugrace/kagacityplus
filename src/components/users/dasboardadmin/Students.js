@@ -52,8 +52,8 @@ const Students = () => {
     <img src={logo} class="h-24 md:h-12 w-32 mb-2 justify-center ml-2 md:ml-12"/>
     </div>
     <div>
-    <a href="/upload"><button type="button"> 
-<img src={login} className="w-20" /></button> </a>
+    <button type="button"> 
+    <a href="/upload"><img src={login} className="w-20" /></a></button> 
     </div>
     {/* icons */}
     <div  className="">
