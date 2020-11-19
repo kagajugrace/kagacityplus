@@ -126,7 +126,7 @@ const handleclicked=()=>{
 
 
 
-      <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
+    <a href="/upload"><button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
         <span className="group flex"><img src={login} className="w-12 h-12 rounded-full  "/><span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
@@ -134,7 +134,7 @@ const handleclicked=()=>{
         </span></span>
         
     
-      </button>
+      </button></a>
 
 
 
@@ -181,7 +181,7 @@ const handleclicked=()=>{
         
                   <span className="mx-4 font-medium">Religion Services</span>
               </a> */}
-              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
@@ -263,7 +263,7 @@ const handleclicked=()=>{
         <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block h-auto">
           <div className="flex items-center justify-center ">
 
-            <img src={login} className="w-24 h-24 rounded-full mt-4 "/>
+          <a href="/upload"><img src={login} className="w-24 h-24 rounded-full mt-4 "/></a>
           
         
           </div>
@@ -291,7 +291,7 @@ const handleclicked=()=>{
                   <span className="mx-4 font-medium">List of Member</span>
               </a> */}
         
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
