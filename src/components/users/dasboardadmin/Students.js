@@ -15,7 +15,7 @@ const Students = () => {
  
   const getAllStudents = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/registartion-student");
+      const response = await axios.get("http://127.0.0.1:8000/student-creation/");
       setStudents(response.data.students);
     } 
     catch (err) {
@@ -66,13 +66,16 @@ const Students = () => {
             <> </>
           ) : (  */}
             <button
-              className="butn btn btn-primary "
-             onClick={() => Pdfreport(reportStudents)}>
+              className="butn btn btn-info"
+            //  onClick={() => Pdfreport(reportStudents)}
+            >
+              <a href="/map" className="text-white text-sm">
               Generate daily report
+              </a>
             </button>
           {/* ) */}
            {/* }  */}
-           <StudentsComponent Students={Students} className="text-center" />
+           {/* <StudentsComponent Students={Students} className="text-center" /> */}
       </div>
       </div>
     <div className="w-2/6 py-10">
@@ -80,13 +83,13 @@ const Students = () => {
        <h2 className="text-xl font-semibold  text-center text-blue">Latest Report</h2>
        <br/>
        <br/>
-       <button className="btn bg-blue-500 p-2  text-center rounded-lg text-white text-sm">Registration report</button>
+       <button className="btn bg-blue-500 p-2  text-center rounded-lg text-white text-sm"><a href="/students">Registration report</a></button>
        <br/>
        <br/>
-       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm">Temperature record</button>
+       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm"><a>Temperature record</a></button>
        <br/>
        <br/>
-       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm">Attendance report</button>
+       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm"><a>Attendance report</a></button>
        <br/>
       </div>
     </div>

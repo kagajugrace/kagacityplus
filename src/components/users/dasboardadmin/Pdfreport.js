@@ -11,7 +11,7 @@ const Pdfreport = students => {
   const doc = new jsPDF();
 
   // define the columns we want and their titles
-  const tableColumn = ["id", "firstname", "lastname", "gender", "email","phone"];
+  const tableColumn = ["Id", "Lirstname", "Lastname", "Gender", "Email","Phone"];
   // define an empty array of rows
   const tableRows = [];
 

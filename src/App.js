@@ -16,6 +16,7 @@ import RegStusent from './components/users/dasboardadmin/regist';
 import AddTeacher from './components/users/dasboardadmin/addteacher';
 import UpdateTeacher from './components/users/dasboardadmin/updateteacher';
 import Students from './components/users/dasboardadmin/Students';
+import StudentsComponent from './components/users/dasboardadmin/Map';
 import {
   BrowserRouter as Router,
   Switch,
@@ -98,6 +99,10 @@ function App() {
           <Route path="/students">
           <Students/>
           </Route>
+          <Route path="/map">
+          <StudentsComponent/>
+          </Route>
+    
     
           </Switch>
           </Router>
