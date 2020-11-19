@@ -13,6 +13,7 @@ import Logout from'./components/users/dasboardadmin/logout';
 import RegStusent from './components/users/dasboardadmin/regist';
 import AddTeacher from './components/users/dasboardadmin/addteacher';
 import UpdateTeacher from './components/users/dasboardadmin/updateteacher';
+import Students from './components/users/dasboardadmin/Students';
 import {
   BrowserRouter as Router,
   Switch,
@@ -91,7 +92,10 @@ function App() {
           <Route path="/Temp-page">
           <Temp/>
           </Route>
-
+          <Route path="/students">
+          <Students/>
+          </Route>
+    
           </Switch>
           </Router>
     </div>

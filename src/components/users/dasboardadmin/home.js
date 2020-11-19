@@ -98,7 +98,7 @@ const handleclicked=()=>{
         
                   <span class="mx-4 font-medium">Religion Services</span>
               </a>
-              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon class="text-2xl" name="list-outline"></ion-icon>
         
         
@@ -208,7 +208,7 @@ const handleclicked=()=>{
                   <span class="mx-4 font-medium">List of Member</span>
               </a>
         
-              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon class="text-2xl" name="list-outline"></ion-icon>
         
         
