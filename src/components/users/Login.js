@@ -37,18 +37,18 @@ function Login(){
 
         
         .then((res)=>{
-            localStorage.setItem('token',res.data.token);
-            localStorage.setItem('username',res.data.username);
-            localStorage.setItem('first_name',res.data.first_name);
-            localStorage.setItem('id',res.data.id);
-            localStorage.setItem('last_name',res.data.last_name);
-         
+            
+            sessionStorage.setItem('token',res.data.token);
+                sessionStorage.setItem('username',res.data.username);
+                sessionStorage.setItem('first_name',res.data.first_name);
+    
+                sessionStorage.setItem('last_name',res.data.last_name);
 
-       
             setLoader(true);
             setTimeout(function(){
+    
                 history.push('/Dashboard-Home');
-            },2500)
+            },2000)
    
           console.log(res.data)
             

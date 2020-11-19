@@ -5,17 +5,29 @@ import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
 import '../../../css/tailwindcss.css'; 
 import axios from 'axios';
+import {useHistory} from "react-router-dom";
+
 function HomeAdmin(){
+
+  const auth=sessionStorage.getItem("username")
+  const token=sessionStorage.getItem("token")
+  const fname=sessionStorage.getItem("first_name")
+
+  const lname=sessionStorage.getItem("last_name")
+  
+
+
+
   const[drop,setDrop]=useState(false);
   const[dropdown,setDropmenu]=useState(0);
-
+  let history=useHistory();
   const[loading,setLoading]=useState(false);
   const[message,setMessage]=useState("");
   const[firstname,setFirstname]=useState("");
   const[lastname,setLastname]=useState("");
  
   const[gender,setGender]=useState("");
-  // const[female,setFemale]=useState("");
+
   const[district,setDistrict]=useState("");
   const[village,setVillage]=useState("");
   const[country,setCountry]=useState("");
@@ -27,15 +39,32 @@ function HomeAdmin(){
   const[telephone,setTelephone]=useState("");
 
 
+
+
+
+
+
+  if(!auth){
+      history.push("/login");
+  }
+
+  function logout(){
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("first_name")
+    sessionStorage.removeItem("id")
+    sessionStorage.removeItem("last_name")
+    history.push("/login")
+    }
+
+
   const handleForm =(e)=>{
     setLoading(true);
     e.preventDefault();
     const data={
       "firstname" : firstname,
       "lastname": lastname,
-      
       "gender": gender, 
-      // "gender": female,
       "district":district,
       "village":village,
       "country":country,
@@ -45,7 +74,7 @@ function HomeAdmin(){
       "mothername": mothername,
       "email": email,
       "telephone": telephone,
-      "regSchools":"123",
+      "regSchools":auth,
       "studentcode":"0",
 
     }
@@ -193,11 +222,11 @@ function HomeAdmin(){
 
       
         
-          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  >
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
-            <span className="mx-4 pb-4 font-medium">Logout</span>
+            <span className="mx-4 pb-4 font-medium"  onClick={logout}>Logout</span>
         </a>
           </nav>
        </div>:<div></div>}
@@ -300,11 +329,11 @@ function HomeAdmin(){
 
 
 
-          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  >
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
-            <span className="mx-4 font-medium ">Logout</span>
+            <span className="mx-4 font-medium"  onClick={logout}>Logout</span>
         </a>
           </nav>
         
@@ -336,8 +365,8 @@ function HomeAdmin(){
 
         {/* start form section */}
         <div className="w-full max-w-xlg ">
-        <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
-      Student Registration
+        <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" >
+    Welcome <span className="capitalize text-blue-700">{auth} </span> to Student Registration
       </label>
 
   <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
@@ -349,16 +378,16 @@ function HomeAdmin(){
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" >
         First name
       </label>
-      <input name="firstname" value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input  value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Last name
       </label>
-      <input name="lastname"value={lastname} onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input  value={lastname}  onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -389,28 +418,28 @@ function HomeAdmin(){
     </div>
 
 
-    <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+    <label className="block text-gray-700 text-sm font-bold mb-2" >
         Borning Place
       </label>
     <div className="md:flex lg:flex  gap-2 mb-4">
   
         <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         District
       </label>
-      <input name="district" value={district} onChange={event=>setDistrict(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input  value={district} onChange={event=>setDistrict(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Village
       </label>
-      <input name="village" value={village} onChange={event=>setVillage(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input  value={village} onChange={event=>setVillage(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
       <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Country
       </label>
-      <input name="country" value={country} onChange={event=>setCountry(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="country" value={country} onChange={event=>setCountry(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -437,16 +466,16 @@ function HomeAdmin(){
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Father name
       </label>
-      <input name="fathername" value={fathername} onChange={event=>setFathername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input name="fathername" value={fathername} onChange={event=>setFathername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
     Mother name
       </label>
-      <input name="mothername"value={mothername} onChange={event=>setMothername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="mothername" value={mothername} onChange={event=>setMothername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -456,16 +485,16 @@ function HomeAdmin(){
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Email
       </label>
-      <input name="email" value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
+      <input name="email" value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="email" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
     Telephone Number
       </label>
-      <input name="telephone" value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="telephone" value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -482,14 +511,19 @@ function HomeAdmin(){
   </form>
   </div>
 
+
+
+
+
+
   <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
 <div className="md:flex lg:flex  gap-2 mb-4">
     <div className="md:w-auto lg:w-full">
-  <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+  <label className="block text-gray-700 text-sm font-semibold mb-2" >
     Csv File
   </label>
-  <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="file" />
+  <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="file" />
   </div>
   <div className=" md:w-32 lg:w-32">
 <div className="py-4 mt-2">

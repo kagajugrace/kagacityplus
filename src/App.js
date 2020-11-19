@@ -8,7 +8,9 @@ import Signup from './components/users/Signup'
 import Home from './components/users/home';
 import About from './components/users/About';
 import Update from './components/users/Update';
+
 import Dash from './components/users/dasboardadmin/home';
+
 import Logout from'./components/users/dasboardadmin/logout';
 import RegStusent from './components/users/dasboardadmin/regist';
 import AddTeacher from './components/users/dasboardadmin/addteacher';
@@ -78,6 +80,7 @@ function App() {
           <Route path="/Dashboard-Home">
           <Dash/>
           </Route>
+
           <Route path="/Dashboard-addteacher">
           <AddTeacher/>
           </Route>
