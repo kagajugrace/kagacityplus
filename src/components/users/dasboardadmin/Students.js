@@ -32,26 +32,26 @@ const Students = () => {
   return (
     <div>
       <div className="container flex gap-4 P-4 shadow-lg bg-gray-400 rounded-lg border border-2">
-      <div className="w-1/6 bg-gray-500  shadow-lg p-2">
-      <div > 
+      <div className="w-1/6 bg-gray-500  shadow-lg p-2 ">
+      <div> 
     
-    <img src={logo} class="h-24 md:h-12 w-32 justify-center ml-2 md:ml-12"/>
+    <img src={logo} class="h-24 md:h-12 w-32 mb-2 justify-center ml-2 md:ml-12"/>
     </div>
     <div>
     <button type="button"> 
-<img src={login} className="w-20" /><span>Admin-report-site</span></button>
+<img src={login} className="w-20" /></button>
     </div>
     {/* icons */}
     <div  className="">
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm">Home</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm">register</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm">users</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm">Religious Services</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm">Codes</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm">Temperature</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm">Reports</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm">list of member</span></button>
-    <button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm">edit user</span></button>
+    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Home</span></button></a>
+    <a href="/registartion-student"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">register</span></button></a>
+    <a href="/Dashboard-addteacher"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">users</span></button></a>
+    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Religious Services</span></button></a>
+    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">Codes</span></button></a>
+    <a href="/temperature-page"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">Temperature</span></button></a>
+    <a href="/students"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Reports</span></button></a>
+    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">list of member</span></button></a>
+    <a href="/Dashboard-addteacher"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">edit user</span></button></a>
     </div>
       </div>
   
@@ -75,7 +75,21 @@ const Students = () => {
            <StudentsComponent Students={Students} className="text-center" />
       </div>
       </div>
-    <div className="w-2/6"></div>
+    <div className="w-2/6 py-10">
+      <div className="py-4 bg-gray-500 shadow-lg rounded-lg">
+       <h2 className="text-xl font-semibold  text-center text-blue">Latest Report</h2>
+       <br/>
+       <br/>
+       <button className="btn bg-blue-500 p-2  text-center rounded-lg text-white text-sm">Registration report</button>
+       <br/>
+       <br/>
+       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm">Temperature record</button>
+       <br/>
+       <br/>
+       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm">Attendance report</button>
+       <br/>
+      </div>
+    </div>
     </div>
     </div>
   );
