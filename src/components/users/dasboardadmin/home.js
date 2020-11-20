@@ -13,7 +13,7 @@ function HomeAdmin(){
     let history=useHistory();
 
     function logout(){
-      sessionStorage.removeItem();
+      sessionStorage.clear();
       history.push("/login")
       }
 
