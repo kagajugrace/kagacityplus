@@ -37,18 +37,18 @@ function Login(){
 
         
         .then((res)=>{
-            localStorage.setItem('token',res.data.token);
-            localStorage.setItem('username',res.data.username);
-            localStorage.setItem('first_name',res.data.first_name);
-            localStorage.setItem('id',res.data.id);
-            localStorage.setItem('last_name',res.data.last_name);
-         
+            
+            sessionStorage.setItem('token',res.data.token);
+                sessionStorage.setItem('username',res.data.username);
+                sessionStorage.setItem('first_name',res.data.first_name);
+    
+                sessionStorage.setItem('last_name',res.data.last_name);
 
-       
             setLoader(true);
             setTimeout(function(){
+    
                 history.push('/Dashboard-Home');
-            },2500)
+            },2000)
    
           console.log(res.data)
             
@@ -77,7 +77,7 @@ function Login(){
 
         </div>
         <div className="col-sm-6 pt-8">
-        <div className=" w-full-lg mt-12 ">
+        <div className=" w-full mt-12 ">
                 <div className=" rounded-lg">
                     <h3 className="text-2xl text-center mb-8 font-bold text-gray-600  ">Login</h3>
                 </div>
@@ -116,7 +116,7 @@ function Login(){
 
 
         </div>
-        <div className="col-sm-6 mt-4 md:mt-0 lg:mt-0">
+        <div className="col-sm-6 mt-4 md:mt-0">
         <a href="signup"  className="text-blue-500 font-semibold hover:text-blue-700 ">Create An Account</a>
 
         </div>

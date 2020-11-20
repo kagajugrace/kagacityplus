@@ -5,17 +5,29 @@ import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
 import '../../../css/tailwindcss.css'; 
 import axios from 'axios';
+import {useHistory} from "react-router-dom";
+
 function HomeAdmin(){
+
+  const auth=sessionStorage.getItem("username")
+  const token=sessionStorage.getItem("token")
+  const fname=sessionStorage.getItem("first_name")
+
+  const lname=sessionStorage.getItem("last_name")
+  
+
+
+
   const[drop,setDrop]=useState(false);
   const[dropdown,setDropmenu]=useState(0);
-
+  let history=useHistory();
   const[loading,setLoading]=useState(false);
   const[message,setMessage]=useState("");
   const[firstname,setFirstname]=useState("");
   const[lastname,setLastname]=useState("");
  
   const[gender,setGender]=useState("");
-  // const[female,setFemale]=useState("");
+
   const[district,setDistrict]=useState("");
   const[village,setVillage]=useState("");
   const[country,setCountry]=useState("");
@@ -27,15 +39,32 @@ function HomeAdmin(){
   const[telephone,setTelephone]=useState("");
 
 
+
+
+
+
+
+  if(!auth){
+      history.push("/login");
+  }
+
+  function logout(){
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("first_name")
+    sessionStorage.removeItem("id")
+    sessionStorage.removeItem("last_name")
+    history.push("/login")
+    }
+
+
   const handleForm =(e)=>{
     setLoading(true);
     e.preventDefault();
     const data={
       "firstname" : firstname,
       "lastname": lastname,
-      
       "gender": gender, 
-      // "gender": female,
       "district":district,
       "village":village,
       "country":country,
@@ -45,7 +74,7 @@ function HomeAdmin(){
       "mothername": mothername,
       "email": email,
       "telephone": telephone,
-      "regSchools":"123",
+      "regSchools":auth,
       "studentcode":"0",
 
     }
@@ -96,9 +125,9 @@ function HomeAdmin(){
 
 
 
-      <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
+    <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-        <span className="group flex"><img src={login} className="w-12 h-12 rounded-full  "/><span className="px-1 py-2"> 
+        <span className="group flex"><a href="/upload"><img src={login} className="w-12 h-12 rounded-full  "/></a><span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
         
         </span></span>
@@ -134,7 +163,7 @@ function HomeAdmin(){
   {drop? <div className="modal-content mt-24  shadow-lg h-full absolute block md:hidden">
 
             <nav className="mt-2">
-              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
+              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="/Dashboard-Home">
                 <span className="text-white text-2xl"><ion-icon  name="home-outline"></ion-icon> </span>
         
                   <span className="mx-4 font-medium">Home</span>
@@ -145,59 +174,59 @@ function HomeAdmin(){
         
                   <span className="mx-4 font-medium">Register</span>
               </a>
-              <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice'%}">
+              {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice'%}">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
                   <span className="mx-4 font-medium">Religion Services</span>
-              </a>
-              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              </a> */}
+              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Codes</span>
-              </a>
-              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              </a> */}
+              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
-                <span className="mx-4 font-medium">Users</span>
+                <span className="mx-4 font-medium">Add Teacher</span>
             </a>
 
-            <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
+            {/* <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
               <ion-icon className="text-2xl" name="people-outline"></ion-icon>
       
                 <span className="mx-4 font-medium">List of Member</span>
-            </a>
+            </a> */}
 
-            <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+            {/* <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
               <ion-icon className="text-2xl" name="person-outline"></ion-icon>
               <span className="mx-4 font-medium">Booked List</span>
-          </a>
+          </a> */}
         
-            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Temperature</span>
           </a>
 
-          <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-updateteacher">
             <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
       
-            <span className="mx-4 font-medium">Edit User</span>
-        </a>
+            <span className="mx-4 font-medium">Update Teacher</span>
+        </a> */}
 
       
         
-          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  >
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
-            <span className="mx-4 pb-4 font-medium">Logout</span>
+            <span className="mx-4 pb-4 font-medium"  onClick={logout}>Logout</span>
         </a>
           </nav>
        </div>:<div></div>}
@@ -233,13 +262,13 @@ function HomeAdmin(){
         <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block h-auto">
           <div className="flex items-center justify-center ">
 
-            <img src={login} className="w-24 h-24 rounded-full mt-4 "/>
+          <a href="/upload"><img src={login} className="w-24 h-24 rounded-full mt-4 "/></a>
           
         
           </div>
         
           <nav className="mt-2 ">
-              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
+              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="/Dashboard-Home">
                 <span className="text-white text-2xl"><ion-icon  name="home-outline"></ion-icon> </span>
         
                   <span className="mx-4 font-medium">Home</span>
@@ -250,7 +279,7 @@ function HomeAdmin(){
         
                   <span className="mx-4 font-medium">Register</span>
               </a>
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice' %}">
+              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice' %}">
                 <ion-icon className="text-2xl" name="people-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Religion Services</span>
@@ -259,23 +288,23 @@ function HomeAdmin(){
                 <ion-icon className="text-2xl" name="people-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">List of Member</span>
-              </a>
+              </a> */}
         
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Codes</span>
-              </a>
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              </a> */}
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
-                <span className="mx-4 font-medium">Users</span>
+                <span className="mx-4 font-medium">Add Teacher</span>
             </a>
         
             <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
@@ -285,26 +314,26 @@ function HomeAdmin(){
           </a>
 
 
-            <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+            {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-updateteacher">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Update Teacher</span>
 
-          </a>
+          </a> */}
 
-          <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
             
             <ion-icon className="text-2xl" name="create-outline"></ion-icon>
             <span className="mx-4 font-medium">Edit User</span>
-        </a>
+        </a> */}
 
 
 
-          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  >
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
-            <span className="mx-4 font-medium ">Logout</span>
+            <span className="mx-4 font-medium"  onClick={logout}>Logout</span>
         </a>
           </nav>
         
@@ -336,8 +365,8 @@ function HomeAdmin(){
 
         {/* start form section */}
         <div className="w-full max-w-xlg ">
-        <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
-      Student Registration
+        <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" >
+    Welcome <span className="capitalize text-blue-700">{auth} </span> to Student Registration
       </label>
 
   <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
@@ -349,16 +378,16 @@ function HomeAdmin(){
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" >
         First name
       </label>
-      <input name="firstname" value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input  value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Last name
       </label>
-      <input name="lastname"value={lastname} onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input  value={lastname}  onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -389,28 +418,28 @@ function HomeAdmin(){
     </div>
 
 
-    <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+    <label className="block text-gray-700 text-sm font-bold mb-2" >
         Borning Place
       </label>
     <div className="md:flex lg:flex  gap-2 mb-4">
   
         <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         District
       </label>
-      <input name="district" value={district} onChange={event=>setDistrict(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input  value={district} onChange={event=>setDistrict(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Village
       </label>
-      <input name="village" value={village} onChange={event=>setVillage(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input  value={village} onChange={event=>setVillage(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
       <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Country
       </label>
-      <input name="country" value={country} onChange={event=>setCountry(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="country" value={country} onChange={event=>setCountry(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -437,16 +466,16 @@ function HomeAdmin(){
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Father name
       </label>
-      <input name="fathername" value={fathername} onChange={event=>setFathername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input name="fathername" value={fathername} onChange={event=>setFathername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
     Mother name
       </label>
-      <input name="mothername"value={mothername} onChange={event=>setMothername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="mothername" value={mothername} onChange={event=>setMothername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -456,16 +485,16 @@ function HomeAdmin(){
 
     <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
         Email
       </label>
-      <input name="email" value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="email" />
+      <input name="email" value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="email" />
       </div>
       <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label className="block text-gray-700 text-sm font-bold mb-2" >
     Telephone Number
       </label>
-      <input name="telephone" value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text"/>
+      <input name="telephone" value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
       </div>
     
     </div>
@@ -482,14 +511,19 @@ function HomeAdmin(){
   </form>
   </div>
 
+
+
+
+
+
   <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
 <div className="md:flex lg:flex  gap-2 mb-4">
     <div className="md:w-auto lg:w-full">
-  <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+  <label className="block text-gray-700 text-sm font-semibold mb-2" >
     Csv File
   </label>
-  <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="file" />
+  <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="file" />
   </div>
   <div className=" md:w-32 lg:w-32">
 <div className="py-4 mt-2">

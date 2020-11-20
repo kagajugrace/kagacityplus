@@ -83,8 +83,8 @@ function Signup(){
         .catch((err)=>{
          console.log(err)
          setLoading(false)
-         setMessager("Account created failed!")
-         setMessage("")
+         setMessager(err)
+         setMessage(err)
          setConfirmPassword("")
          setPassword("")
         }

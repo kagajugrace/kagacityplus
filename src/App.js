@@ -8,11 +8,18 @@ import Signup from './components/users/Signup'
 import Home from './components/users/home';
 import About from './components/users/About';
 import Update from './components/users/Update';
+
 import Dash from './components/users/dasboardadmin/home';
+
 import Logout from'./components/users/dasboardadmin/logout';
 import RegStusent from './components/users/dasboardadmin/regist';
 import AddTeacher from './components/users/dasboardadmin/addteacher';
 import UpdateTeacher from './components/users/dasboardadmin/updateteacher';
+import Students from './components/users/dasboardadmin/Students';
+import StudentsComponent from './components/users/dasboardadmin/Map';
+import Upload from './components/users/dasboardadmin/Upload';
+import Temprpt from './components/users/dasboardadmin/Temprpt';
+import Attendancerpt from './components/users/dasboardadmin/Attendancerpt';
 import {
   BrowserRouter as Router,
   Switch,
@@ -76,6 +83,7 @@ function App() {
           <Route path="/Dashboard-Home">
           <Dash/>
           </Route>
+
           <Route path="/Dashboard-addteacher">
           <AddTeacher/>
           </Route>
@@ -90,7 +98,24 @@ function App() {
           <Route path="/Temp-page">
           <Temp/>
           </Route>
+          <Route path="/students">
+          <Students/>
+          </Route>
+          <Route path="/map">
+          <StudentsComponent/>
+          </Route>
+    
 
+          <Route path="/upload">
+          <Upload/>
+          </Route>
+          <Route path="/temprpt">
+          <Temprpt/>
+          </Route>
+    
+          <Route path="/attendancerpt">
+          <Attendancerpt/>
+          </Route>
           </Switch>
           </Router>
     </div>

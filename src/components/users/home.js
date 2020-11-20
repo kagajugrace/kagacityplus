@@ -10,6 +10,16 @@ import Partners from './Partners';
 import Pricing from './Pricing';
 import Nav from './Navbar';
 
+
+
+
+
+
+
+
+
+
+
 export default function Home(){
 
     const [data, setData] = useState([]);
@@ -101,4 +111,5 @@ export default function Home(){
 
     );
   }
+
 
