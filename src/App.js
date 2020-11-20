@@ -60,7 +60,6 @@ function App() {
           <About/>
           </Route>
 
-
           <Route path="/logout">
           <Logout/>
           </Route>
