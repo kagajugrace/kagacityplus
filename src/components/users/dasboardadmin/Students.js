@@ -44,11 +44,10 @@ const Students = () => {
  const reportStudents = getAllStudents();
   
   return (
-    <div>
-      <div className="container flex gap-4 P-4 shadow-lg bg-gray-400 rounded-lg border border-2">
-      <div className="w-1/6 bg-gray-500  shadow-lg p-2 ">
+    <div className="bg-gray-400">
+      <div className="container flex  P-4  bg-gray-400 rounded-lg">
+      <div className="one w-1/6 bg-gray-500  shadow-lg p-2 ">
       <div> 
-    
     <img src={logo} class="h-24 md:h-12 w-32 mb-2 justify-center ml-2 md:ml-12"/>
     </div>
     <div>
@@ -67,6 +66,15 @@ const Students = () => {
     <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">list of member</span></button></a> */}
     <a onClick={logout}><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">Logout</span></button></a>
     </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
       </div>
   
       {/* end of nav side */}
@@ -84,7 +92,7 @@ const Students = () => {
             //  onClick={() => Pdfreport(reportStudents)}
             >
               <a href="/map" className="text-white text-sm">
-              Generate daily report
+              Generate Weekly report
               </a>
             </button>
           {/* ) */}
@@ -92,22 +100,31 @@ const Students = () => {
            {/* <StudentsComponent Students={Students} className="text-center" /> */}
       </div>
       </div>
-    <div className="w-2/6 py-10">
+    <div className="w-2/6">
       <div className="py-4 bg-gray-500 shadow-lg rounded-lg">
-       <h2 className="text-xl font-semibold  text-center text-blue">Latest Report</h2>
+       <h2 className="text-xl font-semibold  text-center text-blue text-bold">Latest Report</h2>
        <br/>
        <br/>
-       <button className="btn bg-blue-500 p-2  text-center rounded-lg text-white text-sm"><a href="/students">Registration report</a></button>
+       <button className="btn bg-blue-500 p-2  text-center  rounded-lg  text-sm"><a className="text-white text-bold" href="/students">Registration report</a></button>
        <br/>
        <br/>
-       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm"><a>Temperature record</a></button>
+       <button className="btn bg-blue-500 p-2 rounded-lg text-center  text-sm"><a className="text-white text-bold" href="/temprpt">Temperature record</a></button>
        <br/>
        <br/>
-       <button className="btn bg-blue-500 p-2 rounded-lg text-center text-white text-sm"><a>Attendance report</a></button>
+       <button className="btn bg-blue-500 p-2 rounded-lg text-center  text-sm"><a className="text-white text-bold"  href="/attendancerpt">Attendance report</a></button>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
+       <br/>
        <br/>
       </div>
     </div>
+    <br/>
     </div>
+    <br/>
+    <br/>
+    <br/>
     </div>
   );
 };

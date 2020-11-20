@@ -2,7 +2,7 @@ import React,{Component,useState,useEffect} from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../../css/tailwindcss.css';
-const StudentsComponent = ({ Students }) => {
+const Temprpt = ({ Students }) => {
 
 // a function that assigns bootstrap styling classes based on 
 // the status of the Student
@@ -19,7 +19,7 @@ const StudentsComponent = ({ Students }) => {
 
   useEffect( ()=>{
       // async await
-     const response = axios.get('http://127.0.0.1:8000/student-creation/')
+     const response = axios.get('http://127.0.0.1:8000/student-temperature/')
     //  print(response);
      .then(res=>{
        setData(res.data);
@@ -39,11 +39,11 @@ const StudentsComponent = ({ Students }) => {
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
+              <th scope="col">temp</th>
+              <th scope="col">studentcode</th>
+              <th scope="col">donedate</th>
+              <th scope="col">donetime</th>
+              <th scope="col">telePhone</th>
             </tr>
           </thead>
           <tbody>
@@ -53,16 +53,16 @@ const StudentsComponent = ({ Students }) => {
 
             <tr key={item.id}>
                 <td>{item.id}</td>
-                <td>{item.firstname}</td>
-                <td>{item.lastname}</td>
-                <td>{item.gender}</td>
-                <td>{item.email}</td>
+                <td>{item.temp}</td>
+                <td>{item.studentcode}</td>
+                <td>{item.donedate}</td>
+                <td>{item.donetime}</td>
                 <td>{item.telephone}</td>
                 {/* <td className={assignColorToStudentStatus(item)}>
                   {item.status}
                 </td> */}
                 <td>
-                  <Link to={`/Student/${item.firstname}`}>See comments</Link>
+                  <Link to={`/Student/${item.studentcode}`}>See comments</Link>
                 </td>
               </tr>
 
@@ -96,4 +96,4 @@ const StudentsComponent = ({ Students }) => {
   );
 };
 
-export default StudentsComponent;
+export default Temprpt;

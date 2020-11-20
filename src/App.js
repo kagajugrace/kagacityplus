@@ -18,6 +18,8 @@ import UpdateTeacher from './components/users/dasboardadmin/updateteacher';
 import Students from './components/users/dasboardadmin/Students';
 import StudentsComponent from './components/users/dasboardadmin/Map';
 import Upload from './components/users/dasboardadmin/Upload';
+import Temprpt from './components/users/dasboardadmin/Temprpt';
+import Attendancerpt from './components/users/dasboardadmin/Attendancerpt';
 import {
   BrowserRouter as Router,
   Switch,
@@ -108,7 +110,13 @@ function App() {
           <Route path="/upload">
           <Upload/>
           </Route>
+          <Route path="/temprpt">
+          <Temprpt/>
+          </Route>
     
+          <Route path="/attendancerpt">
+          <Attendancerpt/>
+          </Route>
           </Switch>
           </Router>
     </div>

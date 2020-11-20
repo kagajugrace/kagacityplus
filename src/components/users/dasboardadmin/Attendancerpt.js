@@ -2,7 +2,7 @@ import React,{Component,useState,useEffect} from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../../css/tailwindcss.css';
-const StudentsComponent = ({ Students }) => {
+const Attendancerpt = ({ Students }) => {
 
 // a function that assigns bootstrap styling classes based on 
 // the status of the Student
@@ -19,7 +19,7 @@ const StudentsComponent = ({ Students }) => {
 
   useEffect( ()=>{
       // async await
-     const response = axios.get('http://127.0.0.1:8000/student-creation/')
+     const response = axios.get('http://127.0.0.1:8000/student-attendance/')
     //  print(response);
      .then(res=>{
        setData(res.data);
@@ -96,4 +96,4 @@ const StudentsComponent = ({ Students }) => {
   );
 };
 
-export default StudentsComponent;
+export default Attendancerpt;
