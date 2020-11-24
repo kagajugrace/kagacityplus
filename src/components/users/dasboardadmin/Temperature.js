@@ -15,32 +15,64 @@ function Temperature(){
   const fname=sessionStorage.getItem("first_name")
   const lname=sessionStorage.getItem("last_name")
   let history=useHistory();
-  const [data, setData]= useState([]);
+  const [number,setnumber]=useState("");
+  
 
 
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+  
 
     if(!auth){
       sessionStorage.clear()
       history.push("/login");
   }
 
-const checkhandle=(e)=>{
+
+
+
+  const [data, setData] = useState([]);
+  useEffect( ()=>{
+    // async await
+   const response = axios.post('http://127.0.0.1:8000/number-ckeckstudent/')
+  //  print(response);
+   .then(res=>{
+     setData(res.data);
+     console.log(res)
+   })
+   .catch((err)=>{
+     console.log(err)
+   })
+ },[]
+ );
+
+
+
+
+
+
+
+
+
+ const  [table1,setTable]=useState(false)
+
+
+
+const checknumber=(e)=>{
   e.preventDefault();
   const data={
-      "studentcode":"347275",
-      "status":"ddddd",
-      "dateattend":"2020-02-02"
+    "telephone":number
+
    }
+
  
-  axios.get("http://localhost:8000/student-ckeckstudent/",data)
+  axios.post("http://localhost:8000/number-ckeckstudent/",data)
   .then((res)=>{
     setData(res.data);
+    setTable(true)
     console.log(res.data)
           
       })
@@ -52,6 +84,64 @@ const checkhandle=(e)=>{
 
 }
 
+const [detail,setdetail]=useState(false);
+const [data2,setData2]=useState([]);
+const [code,setCode]=useState("");
+
+
+const handleShow=(e)=>{
+  e.preventDefault();
+  const data={
+    "usercode":code
+
+   }
+
+ 
+  axios.post("http://localhost:8000/student-ckeckstudent/",data)
+  .then((res)=>{
+    setData2(res.data);
+    setdetail(true)
+    console.log(res.data)
+          
+      })
+  .catch((err)=>{
+    console.log(err)
+      })
+}
+
+const accept=()=>{
+  sessionStorage.setItem('usercode',code);
+  history.push('/Temp-page');
+}
+const decline=()=>{
+  history.push('/Temperature-page'); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function logout(){
+      sessionStorage.removeItem("username");
+      sessionStorage.removeItem("token");
+      history.push("/login")
+      }
+  
+  
+    if(!auth){
+      history.push("/login");
+  }
+
 
 const handleclicked=()=>{
 
@@ -60,6 +150,7 @@ const handleclicked=()=>{
 
    if(dropdown===0){
        setDrop(true);
+      
        setDropmenu(1);
    }
    else{
@@ -67,6 +158,7 @@ const handleclicked=()=>{
        setDropmenu(0);
    }
 } 
+
 
     return(
       
@@ -88,9 +180,9 @@ const handleclicked=()=>{
 
 
 
-      <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
+    <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-        <span className="group flex"><img src={login} className="w-12 h-12 rounded-full  "/><span className="px-1 py-2"> 
+        <span className="group flex"><a href="/upload"><img src={login} className="w-12 h-12 rounded-full  "/></a><span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
         
         </span></span>
@@ -126,7 +218,7 @@ const handleclicked=()=>{
   {drop? <div className="modal-content mt-24  shadow-lg h-full absolute block md:hidden">
 
             <nav className="mt-2">
-              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
+              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="/Dashboard-Home">
                 <span className="text-white text-2xl"><ion-icon  name="home-outline"></ion-icon> </span>
         
                   <span className="mx-4 font-medium">Home</span>
@@ -137,30 +229,30 @@ const handleclicked=()=>{
         
                   <span className="mx-4 font-medium">Register</span>
               </a>
-              <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice'%}">
+              {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice'%}">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
                   <span className="mx-4 font-medium">Religion Services</span>
-              </a>
-              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              </a> */}
+              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Codes</span>
-              </a>
-              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              </a> */}
+              <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
-                <span className="mx-4 font-medium">Users</span>
+                <span className="mx-4 font-medium">Add Teacher</span>
             </a>
 
-            <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
+            {/* <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'allchristian' %}">
               <ion-icon className="text-2xl" name="people-outline"></ion-icon>
       
                 <span className="mx-4 font-medium">List of Member</span>
@@ -170,22 +262,22 @@ const handleclicked=()=>{
               <ion-icon className="text-2xl" name="person-outline"></ion-icon>
               <span className="mx-4 font-medium">Booked List</span>
           </a>
-        
-            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+         */}
+            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Temperature</span>
           </a>
 
-          <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-updateteacher">
             <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
       
-            <span className="mx-4 font-medium">Edit User</span>
-        </a>
+            <span className="mx-4 font-medium">Update Teacher</span>
+        </a> */}
 
       
         
-          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  onClick={logout}>
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
@@ -225,13 +317,13 @@ const handleclicked=()=>{
         <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block h-auto">
           <div className="flex items-center justify-center ">
 
-            <img src={login} className="w-24 h-24 rounded-full mt-4 "/>
+          <a href="/upload"><img src={login} className="w-24 h-24 rounded-full mt-4 "/></a>
           
         
           </div>
         
           <nav className="mt-2 ">
-              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="{% url 'dashboard'%}">
+              <a className="flex items-center py-2 px-8 block bg-gray-700 text-gray-100 border-r-4 border-gray-100" href="/Dashboard-Home">
                 <span className="text-white text-2xl"><ion-icon  name="home-outline"></ion-icon> </span>
         
                   <span className="mx-4 font-medium">Home</span>
@@ -242,7 +334,7 @@ const handleclicked=()=>{
         
                   <span className="mx-4 font-medium">Register</span>
               </a>
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice' %}">
+              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'addservice' %}">
                 <ion-icon className="text-2xl" name="people-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Religion Services</span>
@@ -251,23 +343,23 @@ const handleclicked=()=>{
                 <ion-icon className="text-2xl" name="people-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">List of Member</span>
-              </a>
+              </a> */}
         
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'report'%}">
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/students">
                 <ion-icon className="text-2xl" name="list-outline"></ion-icon>
         
         
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
                   <span className="mx-4 font-medium">Codes</span>
-              </a>
-              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'work'%}">
+              </a> */}
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
-                <span className="mx-4 font-medium">Users</span>
+                <span className="mx-4 font-medium">Add Teacher</span>
             </a>
         
             <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
@@ -277,22 +369,22 @@ const handleclicked=()=>{
           </a>
 
 
-            <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'adduser'%}">
+            {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-updateteacher">
               <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
         
-              <span className="mx-4 font-medium">Add User</span>
+              <span className="mx-4 font-medium">Update Teacher</span>
 
-          </a>
+          </a> */}
 
-          <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
             
             <ion-icon className="text-2xl" name="create-outline"></ion-icon>
             <span className="mx-4 font-medium">Edit User</span>
-        </a>
+        </a> */}
 
 
 
-          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  href="/logout" >
+          <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  onClick={logout} >
          
               <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
@@ -318,7 +410,7 @@ const handleclicked=()=>{
 
 
 
-        <div className=" col-span-6 md:col-span-4 w-full mt-16 md:mt-4 justify-center">
+        <div className="col-span-6 md:col-span-4 w-full mt-16 md:mt-4 justify-center">
           <div className="w-full">
   {/* Side Body */}
 <div className="flex w-full">
@@ -331,7 +423,7 @@ const handleclicked=()=>{
         <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
       Temperature
       </label>
-  <form onSubmit={checkhandle} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+  <form onSubmit="{checkhandle}" className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
 
 
@@ -340,50 +432,50 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
        Code Form
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input value={code} onChange={event=>setCode(event.target.value)}  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
       </div>
-      <Button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline">
+      <Button type="submit" variant="primary" onClick={handleShow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline">
         Check
       </Button>
    
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton >
-          <Modal.Title>Dear Hertier</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you the one </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Decline
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-          <a href="/Temp-page" >
-            Accept
-            </a>
-          </Button>
-        </Modal.Footer>
-      </Modal>
+   
 
-      {data.map((item,key)=>{
-            return( <p key={key}> {item.dateattend} </p>
-  
-  )
+    </div>
+
+{detail?
+
+    <div>
+       
+       {data2.map((item,key)=>{
+            return( <div>
+      <h3 key={key}>Dear <span className="text-blue-500 font-semiblod capitalize" >{item.firstname} {item.lastname}</span></h3>
+            <p>if is you please accept isn't you you can Decline</p>
+      <div className="flex">
+        <div className="w-1/2"><button onClick={accept}  className="bg-green-500 py-2 px-2 rounded text-white focus:outline-none focus:shadow-outline">Accept</button></div>
+        <div className="w-1/2 float-right"><button  onClick={decline}  className="bg-red-500 py-2 px-2 rounded text-white focus:outline-none focus:shadow-outline">Decline</button></div>
+    </div> </div> 
+)
 }
 )}
-    </div>
-    
+</div>
+     
+
+
+:<div></div>}
+
   </form>
 
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+  <form onSubmit={checknumber} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
   <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
         Phone Number
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input value={number} onChange={event=>setnumber(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
       </div>
       <div className="flex items-center justify-between">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" type="button">
+      <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" >
       Check
       </button>
       
@@ -391,9 +483,9 @@ const handleclicked=()=>{
     </div>
 </form>
 
-
+{table1?
 <div className="table">
-  <table id="example" className="border p-4 rounded-lg " >
+  <table>
         <thead>
             <tr>
                 <th>First name</th>
@@ -404,16 +496,25 @@ const handleclicked=()=>{
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger</td>
-                <td>Nixon</td>
-                <td>078465858</td>
-                <td>885258</td>
-               
-                <td>
-                  
-                </td>
+
+        {data.map((item,key)=>{
+            return( 
+            <tr key={key}> 
+              <td>  {item.firstname}</td>
+              <td>  {item.lastname}</td>
+              <td>  {item.telephone}</td>
+              <td>  {item.studentcode}</td>
+         
             </tr>
+  
+
+
+     
+  )
+}
+)}
+
+
         </tbody>
     </table>
 
@@ -421,7 +522,8 @@ const handleclicked=()=>{
 
       
   </div>
-
+  :<div></div>
+}
 
 </div>
 

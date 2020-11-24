@@ -76,7 +76,7 @@ function Login(){
         <div className="col-sm-6 pt-8">
         <div className=" w-full mt-12 ">
                 <div className=" rounded-lg">
-                    <h3 className="text-2xl text-center mb-8 font-bold text-gray-600  ">Login</h3>
+                    <h3 className="text-2xl text-center mb-8 font-bold text-gray-600">Login</h3>
                 </div>
 
                {loading?<div></div>:
