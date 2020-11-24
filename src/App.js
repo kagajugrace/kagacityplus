@@ -20,6 +20,7 @@ import StudentsComponent from './components/users/dasboardadmin/Map';
 import Upload from './components/users/dasboardadmin/Upload';
 import Temprpt from './components/users/dasboardadmin/Temprpt';
 import Attendancerpt from './components/users/dasboardadmin/Attendancerpt';
+import Attendance from './components/users/dasboardadmin/Attendance';
 import {
   BrowserRouter as Router,
   Switch,
@@ -98,6 +99,10 @@ function App() {
           <Route path="/Temp-page">
           <Temp/>
           </Route>
+          <Route path="/attendance-page">
+          <Attendance/>
+          </Route>
+          
           <Route path="/students">
           <Students/>
           </Route>
