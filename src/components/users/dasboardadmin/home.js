@@ -26,9 +26,9 @@ function HomeAdmin(){
 
 
 
-      if(!user){
-          history.push("/login");
-      }
+      // if(!user){
+      //     history.push("/login");
+      // }
 
 
 const handleclicked=()=>{

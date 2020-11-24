@@ -9,12 +9,12 @@ import '../../../css/tailwindcss.css';
 const Pdfreport = items => {
   // initialize jsPDF
   const doc = new jsPDF();
-
+  const [data, setData] = useState([]);
   // define the columns we want and their titles
   const tableColumn = ["Id", "Firstname", "Lastname", "Gender", "Email","Phone"];
   // define an empty array of rows
   const tableRows = [];
-  const [data, setData] = useState([]);
+  
   {data.map((item,key)=>{
 
     return(

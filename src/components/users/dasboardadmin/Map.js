@@ -3,38 +3,38 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../../css/tailwindcss.css';
 const StudentsComponent = ({ items }) => {
-
+// const [items, setItems] = useState([]);
 // a function that assigns bootstrap styling classes based on 
 // the status of the Student
-  const assignColorToStudentStatus = Student => {
-    if (Student.firstname!== null && Student.firstname !== '') {
+  const assignColorToItemStatus = item=> {
+    if (item.firstname!== null && item.firstname !== '') {
       return "p-3 mb-2 bg-success text-white";
-    } else if (Student.firstname === ' ') {
+    } else if (item.firstname === ' ') {
       return "p-3 mb-2 bg-warning text-dark";
-    } else if (Student.firstname === null) {
+    } else if (item.firstname === null) {
       return "p-3 mb-2 bg-light text-dark";
     }
   };
   const [data, setData] = useState([]);
 
-  // useEffect( ()=>{
-  //     // async await
-  //    const response = axios.get('http://127.0.0.1:8000/student-creation/')
-  //   //  print(response);
-  //    .then(res=>{
-  //      setData(res.data);
-  //      console.log(res)
-  //    })
-  //    .catch((err)=>{
-  //      console.log(err)
-  //    })
-  //  },[]
-  //  );
+  useEffect( ()=>{
+      // async await
+     const response = axios.get('http://127.0.0.1:8000/student-creation/')
+    //  print(response);
+     .then(res=>{
+       setData(res.data);
+       console.log(res)
+     })
+     .catch((err)=>{
+       console.log(err)
+     })
+   },[]
+   );
   return (
     <div className="container">
-      {items.length === 0 ? (
+      {/* {items.length === 0 ? (
         "You currently have no Students created"
-      ) : (
+      ) : ( */}
         <table className="table">
           <thead>
             <tr>
@@ -47,7 +47,7 @@ const StudentsComponent = ({ items }) => {
             </tr>
           </thead>
           <tbody>
-          {data.map((item,key)=>{
+      {data.map((item,key)=>{
 
        return(
 
@@ -60,7 +60,7 @@ const StudentsComponent = ({ items }) => {
                 <td>{item.telephone}</td>
                 
                 <td 
-                className={assignColorToStudentStatus(item)}>
+                className={assignColorToItemStatus(item)}>
                   {item.status}
                 </td>
                 <td>
@@ -89,7 +89,7 @@ const StudentsComponent = ({ items }) => {
             // ))} */}
           </tbody>
         </table>
-       )} 
+       {/* )}  */}
     </div>
   );
 };
