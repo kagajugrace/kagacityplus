@@ -107,6 +107,24 @@ const handleclicked=()=>{
           
             <img src={logo} className="h-24 md:h-12 w-32 justify-center ml-2 md:ml-12"/>      </div>
       
+
+            {/* <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'booked-list/get'%}">
+              <ion-icon className="text-2xl" name="person-outline"></ion-icon>
+              <span className="mx-4 font-medium">Booked List</span>
+          </a> */}
+        
+            <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
+              <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
+        
+              <span className="mx-4 font-medium">Temperature</span>
+          </a>
+
+          <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/attendance-page">
+            <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
+      
+            <span className="mx-4 font-medium">Attendance</span>
+        </a>
+
       
       
           <div className="w-1/2 block md:hidden py-3">
@@ -378,6 +396,13 @@ const handleclicked=()=>{
 
 
 
+          
+
+          <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/attendance-page">
+            
+            <ion-icon className="text-2xl" name="create-outline"></ion-icon>
+            <span className="mx-4 font-medium">Attendance</span>
+        </a>
 
 
 

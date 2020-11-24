@@ -12,9 +12,11 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-.container-fluid{
+.container{
   background-size:cover;
+  
 }
+
 .btn{
   margin-left: 150px;
 }
