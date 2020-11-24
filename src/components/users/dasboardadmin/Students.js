@@ -89,15 +89,15 @@ const Students = () => {
           ) : (  */}
             <button
               className="butn btn btn-info"
-            //  onClick={() => Pdfreport(reportStudents)}
+             onClick={() => Pdfreport(reportStudents)}
             >
-              <a href="/map" className="text-white text-sm">
+              {/* <a href="/map" className="text-white text-sm"> */}
               Generate Weekly report
-              </a>
+              {/* </a> */}
             </button>
           {/* ) */}
            {/* }  */}
-           {/* <StudentsComponent Students={Students} className="text-center" /> */}
+           <StudentsComponent Students={Students} className="text-center" />
       </div>
       </div>
     <div className="w-2/6">

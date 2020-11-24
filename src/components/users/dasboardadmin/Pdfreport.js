@@ -6,31 +6,37 @@ import "jspdf-autotable";
 import { format } from "date-fns";
 import '../../../css/tailwindcss.css';
 // define a generatePDF function that accepts a students argument
-const Pdfreport = students => {
+const Pdfreport = items => {
   // initialize jsPDF
   const doc = new jsPDF();
 
   // define the columns we want and their titles
-  const tableColumn = ["Id", "Lirstname", "Lastname", "Gender", "Email","Phone"];
+  const tableColumn = ["Id", "Firstname", "Lastname", "Gender", "Email","Phone"];
   // define an empty array of rows
   const tableRows = [];
+  const [data, setData] = useState([]);
+  {data.map((item,key)=>{
 
+    return(
   // for each student pass all its data into an array
-  students.forEach(student=>{
-    const studentData = [
-      student.id,
-      student.firstname,
-      student.lastname,
-      student.email,
-      student.gender,
-      student.phone,
+  items.forEach(item=>{
+    const itemData = [
+      item.id,
+      item.firstname,
+      item.lastname,
+      item.email,
+      item.gender,
+      item.phone,
       // called date-fns to format the date on the student
-      format(new Date(student.updated_at), "yyyy-MM-dd")
+      format(new Date(item.updated_at), "yyyy-MM-dd")
     ];
     
-    tableRows.push(studentData);
-  });
-
+    tableRows.push(itemData);
+  })
+  
+  )
+}
+)}
 
   // startY is basically margin-top
   doc.autoTable(tableColumn, tableRows, { startY: 20 });

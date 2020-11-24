@@ -2,39 +2,39 @@ import React,{Component,useState,useEffect} from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import '../../../css/tailwindcss.css';
-const StudentsComponent = ({ Students }) => {
+const StudentsComponent = ({ items }) => {
 
 // a function that assigns bootstrap styling classes based on 
 // the status of the Student
-  // const assignColorToStudentStatus = Student => {
-  //   if (Student.firstname!== null && Student.firstname !== '') {
-  //     return "p-3 mb-2 bg-success text-white";
-  //   } else if (Student.firstname === ' ') {
-  //     return "p-3 mb-2 bg-warning text-dark";
-  //   } else if (Student.firstname === null) {
-  //     return "p-3 mb-2 bg-light text-dark";
-  //   }
-  // };
+  const assignColorToStudentStatus = Student => {
+    if (Student.firstname!== null && Student.firstname !== '') {
+      return "p-3 mb-2 bg-success text-white";
+    } else if (Student.firstname === ' ') {
+      return "p-3 mb-2 bg-warning text-dark";
+    } else if (Student.firstname === null) {
+      return "p-3 mb-2 bg-light text-dark";
+    }
+  };
   const [data, setData] = useState([]);
 
-  useEffect( ()=>{
-      // async await
-     const response = axios.get('http://127.0.0.1:8000/student-creation/')
-    //  print(response);
-     .then(res=>{
-       setData(res.data);
-       console.log(res)
-     })
-     .catch((err)=>{
-       console.log(err)
-     })
-   },[]
-   );
+  // useEffect( ()=>{
+  //     // async await
+  //    const response = axios.get('http://127.0.0.1:8000/student-creation/')
+  //   //  print(response);
+  //    .then(res=>{
+  //      setData(res.data);
+  //      console.log(res)
+  //    })
+  //    .catch((err)=>{
+  //      console.log(err)
+  //    })
+  //  },[]
+  //  );
   return (
     <div className="container">
-      {/* {Students.length === 0 ? (
+      {items.length === 0 ? (
         "You currently have no Students created"
-      ) : ( */}
+      ) : (
         <table className="table">
           <thead>
             <tr>
@@ -58,17 +58,15 @@ const StudentsComponent = ({ Students }) => {
                 <td>{item.gender}</td>
                 <td>{item.email}</td>
                 <td>{item.telephone}</td>
-                {/* <td className={assignColorToStudentStatus(item)}>
+                
+                <td 
+                className={assignColorToStudentStatus(item)}>
                   {item.status}
-                </td> */}
+                </td>
                 <td>
                   <Link to={`/Student/${item.firstname}`}>See comments</Link>
                 </td>
               </tr>
-
-
-
-
         )
     }
     )}
@@ -91,7 +89,7 @@ const StudentsComponent = ({ Students }) => {
             // ))} */}
           </tbody>
         </table>
-      {/* )} */}
+       )} 
     </div>
   );
 };
