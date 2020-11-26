@@ -9,9 +9,37 @@ import { FaEye } from 'react-icons/fa';
 import { FaChalkboardTeacher} from 'react-icons/fa';
 import { FaChurch } from 'react-icons/fa';
 import {  FaSchool } from 'react-icons/fa';
+import {useHistory
+
+} from "react-router-dom";
+
+
+
 function Home(){
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
+    const user=sessionStorage.getItem("username");
+    
+
+    let history=useHistory();
+
+    function logout(){
+      sessionStorage.removeItem("username");
+      history.push("/login")
+      }
+
+
+
+
+
+
+
+
+
+
+      if(!user){
+          history.push("/login");
+      }
 
 
 const handleclicked=()=>{
@@ -243,7 +271,7 @@ const handleclicked=()=>{
         
               <span className="mx-4 font-medium">Add User</span>
 
-          </a>
+          </a> 
 
           <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
             

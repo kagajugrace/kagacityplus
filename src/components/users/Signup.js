@@ -83,8 +83,8 @@ function Signup(){
         .catch((err)=>{
          console.log(err)
          setLoading(false)
-         setMessager("Account created failed!")
-         setMessage("")
+         setMessager(err)
+         setMessage(err)
          setConfirmPassword("")
          setPassword("")
         }
@@ -158,6 +158,7 @@ function Signup(){
         <option value=""></option>
           <option value="Private">Private</option>
           <option value="Public">Public</option>
+          
 
         </select>
 
