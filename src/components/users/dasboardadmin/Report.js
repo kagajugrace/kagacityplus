@@ -17,6 +17,7 @@ import close from '../../../images/close-outline.svg';
 const Students = () => {
   const[drop,setDrop]=useState(false);
   const[dropdown,setDropmenu]=useState(0);
+  const token=sessionStorage.getItem("token")
   const auth=sessionStorage.getItem("username")
   const[user,setUser]=useState("");
   const [students,setStudents] = useState(''); 
@@ -45,6 +46,35 @@ const Students = () => {
 //   if(!auth){
 //     history.push("/login");
 // }
+
+
+
+
+ // hertier
+ const tok={"schoolname":token}
+ const [data, setData] = useState([]);
+ useEffect( ()=>{
+   // async await
+  const response = axios.post('http://127.0.0.1:8000/profilestudent/',tok)
+ //  print(response);
+  .then(res=>{
+    setData(res.data);
+    console.log(res)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+},[]
+);
+//hert
+
+
+
+
+
+
+
+
  
   const getAllStudents = async () => {
     try {
@@ -79,7 +109,22 @@ const Students = () => {
 
 <button type="button" class="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-  <span class="group flex"><a href="/upload"> <img src={login} class="w-12 h-12 rounded-full  "/></a><span className="px-1 py-2"> 
+  <span class="group flex">
+    
+
+  <a href="/upload">
+{data.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-12 h-12 rounded-full"/>
+
+)
+    }
+    )}
+  </a>
+    
+    <span className="px-1 py-2"> 
   {drop? <a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
     
     </span></span>
@@ -216,7 +261,17 @@ const Students = () => {
     <div class="w-full  bg-gray-800  sm:mt-0 hidden md:block overflow-y-scroll h-screen">
       <div class="flex items-center justify-center ">
 
-      <a href="/upload"><img src={login} class="w-24 h-24 rounded-full mt-4 "/></a>
+      <a href="/upload">
+{data.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-24 h-24 rounded-full"/>
+
+)
+    }
+    )}
+  </a>
       
     
       </div>
