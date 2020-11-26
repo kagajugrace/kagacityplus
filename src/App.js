@@ -30,6 +30,8 @@ import {
 import Temperature from './components/users/dasboardadmin/Temperature';
 import Temp from'./components/users/dasboardadmin/Temp'
 
+import Attend from './components/users/dasboardadmin/attend'
+
 function App() {
   return (
     <div className="">
@@ -44,6 +46,11 @@ function App() {
 
           <Route  path="/registartion-student">
           <RegStusent/>
+          </Route>
+
+
+          <Route path="/registartion-student-Attendance">
+          <Attend/>
           </Route>
 
 
