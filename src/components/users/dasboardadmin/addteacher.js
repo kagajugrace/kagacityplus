@@ -209,17 +209,19 @@ const handleclicked=()=>{
               <span className="mx-4 font-medium">Booked List</span>
           </a> */}
         
-            {/* <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-updateteacher">
-              <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
-        
-              <span className="mx-4 font-medium">Update Teacher</span>
-          </a> */}
+            
 
           <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Temperature-page">
             <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
       
             <span className="mx-4 font-medium">Temperature</span>
         </a>
+
+        <a className="flex items-center  py-2 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/attendance-page">
+              <ion-icon className="text-2xl" name="person-add-outline"></ion-icon>
+        
+              <span className="mx-4 font-medium">Attendance</span>
+          </a>
 
       
         
@@ -322,11 +324,11 @@ const handleclicked=()=>{
 
           </a> */}
 
-          {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/attendance-page">
             
             <ion-icon className="text-2xl" name="create-outline"></ion-icon>
-            <span className="mx-4 font-medium">Edit User</span>
-        </a> */}
+            <span className="mx-4 font-medium">Attendance</span>
+        </a>
 
 
 

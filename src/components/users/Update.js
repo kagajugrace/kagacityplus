@@ -11,10 +11,10 @@ function Update(){
             <Nav/>
         <div className=" maine flex p-4 gap-2 shadow-lg bg-gradient-to-l from-blue-300 via-gray-300 to-gray-200 rounded-lg">
 <div className="w-2/6 rounded-lg shadow-lg border">
-<h2 className="text-lg text-bold p-2 text-white rounded-lg bg-blue-300">COVID-19 SYMPTOMS </h2>
+<h2 className="text-lg text-bold p-2 text-white rounded-lg ">COVID-19 SYMPTOMS </h2>
 <div>
     <br/>
-    <h3 className="text-lg p-2 text-white rounded-lg bg-blue-300">MOST COMMON SYMPTOMS</h3>
+    <h3 className="text-lg p-2 text-white rounded-lg ">MOST COMMON SYMPTOMS</h3>
     <ul className="text-xm p-2 text-blue-500 mb-2 ">
         <li>fever</li>
         <li>dry cough</li>

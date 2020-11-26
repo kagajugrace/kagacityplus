@@ -15,11 +15,12 @@ import Logout from'./components/users/dasboardadmin/logout';
 import RegStusent from './components/users/dasboardadmin/regist';
 import AddTeacher from './components/users/dasboardadmin/addteacher';
 import UpdateTeacher from './components/users/dasboardadmin/updateteacher';
-import Students from './components/users/dasboardadmin/Students';
+import Students from './components/users/dasboardadmin/Report';
 import StudentsComponent from './components/users/dasboardadmin/Map';
 import Upload from './components/users/dasboardadmin/Upload';
 import Temprpt from './components/users/dasboardadmin/Temprpt';
 import Attendancerpt from './components/users/dasboardadmin/Attendancerpt';
+import Attendance from './components/users/dasboardadmin/Attendance';
 import {
   BrowserRouter as Router,
   Switch,
@@ -98,6 +99,10 @@ function App() {
           <Route path="/Temp-page">
           <Temp/>
           </Route>
+          <Route path="/attendance-page">
+          <Attendance/>
+          </Route>
+          
           <Route path="/students">
           <Students/>
           </Route>

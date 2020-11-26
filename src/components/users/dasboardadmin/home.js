@@ -157,11 +157,11 @@ const handleclicked=()=>{
               <span class="mx-4 font-medium">Update Teacher</span>
           </a> */}
 
-          {/* <a class="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          <a class="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/attendance-page">
             <ion-icon class="text-2xl" name="person-add-outline"></ion-icon>
       
-            <span class="mx-4 font-medium">Edit User</span>
-        </a> */}
+            <span class="mx-4 font-medium">Attendance</span>
+        </a>
 
       
         
@@ -265,11 +265,11 @@ const handleclicked=()=>{
 
           </a> */}
 
-          {/* <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'editpro'%}">
+          <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/attendance-page">
             
             <ion-icon class="text-2xl" name="create-outline"></ion-icon>
-            <span class="mx-4 font-medium">Edit User</span>
-        </a> */}
+            <span class="mx-4 font-medium">Attendance</span>
+        </a>
 
 
 
