@@ -158,6 +158,7 @@ function Signup(){
         <option value=""></option>
           <option value="Private">Private</option>
           <option value="Public">Public</option>
+          
 
         </select>
 
