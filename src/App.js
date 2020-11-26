@@ -21,6 +21,7 @@ import Upload from './components/users/dasboardadmin/Upload';
 import Temprpt from './components/users/dasboardadmin/Temprpt';
 import Attendancerpt from './components/users/dasboardadmin/Attendancerpt';
 import Attendance from './components/users/dasboardadmin/Attendance';
+import Course from './components/users/dasboardadmin/Course';
 import {
   BrowserRouter as Router,
   Switch,
@@ -101,6 +102,10 @@ function App() {
           </Route>
           <Route path="/attendance-page">
           <Attendance/>
+          </Route>
+
+          <Route path="/class-page">
+          <Course/>
           </Route>
           
           <Route path="/students">
