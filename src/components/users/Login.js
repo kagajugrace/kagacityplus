@@ -70,7 +70,7 @@ function Login(){
                 <div className=" rounded-lg">
                     <h3 className="text-2xl text-center mb-8 font-bold text-gray-600">Login</h3>
                 </div>
-                <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
+
                     <form onSubmit={handleLogine} className="w-full md:w-5/6 lg:w-5/6">
 
                {loading?<div></div>:
