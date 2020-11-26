@@ -62,8 +62,8 @@ const Students = () => {
     {/* <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Religious Services</span></button></a> */}
     <a href="/Dashboard-addteacher"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">Add Teacher</span></button></a>
     <a href="/temperature-page"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">Temperature</span></button></a>
-    {/* <a href="/students"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Reports</span></button></a>
-    <a href="/Dashboard-home"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">list of member</span></button></a> */}
+    {/* <a href="/students"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaHome/></span><span className="text-sm text-black">Reports</span></button></a> */}
+    <a href="/attendance-page"><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaAddressBook/></span><span className="text-sm text-black">Attendance</span></button></a>
     <a onClick={logout}><button className="flex gap-2 py-2"><span className="text-blue-500 text-xl"><FaBook/></span><span className="text-sm text-black">Logout</span></button></a>
     </div>
     <br/>

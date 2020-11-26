@@ -23,6 +23,7 @@ import Nav from './Navbar';
 export default function Home(){
 
     const [data, setData] = useState([]);
+    const pathed='http://127.0.0.1:8000'
 
     useEffect( ()=>{
         // async await
@@ -77,11 +78,11 @@ export default function Home(){
 {data.map((item,key)=>{
 
                 return(
-  
+   
   <div key={key} className="bg-white rounded shadow-lg">
    
-      <img src= 
-   {item.pictures} className="w-full  h-64 "/>
+      <img src={pathed+item.pictures} className="w-full  h-64 " alt={item.pictures}/>
+
 <div className="mb-4 py-4">
     <h1 className="text-gray-700 text-center font-bold text-xl">  {item.title}</h1>
     <p className=" px-2 text-gray-600">{item.description}</p>

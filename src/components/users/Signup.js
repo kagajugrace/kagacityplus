@@ -83,8 +83,8 @@ function Signup(){
         .catch((err)=>{
          console.log(err)
          setLoading(false)
-         setMessager(err)
-         setMessage(err)
+         setMessager('work')
+         setMessage('not')
          setConfirmPassword("")
          setPassword("")
         }
