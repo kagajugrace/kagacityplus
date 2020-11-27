@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import logo from '../../../images/City Plus.png'
 import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
@@ -7,15 +7,128 @@ import '../../../css/tailwindcss.css';
 import {Button} from 'react-bootstrap'
 import {Modal}  from 'react-bootstrap'
 import {useHistory} from "react-router-dom";
+import axios from 'axios'; 
+
 function Temperature(){
   const auth=sessionStorage.getItem("username")
+  const token=sessionStorage.getItem("token")
+  const fname=sessionStorage.getItem("first_name")
+  const lname=sessionStorage.getItem("last_name")
+  let history=useHistory();
+  const [number,setnumber]=useState("");
+  
+
+
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
     const [show, setShow] = useState(false);
-    let history=useHistory();
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+  
+
+    if(!auth){
+      sessionStorage.clear()
+      history.push("/login");
+  }
+
+
+
+
+  const [data, setData] = useState([]);
+  useEffect( ()=>{
+    // async await
+   const response = axios.post('http://127.0.0.1:8000/number-ckeckstudent/')
+  //  print(response);
+   .then(res=>{
+     setData(res.data);
+     console.log(res)
+   })
+   .catch((err)=>{
+     console.log(err)
+   })
+ },[]
+ );
+
+
+
+
+
+
+
+
+
+ const  [table1,setTable]=useState(false)
+
+
+
+const checknumber=(e)=>{
+  e.preventDefault();
+  const data={
+    "telephone":number
+
+   }
+
+ 
+  axios.post("http://localhost:8000/number-ckeckstudent/",data)
+  .then((res)=>{
+    setData(res.data);
+    setTable(true)
+    console.log(res.data)
+          
+      })
+  .catch((err)=>{
+    console.log(err)
+      }) 
+  
+
+
+}
+
+const [detail,setdetail]=useState(false);
+const [data2,setData2]=useState([]);
+const [code,setCode]=useState("");
+
+
+const handleShow=(e)=>{
+  e.preventDefault();
+  const data={
+    "usercode":code
+
+   }
+
+ 
+  axios.post("http://localhost:8000/student-ckeckstudent/",data)
+  .then((res)=>{
+    setData2(res.data);
+    setdetail(true)
+    console.log(res.data)
+          
+      })
+  .catch((err)=>{
+    console.log(err)
+      })
+}
+
+const accept=()=>{
+  sessionStorage.setItem('usercode',code);
+  history.push('/Temp-page');
+}
+const decline=()=>{
+  history.push('/Temperature-page'); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     function logout(){
@@ -37,6 +150,7 @@ const handleclicked=()=>{
 
    if(dropdown===0){
        setDrop(true);
+      
        setDropmenu(1);
    }
    else{
@@ -44,6 +158,7 @@ const handleclicked=()=>{
        setDropmenu(0);
    }
 } 
+
 
     return(
       
@@ -295,7 +410,7 @@ const handleclicked=()=>{
 
 
 
-        <div className=" col-span-6 md:col-span-4 w-full mt-16 md:mt-4 justify-center">
+        <div className="col-span-6 md:col-span-4 w-full mt-16 md:mt-4 justify-center">
           <div className="w-full">
   {/* Side Body */}
 <div className="flex w-full">
@@ -308,7 +423,7 @@ const handleclicked=()=>{
         <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
       Temperature
       </label>
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+  <form onSubmit="{checkhandle}" className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
 
 
@@ -317,45 +432,50 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
        Code Form
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input value={code} onChange={event=>setCode(event.target.value)}  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
       </div>
-      <Button variant="primary" onClick={handleShow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline">
+      <Button type="submit" variant="primary" onClick={handleShow} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline">
         Check
       </Button>
+   
+   
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Dear Hertier</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you the one </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Decline
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-          <a href="/Temp-page" >
-            Accept
-            </a>
-          </Button>
-        </Modal.Footer>
-      </Modal>
-  
- 
     </div>
-    
+
+{detail?
+
+    <div>
+       
+       {data2.map((item,key)=>{
+            return( <div>
+      <h3 key={key}>Dear <span className="text-blue-500 font-semiblod capitalize" >{item.firstname} {item.lastname}</span></h3>
+            <p>if is you please accept isn't you you can Decline</p>
+      <div className="flex">
+        <div className="w-1/2"><button onClick={accept}  className="bg-green-500 py-2 px-2 rounded text-white focus:outline-none focus:shadow-outline">Accept</button></div>
+        <div className="w-1/2 float-right"><button  onClick={decline}  className="bg-red-500 py-2 px-2 rounded text-white focus:outline-none focus:shadow-outline">Decline</button></div>
+    </div> </div> 
+)
+}
+)}
+</div>
+     
+
+
+:<div></div>}
+
   </form>
 
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+  <form onSubmit={checknumber} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
   <div className="md:flex lg:flex  gap-2 mb-4">
         <div className="w-2/2 md:w-1/2 lg:w-1/2">
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
         Phone Number
       </label>
-      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <input value={number} onChange={event=>setnumber(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
       </div>
       <div className="flex items-center justify-between">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" type="button">
+      <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" >
       Check
       </button>
       
@@ -363,9 +483,9 @@ const handleclicked=()=>{
     </div>
 </form>
 
-
+{table1?
 <div className="table">
-  <table id="example" className="border p-4 rounded-lg " >
+  <table>
         <thead>
             <tr>
                 <th>First name</th>
@@ -376,16 +496,25 @@ const handleclicked=()=>{
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger</td>
-                <td>Nixon</td>
-                <td>078465858</td>
-                <td>885258</td>
-               
-                <td>
-                  
-                </td>
+
+        {data.map((item,key)=>{
+            return( 
+            <tr key={key}> 
+              <td>  {item.firstname}</td>
+              <td>  {item.lastname}</td>
+              <td>  {item.telephone}</td>
+              <td>  {item.studentcode}</td>
+         
             </tr>
+  
+
+
+     
+  )
+}
+)}
+
+
         </tbody>
     </table>
 
@@ -393,7 +522,8 @@ const handleclicked=()=>{
 
       
   </div>
-
+  :<div></div>
+}
 
 </div>
 

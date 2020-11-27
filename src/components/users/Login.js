@@ -16,33 +16,26 @@ function Login(){
     const[loader,setLoader]=useState(false);
     let history=useHistory();
 
-
-    const handleLogin=(e)=>{
-
-     
+    const handleLogine=(e)=>{
         e.preventDefault();
         const data={
             "username": username,
             "password": password
             
         }
-       
         setTimeout(function(){
             
             setLoader(false);
         },3000)
 
         //lets send data to endpoint
-        axios.post(" http://127.0.0.1:8000/user-login/",data)
+        axios.post("http://127.0.0.1:8000/user-login/",data)
 
-        
         .then((res)=>{
-            
             sessionStorage.setItem('token',res.data.token);
-                sessionStorage.setItem('username',res.data.username);
-                sessionStorage.setItem('first_name',res.data.first_name);
-    
-                sessionStorage.setItem('last_name',res.data.last_name);
+            sessionStorage.setItem('username',res.data.username);
+            sessionStorage.setItem('first_name',res.data.first_name);
+            sessionStorage.setItem('last_name',res.data.last_name);
 
             setLoader(true);
             setTimeout(function(){
@@ -61,14 +54,10 @@ function Login(){
         })
     }
     return(
-        <>
+        <div >
         <Nav/>
-     
-
-       
-       
         {/* <Navbar/> */}
-        {loader?<img src={loadr} className="justify-self-center"/> :<div>
+        {loader?<img src={loadr} className="justify-self-center"/>:<div>
         <Nav/>
 <div className="container">
     <div className="row">
@@ -79,10 +68,10 @@ function Login(){
         <div className="col-sm-6 pt-8">
         <div className=" w-full mt-12 ">
                 <div className=" rounded-lg">
-                    <h3 className="text-2xl text-center mb-8 font-bold text-gray-600  ">Login</h3>
+                    <h3 className="text-2xl text-center mb-8 font-bold text-gray-600">Login</h3>
                 </div>
                 
-                    <form onSubmit={handleLogin} className="w-full md:w-5/6 lg:w-5/6">
+                    <form onSubmit={handleLogine} className="w-full md:w-5/6 lg:w-5/6">
 
                {loading?<div></div>:
      
@@ -99,6 +88,7 @@ function Login(){
     </div>
 }
                 
+                  
                     <label><p className="text-gray-600 mb-2">Username</p></label>
                     <input type="text"  name="username" value={username} onChange={event=>setUsername(event.target.value)} placeholder="" 
                     className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"/>
@@ -106,6 +96,7 @@ function Login(){
                     <input type="password"  name="password" value={password} onChange={event=>setPassword(event.target.value)} placeholder="" className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"/>
                     <button name="" type="submit" className="w-full bg-blue-500 rounded-lg py-2 px-4 mt-4 text-white font-bold hover:bg-blue-700">Login</button>
          
+          
 
 <div className="container">
     <div className="row">
@@ -137,7 +128,7 @@ function Login(){
 </div>
 
 </div>}
-        </>
+        </div>
     )
 }
 

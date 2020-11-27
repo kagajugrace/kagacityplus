@@ -76,12 +76,12 @@ function AddTeacher(){
 
 
 
-  const [data, setData] = useState([]);useEffect( ()=>{
+  const [data1, setData1] = useState([]);useEffect( ()=>{
     // async await
    const response = axios.get('http://127.0.0.1:8000/Teachaccount-creation/')
   //  print(response);
    .then(res=>{
-     setData(res.data);
+     setData1(res.data);
      console.log(res)
    })
    .catch((err)=>{
@@ -89,6 +89,21 @@ function AddTeacher(){
    })
  },[]
  );
+
+
+ const [data2, setData2] = useState([]);useEffect( ()=>{
+  // async await
+ const response = axios.get('http://127.0.0.1:8000/faculitycreation/')
+//  print(response);
+ .then(res=>{
+   setData2(res.data);
+   console.log(res)
+ })
+ .catch((err)=>{
+   console.log(err)
+ })
+},[]
+);
 
 
 const handleclicked=()=>{
@@ -409,17 +424,37 @@ const handleclicked=()=>{
     </div>
     <div className="mb-6">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Faculity
+        Combination
       </label>
-      <input value={faculity} onChange={event=>setFaculity(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
+      <select value={faculity} onChange={event=>setFaculity(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text">
 
+      <option >Choose Combination</option>
+
+{data2.map((item,key)=>{
+            return(  
+          <option key={key} value={item.faculity}>{item.faculity}</option>
+          
+          )
+        }
+        )}
+       </select>
     </div>
     <div className="mb-6">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Year
+        Class
       </label>
-      <input value={year} onChange={event=>setYear(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
+      <select value={year} onChange={event=>setYear(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text">
 
+      <option >Choose Class</option>
+
+{data2.map((item,key)=>{
+            return(  
+          <option key={key} value={item.classes}>{item.classes}</option>
+          
+          )
+        }
+        )}
+       </select>
     </div>
 
 
@@ -449,7 +484,7 @@ const handleclicked=()=>{
         {/* <tbody> */}
      
                 <tbody>
-                {data.map((item,key)=>{
+                {data1.map((item,key)=>{
             return(
                     <tr key={key}>
            
