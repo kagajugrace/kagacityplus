@@ -552,5 +552,6 @@ const handleclicked=()=>{
           </div>
        
     )
+    
 }
 export default Temperature;
