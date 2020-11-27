@@ -7,48 +7,54 @@ import Nav from './Navbar';
 function Update(){
     
     return(
-        < div className="container-fluid bg-blue-200">
+        < div className="container-fluid bg--200">
             <Nav/>
-        <div className=" maine flex p-4 gap-2 shadow-lg bg-gradient-to-l from-blue-300 via-gray-300 to-gray-200 rounded-lg">
+        <div className=" maine flex p-4 gap-2 shadow-lg rounded-lg">
 <div className="w-2/6 rounded-lg shadow-lg border">
-<h2 className="text-lg text-bold p-2 text-white rounded-lg bg-blue-300">COVID-19 SYMPTOMS </h2>
+<h2 className="text-lg text-bold p-2 text-white rounded-lg ">COVID-19 SYMPTOMS </h2>
 <div>
     <br/>
-    <h3 className="text-lg p-2 text-white rounded-lg bg-blue-300">MOST COMMON SYMPTOMS</h3>
+    <h3 className="text-lg p-2 text-white rounded-lg ">MOST COMMON SYMPTOMS</h3>
     <ul className="text-xm p-2 text-blue-500 mb-2 ">
         <li>fever</li>
         <li>dry cough</li>
         <li>tiredness</li>
+        </ul>
+    <h3 className="text-lg p-2 text-black rounded-lg bg-blue-300">MOST COMMON SYMPTOMS</h3>
+    <ul className="text-xm p-2 text-black-500 mb-2 text-bold">
+        <li>Fever</li>
+        <li>Dry cough</li>
+        <li>Tiredness</li>
     </ul>
-    <h3 className="text-lg p-2 text-white rounded-lg bg-blue-300">LESS COMMON SYMPTOMS</h3>
-    <ul className="text-xm p-2 text-blue-500 mb-2 ">
-        <li>aches and pains</li>
-        <li>sore throat</li>
-        <li>diarhoea</li>
+    <h3 className="text-lg p-2 text-black rounded-lg bg-blue-300">LESS COMMON SYMPTOMS</h3>
+    <ul className="text-xm p-2 text-black-500 mb-2 text-fontbold ">
+        <li>Aches and pains</li>
+        <li>Sore throat</li>
+        <li>Diarhoea</li>
         <li>Conjugativitis</li>
-        <li>headache</li>
-        <li>loss of taste or smell</li>
-        <li>a rash on skin ,or discolouration of fingers or toes</li>
+        <li>Headache</li>
+        <li>Loss of taste or smell</li>
+        <li>A rash on skin ,or discolouration of fingers or toes</li>
     </ul>
-    <h3 className="text-lg p-2 text-white rounded-lg bg-blue-300">SERIOUS SYMPTOMS</h3>
-    <ul className="text-xm p-2 text-blue-500 ">
-        <li>difficulty breathing or shortness of breath</li>
-        <li>chest pain or pressure</li>
-        <li>loss of speech or movement</li>
+    <h3 className="text-lg p-2 text-black rounded-lg bg-blue-300">SERIOUS SYMPTOMS</h3>
+    <ul className="text-xm p-2 text-black-500 ">
+        <li>Difficulty breathing or shortness of breath</li>
+        <li>Chest pain or pressure</li>
+        <li>Loss of speech or movement</li>
     </ul>
-    <p className="text-xm p-2 text-blue-500 mb-2 ">Seek immediate medical attention if you have Sserious
+    <p className="text-xm p-2 text-black-500 mb-2 ">Seek immediate medical attention if you have Sserious
         symptoms .always call before going to the hospital
     </p>
-</div>
+ 
 </div>
 <div className="w-2/6 rounded-lg shadow-lg border ">
-<h2 className="text-lg text-white rounded-lg bg-blue-300  p-2 text-semibold ">COVID-19 PREVENTION METHOD </h2>
-<p className="text-xm text-blue-500  p-2 text-semibold ">
+<h2 className="text-lg text-white rounded-lg bg-blue-300  p-2 text-bold ">COVID-19 PREVENTION METHOD </h2>
+<p className="text-xm text-black-500  p-2 text-bold ">
     Protect yourself and others around you by knowing the facts and taking
     appropriates precautions. Follow advice provided by your local healthy authority
 </p>
-<h3 className="text-lg text-white rounded-lg bg-blue-300 text-bold p-2 ">To prevent the spread of COVID-19:</h3>
-<ul className="text-xm text-blue-500 p-2 text-semibold mb-2">
+<h3 className="text-lg text-black rounded-lg bg-blue-300 text-bold p-2 ">To prevent the spread of COVID-19:</h3>
+<ul className="text-xm text-black-500 p-2  text-bold mb-2">
     <li>Clean your hands often.Use soap and water,or 
         an alcohol-based hand rub.
     </li>
@@ -62,8 +68,8 @@ function Update(){
 </ul>
 </div>
 <div className="w-2/6 rounded-lg border shadow-lg">
-           <h2 className="text-lg p-2 text-white rounded-lg bg-blue-300">COVID-19 LATEST UPDATES</h2>
-           <p  className="text-lg p-2 text-blue-500">in this week they have found 19876 patients
+           <h2 className="text-lg p-2 text-white rounded-lg bg-blue-300 text-bold">COVID-19 LATEST UPDATES</h2>
+           <p  className="text-lg p-2 text-black-500 text-bold">in this week they have found 19876 patients
                 all over the world  
                and 1243  in africa as well as 24 in Rwanda
            </p>
@@ -71,6 +77,7 @@ function Update(){
        </div>
         </div>
         </div>
+        </ div>
     )
 }
 

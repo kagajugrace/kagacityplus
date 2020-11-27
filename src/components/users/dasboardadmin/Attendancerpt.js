@@ -6,20 +6,20 @@ const Attendancerpt = ({ Students }) => {
 
 // a function that assigns bootstrap styling classes based on 
 // the status of the Student
-  // const assignColorToStudentStatus = Student => {
-  //   if (Student.firstname!== null && Student.firstname !== '') {
-  //     return "p-3 mb-2 bg-success text-white";
-  //   } else if (Student.firstname === ' ') {
-  //     return "p-3 mb-2 bg-warning text-dark";
-  //   } else if (Student.firstname === null) {
-  //     return "p-3 mb-2 bg-light text-dark";
-  //   }
-  // };
+const assignColorToItemStatus = item=> {
+  if (item.option === 'yes' ) {
+    return "p-3 mb-2 bg-success text-white";
+  } else if (item.option === 'no') {
+    return "p-3 mb-2 bg-warning text-dark";
+  } else if (item.option ==='' ) {
+    return "p-3 mb-2 bg-light text-dark";
+  }
+};
   const [data, setData] = useState([]);
 
   useEffect( ()=>{
       // async await
-     const response = axios.get('http://127.0.0.1:8000/student-attendance/')
+     const response = axios.get('http://127.0.0.1:8000/attendance-page/')
     //  print(response);
      .then(res=>{
        setData(res.data);
@@ -41,9 +41,9 @@ const Attendancerpt = ({ Students }) => {
               <th scope="col">Id</th>
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
+              <th scope="col">Telephone</th>
+              <th scope="col">Date</th>
+              <th scope="col">Option</th>
             </tr>
           </thead>
           <tbody>
@@ -55,12 +55,12 @@ const Attendancerpt = ({ Students }) => {
                 <td>{item.id}</td>
                 <td>{item.firstname}</td>
                 <td>{item.lastname}</td>
-                <td>{item.gender}</td>
-                <td>{item.email}</td>
+                <td>{item.date}</td>
                 <td>{item.telephone}</td>
-                {/* <td className={assignColorToStudentStatus(item)}>
+                <td>{item.option}</td>
+                <td className={assignColorToItemStatus(item)}>
                   {item.status}
-                </td> */}
+                </td>
                 <td>
                   <Link to={`/Student/${item.firstname}`}>See comments</Link>
                 </td>
@@ -93,6 +93,11 @@ const Attendancerpt = ({ Students }) => {
         </table>
       {/* )} */}
     </div>
+    // my stuff
+
+ 
+
+
   );
 };
 

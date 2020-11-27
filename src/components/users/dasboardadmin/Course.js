@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import logo from '../../../images/City Plus.png'
 import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
@@ -7,13 +7,13 @@ import '../../../css/tailwindcss.css';
 import axios from 'axios';
 import {useHistory} from "react-router-dom";
 
-function HomeAdmin(){
+function Course(){
 
   const auth=sessionStorage.getItem("username")
   const token=sessionStorage.getItem("token")
-  const fname=sessionStorage.getItem("first_name")
+  // const fname=sessionStorage.getItem("first_name")
 
-  const lname=sessionStorage.getItem("last_name")
+  // const lname=sessionStorage.getItem("last_name")
   
 
 
@@ -23,20 +23,10 @@ function HomeAdmin(){
   let history=useHistory();
   const[loading,setLoading]=useState(false);
   const[message,setMessage]=useState("");
-  const[firstname,setFirstname]=useState("");
-  const[lastname,setLastname]=useState("");
+  const[faculity,setFaculity]=useState("");
+  const[classes,setClasses]=useState("");
  
-  const[gender,setGender]=useState("");
-
-  const[district,setDistrict]=useState("");
-  const[village,setVillage]=useState("");
-  const[country,setCountry]=useState("");
-  const[dateofbirth,setDateofbirth]=useState("");
-  const[identification,setIdentification]=useState("");
-  const[fathername,setFathername]=useState("");
-  const[mothername,setMothername]=useState("");
-  const[email,setEmail]=useState("");
-  const[telephone,setTelephone]=useState("");
+ 
 
 
 
@@ -51,9 +41,9 @@ function HomeAdmin(){
   function logout(){
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("token");
-    sessionStorage.removeItem("first_name")
-    sessionStorage.removeItem("id")
-    sessionStorage.removeItem("last_name")
+    // sessionStorage.removeItem("first_name")
+    // sessionStorage.removeItem("id")
+    // sessionStorage.removeItem("last_name")
     history.push("/login")
     }
 
@@ -62,24 +52,12 @@ function HomeAdmin(){
     setLoading(true);
     e.preventDefault();
     const data={
-      "firstname" : firstname,
-      "lastname": lastname,
-      "gender": gender, 
-      "district":district,
-      "village":village,
-      "country":country,
-      "dateofbirth":dateofbirth,
-      "identification_number": identification,
-      "fathername": fathername,
-      "mothername": mothername,
-      "email": email,
-      "telephone": telephone,
-      "regSchools":auth,
-      "studentcode":"0",
+      "faculity" : faculity,
+      "classes": classes,
 
     }
 
-  axios.post("http://127.0.0.1:8000/student-creation/",data)
+  axios.post("http://127.0.0.1:8000/faculitycreation/",data)
   .then((res)=>{
     console.log(res.data)
     setLoading(false)
@@ -92,30 +70,6 @@ function HomeAdmin(){
     setMessage("Registration failed!")
       })   
   }
-
-
-
-
-  // hertier
-  const tok={"schoolname":token}
-  const [data, setData] = useState([]);
-  useEffect( ()=>{
-    // async await
-   const response = axios.post('http://127.0.0.1:8000/profilestudent/',tok)
-  //  print(response);
-   .then(res=>{
-     setData(res.data);
-     console.log(res)
-   })
-   .catch((err)=>{
-     console.log(err)
-   })
- },[]
- );
-//hert
-
-
-
 
 
   const handleclicked=()=>{
@@ -151,17 +105,7 @@ function HomeAdmin(){
 
     <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-        <span className="group flex"> <a href="/upload">
-{data.map((item,key)=>{
-            return(
-                     
-  
-  <img src={"http://localhost:8000"+item.image} class="w-12 h-12 rounded-full"/>
-
-)
-    }
-    )}
-  </a><span className="px-1 py-2"> 
+        <span className="group flex"><a href="/upload"><img src={login} className="w-12 h-12 rounded-full  "/></a><span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
         
         </span></span>
@@ -296,18 +240,7 @@ function HomeAdmin(){
         <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block h-auto">
           <div className="flex items-center justify-center ">
 
-          <a href="/upload">
-{data.map((item,key)=>{
-            return(
-                     
-  
-  <img src={"http://localhost:8000"+item.image} class="w-24 h-24 rounded-full mt-4 "/>
-
-)
-    }
-    )}
-  </a>
-
+          <a href="/upload"><img src={login} className="w-24 h-24 rounded-full mt-4 "/></a>
           
         
           </div>
@@ -411,7 +344,7 @@ function HomeAdmin(){
         {/* start form section */}
         <div className="w-full max-w-xlg ">
         <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" >
-    Welcome <span className="capitalize text-blue-700">{auth} </span> to Student Registration
+    Register your classes
       </label>
 
   <div className="text-blue-500 w-full px-4 text-center  rounded-md">{message}</div>
@@ -419,133 +352,22 @@ function HomeAdmin(){
 
   <form  onSubmit={handleForm} >
 
-
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-semibold mb-2" >
-        First name
-      </label>
-      <input  value={firstname} onChange={event=>setFirstname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-        Last name
-      </label>
-      <input  value={lastname}  onChange={event=>setLastname(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
-      </div>
-    
-    </div>
-
     <div className="mb-6">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       Gender
+        Combination
       </label>
-      <div className="md:flex lg:flex gap-2">
-          <div className=" flex  gap-4 w-1/2">
-              <input value="male" onChange={event=>setGender(event.target.value)} type="radio" name="gender" className="mt-1" />
-<label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       Male
-      </label>
-      </div>
+      <input name="faculity" value={faculity} onChange={event=>setFaculity(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
 
-      <div className="w-1/2 flex gap-4">
-          <input value="female" onChange={event=>setGender(event.target.value)} type="radio" name="gender" className="mt-1" />
-<label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-       FeMale
-      </label>
-      </div>
-
-
-
-
-</div>
-    </div>
-
-
-    <label className="block text-gray-700 text-sm font-bold mb-2" >
-        Borning Place
-      </label>
-    <div className="md:flex lg:flex  gap-2 mb-4">
-  
-        <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-        District
-      </label>
-      <input  value={district} onChange={event=>setDistrict(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
-      </div>
-      <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-        Village
-      </label>
-      <input  value={village} onChange={event=>setVillage(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
-      </div>
-      <div className=" md:w-1/3 lg:w-1/3">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-        Country
-      </label>
-      <input name="country" value={country} onChange={event=>setCountry(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
-      </div>
-    
     </div>
 
 
     <div className="mb-6">
       <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Date of Birth
+        Class
       </label>
-      <input name="dateofbirth" value={dateofbirth} onChange={event=>setDateofbirth(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="date"/>
+      <input name="classes" value={classes} onChange={event=>setClasses(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
 
     </div>
-
-
-
-
-    <div className="mb-6">
-      <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
-        Identification Number
-      </label>
-      <input name="identification" value={identification} onChange={event=>setIdentification(event.target.value)} className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="text"/>
-
-    </div>
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-        Father name
-      </label>
-      <input name="fathername" value={fathername} onChange={event=>setFathername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-    Mother name
-      </label>
-      <input name="mothername" value={mothername} onChange={event=>setMothername(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
-      </div>
-    
-    </div>
-
-
-
-
-    <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-        Email
-      </label>
-      <input name="email" value={email} onChange={event=>setEmail(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="email" />
-      </div>
-      <div className=" md:w-1/2 lg:w-1/2">
-      <label className="block text-gray-700 text-sm font-bold mb-2" >
-    Telephone Number
-      </label>
-      <input name="telephone" value={telephone} onChange={event=>setTelephone(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="text"/>
-      </div>
-    
-    </div>
-
-
-
 
     <div className="flex items-center justify-between">
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
@@ -555,29 +377,6 @@ function HomeAdmin(){
     </div>
   </form>
   </div>
-
-
-
-
-
-
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
-
-<div className="md:flex lg:flex  gap-2 mb-4">
-    <div className="md:w-auto lg:w-full">
-  <label className="block text-gray-700 text-sm font-semibold mb-2" >
-    Csv File
-  </label>
-  <input  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  type="file" />
-  </div>
-  <div className=" md:w-32 lg:w-32">
-<div className="py-4 mt-2">
-  <button className="bg-red-500 py-2 px-2 text-white font-semibold shadow rounded">Import CSV</button></div>
-  </div>
-
-</div>
-</form>
-
 
 </div>
 
@@ -607,4 +406,4 @@ function HomeAdmin(){
        
     )
 }
-export default HomeAdmin;
+export default Course;

@@ -6,15 +6,15 @@ const Temprpt = ({ Students }) => {
 
 // a function that assigns bootstrap styling classes based on 
 // the status of the Student
-  // const assignColorToStudentStatus = Student => {
-  //   if (Student.firstname!== null && Student.firstname !== '') {
-  //     return "p-3 mb-2 bg-success text-white";
-  //   } else if (Student.firstname === ' ') {
-  //     return "p-3 mb-2 bg-warning text-dark";
-  //   } else if (Student.firstname === null) {
-  //     return "p-3 mb-2 bg-light text-dark";
-  //   }
-  // };
+const assignColorToItemStatus = item=> {
+  if (item.temp > '30' && item.temp < '40') {
+    return "p-3 mb-2 bg-success text-white";
+  } else if (item.temp < '30 ') {
+    return "p-3 mb-2 bg-warning text-dark";
+  } else if (item.temp >'40') {
+    return "p-3 mb-2 bg-light text-dark";
+  }
+};
   const [data, setData] = useState([]);
 
   useEffect( ()=>{
@@ -58,9 +58,9 @@ const Temprpt = ({ Students }) => {
                 <td>{item.donedate}</td>
                 <td>{item.donetime}</td>
                 <td>{item.telephone}</td>
-                {/* <td className={assignColorToStudentStatus(item)}>
+                <td className={assignColorToItemStatus(item)}>
                   {item.status}
-                </td> */}
+                </td>
                 <td>
                   <Link to={`/Student/${item.studentcode}`}>See comments</Link>
                 </td>

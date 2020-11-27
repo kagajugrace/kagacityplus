@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import logo from '../../../images/City Plus.png'
 import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
@@ -29,29 +29,31 @@ function Attend(){
       history.push("/login");
   }
 
-const[msg,setMsg]=useState();
-const [loading,setloading]=useState(true)
-const [Attend,setAttend]=useState("");
-const [dateattend,setdateattend]=useState("");
-const [classrom,setclassrom]=useState("")
+const[msg,setMsg]=useState("");
+const [loading,setLoading]=useState(false)
+const [attend,setAttend]=useState("");
+const [dateattend,setDateattend]=useState("");
+const [classrom,setClassrom]=useState("");
+
+
 
 const handle=(e)=>{
+  // setloading(true);
   e.preventDefault();
   const data={
     "studentcode":code,
-    "status":Attend,
+    "status":attend,
     "dateattend":dateattend,
-    "classroom":classrom
-
+    "classroom":classrom,
    }
-
  
   axios.post("http://localhost:8000/attendance-creation/",data)
   .then((res)=>{
     sessionStorage.removeItem("usercode");
     setTemp("")
+    setLoading(false)
     setMsg("has been submited Sucessful")
-    setloading(false)
+    
     console.log(res.data)
     setTimeout(function(){
 
@@ -61,9 +63,25 @@ const handle=(e)=>{
       })
   .catch((err)=>{
     console.log(err)
+    setLoading(false)
+    setMsg("has been failed")
       })
 }
 
+
+const [data2, setData2] = useState([]);useEffect( ()=>{
+  // async await
+ const response = axios.get('http://127.0.0.1:8000/faculitycreation/')
+//  print(response);
+ .then(res=>{
+   setData2(res.data);
+   console.log(res)
+ })
+ .catch((err)=>{
+   console.log(err)
+ })
+},[]
+);
 
 
 
@@ -170,11 +188,11 @@ const handleclicked=()=>{
                         <span className="mx-4 font-medium">Report</span>
                     </a>
               
-                    {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+                    <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{/class-page">
                       <ion-icon className="text-2xl" name="search-outline"></ion-icon>
               
-                        <span className="mx-4 font-medium">Codes</span>
-                    </a> */}
+                        <span className="mx-4 font-medium">Add Class</span>
+                    </a>
                     <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                       <ion-icon className="text-2xl" name="person-outline"></ion-icon>
                       <span className="mx-4 font-medium">Add Teacher</span>
@@ -280,11 +298,11 @@ const handleclicked=()=>{
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/class-page">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
-                  <span className="mx-4 font-medium">Codes</span>
-              </a> */}
+                  <span className="mx-4 font-medium">Add Class</span>
+              </a>
               <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
                 <span className="mx-4 font-medium">Add Teacher</span>
@@ -354,20 +372,7 @@ const handleclicked=()=>{
 
 
 
-      {loading?<div></div>:
-     
-     <div     className="bg-green-200 px-6 py-2  mx-2 my-4 rounded-md text-lg flex mx-auto w-5/6 xl:w-5/6 "
-           >
-       <svg viewBox="0 0 24 24"  className="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3"
-            >
-         <path
-               fill="currentColor"
-               d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z"
-               ></path>
-       </svg>
-       <span className="text-green-800"> {msg} </span>
-     </div>
- }
+      
 
 
 
@@ -388,16 +393,42 @@ const handleclicked=()=>{
 
   <form onSubmit={handle} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
+
+  
+
+
+
   <div className=" gap-2 mb-4">
   
       <div className="w-2/2 md:w-1/2 lg:w-1/2">
+
+
+      {loading?<div></div>:
+     
+     <div     className="bg-green-200 px-6 py-2  mx-2 my-4 rounded-md text-lg flex mx-auto w-full md:w-5/6 lg:w-5/6 "
+           >
+       <svg viewBox="0 0 24 24"  className="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3"
+            >
+         <path
+               fill="currentColor"
+               d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z"
+               ></path>
+       </svg>
+       <span className="text-green-800"> {msg} </span>
+     </div>
+ }
+
+
+
+
+
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
       Attend
       </label> 
       <select onChange={event=>setAttend(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
          <option></option>
           <option value="Yego">Yego</option>
-          <option value="No" >NO</option>
+          <option value="No" >Oya</option>
    
           </select>      </div>
 
@@ -406,7 +437,7 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
       date Attend
       </label> 
-      <input value={dateattend} onChange={event=>setdateattend(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" />
+      <input value={dateattend} onChange={event=>setDateattend(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" />
       
       
       </div>
@@ -417,12 +448,25 @@ const handleclicked=()=>{
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
       classroom
       </label> 
-      <select onChange={event=>setclassrom(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-          <option></option>
-          <option  value="software S4">software S4</option>
-          <option value="software S5">S5</option>
-          <option value="software S6">S6</option>
-          </select>
+
+                
+      <select    onChange={event=>setClassrom(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+         
+ 
+    
+<option >Choose Combination</option>
+
+{data2.map((item,key)=>{
+            return(  
+          <option key={key} value={item.faculity  + item.classes}>{item.faculity} {item.classes}</option>
+          
+          )
+        }
+        )}
+       </select>
+    
+         
+
       </div>
 
 
