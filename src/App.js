@@ -22,6 +22,7 @@ import Temprpt from './components/users/dasboardadmin/Temprpt';
 import Attendancerpt from './components/users/dasboardadmin/Attendancerpt';
 import Attendance from './components/users/dasboardadmin/Attendance';
 import Course from './components/users/dasboardadmin/Course';
+import ExportExcel from './components/users/dasboardadmin/Excel'  ;
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,9 +30,8 @@ import {
   Link
 } from "react-router-dom";
 import Temperature from './components/users/dasboardadmin/Temperature';
-import Temp from'./components/users/dasboardadmin/Temp'
-
-import Attend from './components/users/dasboardadmin/attend'
+import Temp from'./components/users/dasboardadmin/Temp';
+import Attend from './components/users/dasboardadmin/attend';
 
 function App() {
   return (
@@ -83,7 +83,9 @@ function App() {
            <Route exact path="/update">
           <Update/>
           </Route>
-
+          <Route path="/excel">
+          <ExportExcel/>
+          </Route>
            <Route path="/update">
           <Update/>
           </Route>

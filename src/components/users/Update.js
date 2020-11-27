@@ -11,9 +11,15 @@ function Update(){
             <Nav/>
         <div className=" maine flex p-4 gap-2 shadow-lg rounded-lg">
 <div className="w-2/6 rounded-lg shadow-lg border">
-<h2 className="text-lg text-bold p-2 text-white rounded-lg bg-blue-300">COVID-19 SYMPTOMS </h2>
+<h2 className="text-lg text-bold p-2 text-white rounded-lg ">COVID-19 SYMPTOMS </h2>
 <div>
     <br/>
+    <h3 className="text-lg p-2 text-white rounded-lg ">MOST COMMON SYMPTOMS</h3>
+    <ul className="text-xm p-2 text-blue-500 mb-2 ">
+        <li>fever</li>
+        <li>dry cough</li>
+        <li>tiredness</li>
+        </ul>
     <h3 className="text-lg p-2 text-black rounded-lg bg-blue-300">MOST COMMON SYMPTOMS</h3>
     <ul className="text-xm p-2 text-black-500 mb-2 text-bold">
         <li>Fever</li>
@@ -39,7 +45,7 @@ function Update(){
     <p className="text-xm p-2 text-black-500 mb-2 ">Seek immediate medical attention if you have Sserious
         symptoms .always call before going to the hospital
     </p>
-</div>
+ 
 </div>
 <div className="w-2/6 rounded-lg shadow-lg border ">
 <h2 className="text-lg text-white rounded-lg bg-blue-300  p-2 text-bold ">COVID-19 PREVENTION METHOD </h2>
@@ -71,6 +77,7 @@ function Update(){
        </div>
         </div>
         </div>
+        </ div>
     )
 }
 

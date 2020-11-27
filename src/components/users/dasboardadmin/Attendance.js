@@ -30,6 +30,9 @@ const logoes="http://localhost:8000"
       }
   
   
+  //   if(!auth){
+  //     history.push("/login");
+  // }
     if(!auth){
       history.push("/login");
   }
@@ -556,7 +559,7 @@ const handleclicked=()=>{
                 <th>Last name</th>
                 <th>Telephone</th>
                
-                <th>id student</th>
+                <th>id</th>
                 <th>Date</th>
                 <th>Option</th>
             </tr>

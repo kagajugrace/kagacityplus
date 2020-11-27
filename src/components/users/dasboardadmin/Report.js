@@ -107,7 +107,7 @@ const Students = () => {
 
 
 
-<button type="button" class="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
+<button type="button" class="float-right btn-group " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
   <span class="group flex">
     
@@ -125,7 +125,7 @@ const Students = () => {
   </a>
     
     <span className="px-1 py-2"> 
-  {drop? <a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
+  {drop? <a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8"/></a>}
     
     </span></span>
     
@@ -385,9 +385,26 @@ const Students = () => {
            {/* <StudentsComponent Students={Students} className="text-center" /> */}
       </div>
       
-      </div>  
-      
+
+      <div className="repot  mb-4  px-4">
         
+           {/* {user.user.role === "user" ? (
+            <> </>
+          ) : (  */}
+            <button
+              className="butn btn btn-info"
+            //  onClick={() => Pdfreport(reportStudents)}
+            >
+              <a href="/excel" className="text-white text-sm">
+              Generate excel report
+              </a>
+            </button>
+          {/* ) */}
+           {/* }  */}
+           {/* <StudentsComponent Students={Students} className="text-center" /> */}
+      </div>
+      
+      </div>    
 {/* endbody */}
 
 

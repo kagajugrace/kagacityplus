@@ -38,9 +38,9 @@ function Home(){
 
 
 
-      if(!user){
-          history.push("/login");
-      }
+      // if(!user){
+      //     history.push("/login");
+      // }
 
 
   // hertier
