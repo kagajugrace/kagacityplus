@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import logo from '../../../images/City Plus.png'
 import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
@@ -94,6 +94,30 @@ function HomeAdmin(){
   }
 
 
+
+
+  // hertier
+  const tok={"schoolname":token}
+  const [data, setData] = useState([]);
+  useEffect( ()=>{
+    // async await
+   const response = axios.post('http://127.0.0.1:8000/profilestudent/',tok)
+  //  print(response);
+   .then(res=>{
+     setData(res.data);
+     console.log(res)
+   })
+   .catch((err)=>{
+     console.log(err)
+   })
+ },[]
+ );
+//hert
+
+
+
+
+
   const handleclicked=()=>{
     if(dropdown===0){
       setDrop(true);
@@ -127,7 +151,17 @@ function HomeAdmin(){
 
     <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-        <span className="group flex"><a href="/upload"><img src={login} className="w-12 h-12 rounded-full  "/></a><span className="px-1 py-2"> 
+        <span className="group flex"> <a href="/upload">
+{data.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-12 h-12 rounded-full"/>
+
+)
+    }
+    )}
+  </a><span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
         
         </span></span>
@@ -262,7 +296,18 @@ function HomeAdmin(){
         <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block h-auto">
           <div className="flex items-center justify-center ">
 
-          <a href="/upload"><img src={login} className="w-24 h-24 rounded-full mt-4 "/></a>
+          <a href="/upload">
+{data.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-24 h-24 rounded-full mt-4 "/>
+
+)
+    }
+    )}
+  </a>
+
           
         
           </div>
