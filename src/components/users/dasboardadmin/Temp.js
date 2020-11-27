@@ -310,7 +310,7 @@ const handleclicked=()=>{
 
           <a className="flex items-center  mt-2 mb-6 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100"  onClick={logout} >
          
-              <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
+  ``              <ion-icon className="text-2xl text-white" name="log-out-outline"></ion-icon>
         
             <span className="mx-4 font-medium ">Logout</span>
         </a>
