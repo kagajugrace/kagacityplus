@@ -193,11 +193,11 @@ const handleclicked=()=>{
                         <span className="mx-4 font-medium">Report</span>
                     </a>
               
-                    {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+                    <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/class-page">
                       <ion-icon className="text-2xl" name="search-outline"></ion-icon>
               
-                        <span className="mx-4 font-medium">Codes</span>
-                    </a> */}
+                        <span className="mx-4 font-medium">Add Class</span>
+                    </a>
                     <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                       <ion-icon className="text-2xl" name="person-outline"></ion-icon>
                       <span className="mx-4 font-medium">Add Teacher</span>
@@ -303,11 +303,11 @@ const handleclicked=()=>{
                         <span className="mx-4 font-medium">Report</span>
                     </a>
               
-                    {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+                    <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/class-page">
                       <ion-icon className="text-2xl" name="search-outline"></ion-icon>
               
-                        <span className="mx-4 font-medium">Codes</span>
-                    </a> */}
+                        <span className="mx-4 font-medium">Add Class</span>
+                    </a>
                     <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                       <ion-icon className="text-2xl" name="person-outline"></ion-icon>
                       <span className="mx-4 font-medium">Add Teacher</span>

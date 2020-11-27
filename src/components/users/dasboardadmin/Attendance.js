@@ -15,10 +15,12 @@ function Attendance(){
   const token=sessionStorage.getItem("token")
   const fname=sessionStorage.getItem("first_name")
   const lname=sessionStorage.getItem("last_name")
+  
 
 const logoes="http://localhost:8000"
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
+    
     let history=useHistory();
 
     function logout(){
@@ -86,17 +88,20 @@ useEffect( ()=>{
   const [detail,setdetail]=useState(false);
   const [data2,setData2]=useState([]);
   const [code,setCode]=useState("");
+  const [number,setNumber]=useState("");
+  const [table,setTable]=useState("");
+  
 
   
   const handleShow=(e)=>{
     e.preventDefault();
     const data={
-      "usercode":code
-  
+      "usercode":code,
+      
      }
-  
-   
-    axios.post("http://localhost:8000/student-ckeckstudent/",data)
+    
+     
+axios.post("http://localhost:8000/student-ckeckstudent/",data)
     .then((res)=>{
       setData2(res.data);
       setdetail(true)
@@ -108,6 +113,7 @@ useEffect( ()=>{
         })
   }
   
+
   const accept=()=>{
     sessionStorage.setItem('usercode',code);
     history.push('/registartion-student-Attendance');
@@ -116,7 +122,28 @@ useEffect( ()=>{
     history.push('/Temperature-pageattendance-page'); 
   }
 
-
+const checknumber =(e)=> {
+    e.preventDefault();
+    const data={
+      "telephone":number
+  
+     }
+  
+   
+    axios.post("http://localhost:8000/number-ckeckstudent/",data)
+    .then((res)=>{
+      setData(res.data);
+      setTable(true);
+      console.log(res.data)
+            
+        })
+    .catch((err)=>{
+      console.log(err)
+        }) 
+    
+  
+  
+  }
 
 
 
@@ -243,11 +270,11 @@ const handleclicked=()=>{
       <span class="mx-4 font-medium">Report</span>
   </a>
 
-  {/* <a class="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+  <a class="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/class-page">
     <ion-icon class="text-2xl" name="search-outline"></ion-icon>
 
-      <span class="mx-4 font-medium">Codes</span>
-  </a> */}
+      <span class="mx-4 font-medium">Add Class</span>
+  </a>
   <a class="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
     <ion-icon class="text-2xl" name="person-outline"></ion-icon>
     <span class="mx-4 font-medium">Add Teacher</span>
@@ -364,11 +391,11 @@ const handleclicked=()=>{
       <span class="mx-4 font-medium">Report</span>
   </a>
 
-  {/* <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+  <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/class-page">
     <ion-icon class="text-2xl" name="search-outline"></ion-icon>
 
-      <span class="mx-4 font-medium">Codes</span>
-  </a> */}
+      <span class="mx-4 font-medium">Add Class</span>
+  </a>
   <a class="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
     <ion-icon class="text-2xl" name="person-outline"></ion-icon>
     <span class="mx-4 font-medium">Add Teacher</span>
@@ -570,64 +597,62 @@ const handleclicked=()=>{
 
   <br/><br/><br/><br/><br/><br/>
 
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+  <form onSubmit={checknumber} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
 <div className="md:flex lg:flex  gap-2 mb-4">
-    <div className="md:w-auto lg:w-full">
-  <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
- code
-  </label>
-  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
-   </div>
-  <div className=" md:w-32 lg:w-32">
-<div className="py-4 mt-2">
-  <button className="bg-blue-400 py-2 px-2 text-white font-semibold shadow rounded">check</button></div>
+      <div className="w-2/2 md:w-1/2 lg:w-1/2">
+    <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+      Telephone
+    </label>
+    <input value={number} onChange={event=>setNumber(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+    </div>
+    <div className="flex items-center justify-between">
+    <button type="Submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" >
+    Check
+    </button>
+    
   </div>
-
-</div>
+  </div>
 </form>
 <div className="table">
-  <table id="example" class="display" >
+  <table>
         <thead>
             <tr>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Telephone</th>
+                <th>Code</th>
                
-                <th>id student</th>
-              
-                <th>Option</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Heritier</td>
-                <td>sky2</td>
-                <td>078324343</td>
-                <td>61</td>
-             
-                <td>
-                  <a href="#" className="bg-red-500 hover:bg-red-700 text-white mr-1 font-bold py-2 px-4 rounded">yes</a>
-                  <a href="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">no</a>
-                </td>
+
+        {data.map((item,key)=>{
+            return( 
+            <tr key={key}> 
+              <td>  {item.firstname}</td>
+              <td>  {item.lastname}</td>
+              <td>  {item.telephone}</td>
+              <td>  {item.studentcode}</td>
+         
             </tr>
+  
+
+
+     
+  )
+}
+)}
+
+
         </tbody>
-        <tbody>
-            <tr>
-                <td>Irakoze</td>
-                <td>benjam</td>
-                <td>078324343</td>
-                <td>61</td>
-           
-                <td>
-                  <a href="#" className="bg-red-500 hover:bg-red-700 text-white mr-1 font-bold py-2 px-4 rounded">yes</a>
-                  <a href="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">no</a>
-                </td>
-            </tr>
-        </tbody>
-    
     </table>
-</div>
+
+
+
+      
+  </div>
+
 
 </div>
 

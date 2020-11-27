@@ -34,6 +34,28 @@ function Temperature(){
 
 
 
+// hertier
+const tok={"schoolname":token}
+const [data3, setData3] = useState([]);
+useEffect( ()=>{
+  // async await
+ const response = axios.post('http://127.0.0.1:8000/profilestudent/',tok)
+//  print(response);
+ .then(res=>{
+   setData3(res.data);
+   console.log(res)
+ })
+ .catch((err)=>{
+   console.log(err)
+ })
+},[]
+);
+//hert
+
+
+
+
+
   const [data, setData] = useState([]);
   useEffect( ()=>{
     // async await
@@ -182,7 +204,22 @@ const handleclicked=()=>{
 
     <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-        <span className="group flex"><a href="/upload"><img src={login} className="w-12 h-12 rounded-full  "/></a><span className="px-1 py-2"> 
+        <span className="group flex">
+          
+          
+        <a href="/upload">
+{data3.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-12 h-12 rounded-full"/>
+
+)
+    }
+    )}
+  </a>
+
+          <span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
         
         </span></span>
@@ -242,11 +279,11 @@ const handleclicked=()=>{
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              {/* <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              <a className="flex items-center py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/class-page">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
-                  <span className="mx-4 font-medium">Codes</span>
-              </a> */}
+                  <span className="mx-4 font-medium">Add Class</span>
+              </a>
               <a className="flex items-center  py-3 px-8 block text-gray-700 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
                 <span className="mx-4 font-medium">Add Teacher</span>
@@ -317,9 +354,19 @@ const handleclicked=()=>{
         <div className="w-full  bg-gray-800  sm:mt-0 hidden md:block h-auto">
           <div className="flex items-center justify-center ">
 
-          <a href="/upload"><img src={login} className="w-24 h-24 rounded-full mt-4 "/></a>
           
-        
+          <a href="/upload">
+{data3.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-24 h-24 rounded-full"/>
+
+)
+    }
+    )}
+  </a>
+
           </div>
         
           <nav className="mt-2 ">
@@ -352,11 +399,11 @@ const handleclicked=()=>{
                   <span className="mx-4 font-medium">Report</span>
               </a>
         
-              {/* <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="{% url 'codes'%}">
+              <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/class-page">
                 <ion-icon className="text-2xl" name="search-outline"></ion-icon>
         
-                  <span className="mx-4 font-medium">Codes</span>
-              </a> */}
+                  <span className="mx-4 font-medium">Add Class</span>
+              </a>
               <a className="flex items-center mt-2 py-2 px-8 block text-gray-100 border-r-4 border-gray-800 hover:bg-gray-700 hover:text-gray-100 hover:border-gray-100" href="/Dashboard-addteacher">
                 <ion-icon className="text-2xl" name="person-outline"></ion-icon>
                 <span className="mx-4 font-medium">Add Teacher</span>
@@ -552,5 +599,6 @@ const handleclicked=()=>{
           </div>
        
     )
+    
 }
 export default Temperature;

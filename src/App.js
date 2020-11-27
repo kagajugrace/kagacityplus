@@ -15,7 +15,7 @@ import Logout from'./components/users/dasboardadmin/logout';
 import RegStusent from './components/users/dasboardadmin/regist';
 import AddTeacher from './components/users/dasboardadmin/addteacher';
 import UpdateTeacher from './components/users/dasboardadmin/updateteacher';
-import Students from './components/users/dasboardadmin/Students';
+import Students from './components/users/dasboardadmin/Report';
 import StudentsComponent from './components/users/dasboardadmin/Map';
 import Upload from './components/users/dasboardadmin/Upload';
 import Temprpt from './components/users/dasboardadmin/Temprpt';
