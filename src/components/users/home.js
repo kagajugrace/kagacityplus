@@ -103,6 +103,9 @@ export default function Home(){
 <Pricing/>
 {/* Added new partners */}
 
+
+
+
 <Partners/>
 <Footer/>
 </div>
