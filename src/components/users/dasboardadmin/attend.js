@@ -9,7 +9,7 @@ import {Modal}  from 'react-bootstrap'
 import {useHistory} from "react-router-dom";
 import axios from 'axios';
 
-function Temp(){
+function Attend(){
   const auth=sessionStorage.getItem("username")
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
@@ -31,18 +31,22 @@ function Temp(){
 
 const[msg,setMsg]=useState();
 const [loading,setloading]=useState(true)
+const [Attend,setAttend]=useState("");
+const [dateattend,setdateattend]=useState("");
+const [classrom,setclassrom]=useState("")
 
 const handle=(e)=>{
   e.preventDefault();
   const data={
-    "usercode":code,
     "studentcode":code,
-    "temp":temp
+    "status":Attend,
+    "dateattend":dateattend,
+    "classroom":classrom
 
    }
 
  
-  axios.post("http://localhost:8000/student-temperature/",data)
+  axios.post("http://localhost:8000/attendance-creation/",data)
   .then((res)=>{
     sessionStorage.removeItem("usercode");
     setTemp("")
@@ -50,8 +54,8 @@ const handle=(e)=>{
     setloading(false)
     console.log(res.data)
     setTimeout(function(){
-    
-      history.push('/Temperature-page');
+
+      history.push('/attendance-page');
   },2000)
           
       })
@@ -384,13 +388,44 @@ const handleclicked=()=>{
 
   <form onSubmit={handle} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
-  <div className="md:flex lg:flex  gap-2 mb-4">
-        <div className="w-2/2 md:w-1/2 lg:w-1/2">
+  <div className=" gap-2 mb-4">
+  
+      <div className="w-2/2 md:w-1/2 lg:w-1/2">
       <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
-       Temperature
+      Attend
       </label> 
-      <input value={temp} onChange={event=>setTemp(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+      <select onChange={event=>setAttend(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+         <option></option>
+          <option value="Yego">Yego</option>
+          <option value="No" >NO</option>
+   
+          </select>      </div>
+
+
+      <div className="w-2/2 md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+      date Attend
+      </label> 
+      <input value={dateattend} onChange={event=>setdateattend(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="date" />
+      
+      
       </div>
+
+
+
+      <div className="w-2/2 md:w-1/2 lg:w-1/2">
+      <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+      classroom
+      </label> 
+      <select onChange={event=>setclassrom(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          <option></option>
+          <option  value="software S4">software S4</option>
+          <option value="software S5">S5</option>
+          <option value="software S6">S6</option>
+          </select>
+      </div>
+
+
       <div className="flex items-center justify-between">
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" type="submit">
       Send
@@ -431,4 +466,4 @@ const handleclicked=()=>{
        
     )
 }
-export default Temp;
+export default Attend;

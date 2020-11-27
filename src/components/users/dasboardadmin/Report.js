@@ -322,14 +322,49 @@ const Students = () => {
             //  onClick={() => Pdfreport(reportStudents)}
             >
               <a href="/temprpt" className="text-white text-sm">
-              Generate Weekly report
+              Generate weekly report
+              </a>
+            </button>
+
+            {/* <button
+              className="butn btn btn-info"
+            //  onClick={() => Pdfreport(reportStudents)}
+            >
+              <a href="/excel" className="text-white text-sm">
+              Generate Excel report
+              </a>
+            </button> */}
+          {/* ) */}
+           {/* }  */}
+           {/* <StudentsComponent Students={Students} className="text-center" /> */}
+      </div>
+      
+      <div className="repot  mb-4  px-4">
+        
+           {/* {user.user.role === "user" ? (
+            <> </>
+          ) : (  */}
+            {/* <button
+              className="butn btn btn-info"
+            //  onClick={() => Pdfreport(reportStudents)}
+            >
+              <a href="/temprpt" className="text-white text-sm">
+              Generate weekly report
+              </a>
+            </button> */}
+
+            <button
+              className="butn btn btn-info"
+            //  onClick={() => Pdfreport(reportStudents)}
+            >
+              <a href="/excel" className="text-white text-sm">
+              Generate Excel report
               </a>
             </button>
           {/* ) */}
            {/* }  */}
            {/* <StudentsComponent Students={Students} className="text-center" /> */}
       </div>
-      
       </div>    
 {/* endbody */}
 

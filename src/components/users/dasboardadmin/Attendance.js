@@ -1,13 +1,22 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import logo from '../../../images/City Plus.png'
 import login from '../../../images/login.png'
 import menu from '../../../images/menu-outline.svg';
 import close from '../../../images/close-outline.svg';
 
 import '../../../css/tailwindcss.css';
-import {useHistory} from "react-router-dom"; 
+import {useHistory} from "react-router-dom";
+import axios from 'axios';
+
+
+
 function Attendance(){
   const auth=sessionStorage.getItem("username")
+  const token=sessionStorage.getItem("token")
+  const fname=sessionStorage.getItem("first_name")
+  const lname=sessionStorage.getItem("last_name")
+
+const logoes="http://localhost:8000"
     const[drop,setDrop]=useState(false);
     const[dropdown,setDropmenu]=useState(0);
     let history=useHistory();
@@ -22,6 +31,113 @@ function Attendance(){
   //   if(!auth){
   //     history.push("/login");
   // }
+    if(!auth){
+      history.push("/login");
+  }
+// hertier
+  const tok={"schoolname":token}
+  const [data, setData] = useState([]);
+  useEffect( ()=>{
+    // async await
+   const response = axios.post('http://127.0.0.1:8000/profilestudent/',tok)
+  //  print(response);
+   .then(res=>{
+     setData(res.data);
+     console.log(res)
+   })
+   .catch((err)=>{
+     console.log(err)
+   })
+ },[]
+ );
+//hert
+
+
+
+
+
+
+
+// hertier
+const tokf={"schoolname":token}
+const [data4, setData4] = useState([]);
+useEffect( ()=>{
+  // async await
+ const response = axios.post('http://127.0.0.1:8000/attendance-attendlist/',tokf)
+//  print(response);
+ .then(res=>{
+   setData4(res.data4);
+   console.log(res)
+ })
+ .catch((err)=>{
+   console.log(err)
+ })
+},[]
+);
+//hert
+
+
+
+
+
+
+
+
+
+
+
+  const [detail,setdetail]=useState(false);
+  const [data2,setData2]=useState([]);
+  const [code,setCode]=useState("");
+
+  
+  const handleShow=(e)=>{
+    e.preventDefault();
+    const data={
+      "usercode":code
+  
+     }
+  
+   
+    axios.post("http://localhost:8000/student-ckeckstudent/",data)
+    .then((res)=>{
+      setData2(res.data);
+      setdetail(true)
+      console.log(res.data)
+            
+        })
+    .catch((err)=>{
+      console.log(err)
+        })
+  }
+  
+  const accept=()=>{
+    sessionStorage.setItem('usercode',code);
+    history.push('/registartion-student-Attendance');
+  }
+  const decline=()=>{
+    history.push('/Temperature-pageattendance-page'); 
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const handleclicked=()=>{
@@ -61,7 +177,22 @@ const handleclicked=()=>{
 
       <button type="button" className="float-right btn-group  " role="group" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
 
-        <span className="group flex"><img src={login} className="w-12 h-12 rounded-full  "/><span className="px-1 py-2"> 
+        <span className="group flex">
+        
+        
+        <a href="/upload">
+{data.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-12 h-12 rounded-full"/>
+
+)
+    }
+    )}
+  </a>
+        
+        <span className="px-1 py-2"> 
         {drop?<a className="float-right" onClick={handleclicked}><img src={close} className="w-8 " /></a>:<a className="float-right" onClick={handleclicked}><img src={menu} className="w-8" /></a>}
         
         </span></span>
@@ -190,7 +321,17 @@ const handleclicked=()=>{
 <div class="w-full  bg-gray-800  sm:mt-0 hidden md:block overflow-y-scroll h-screen">
 <div class="flex items-center justify-center ">
 
-<a href="/upload"><img src={login} class="w-24 h-24 rounded-full mt-4 "/></a>
+<a href="/upload">
+{data.map((item,key)=>{
+            return(
+                     
+  
+  <img src={"http://localhost:8000"+item.image} class="w-24 h-24 rounded-full mt-4 "/>
+
+)
+    }
+    )}
+  </a>
 
 
 </div>
@@ -335,20 +476,51 @@ const handleclicked=()=>{
         <label className="block text-gray-800 text-xl underline text-center font-bold  py-2" for="username">
       Student Attendance
       </label>
-  <form className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+  <form   className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
   <div className="md:flex lg:flex  gap-2 mb-4">
     <div className="md:w-auto lg:w-full">
   <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
     Student code
   </label>
-  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+  <input value={code} onChange={event=>setCode(event.target.value)}   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
    </div>
   <div className=" md:w-32 lg:w-32">
 <div className="py-4 mt-2">
-  <button className="bg-blue-400 py-2 px-2 text-white font-semibold shadow rounded">check</button></div>
+  <button onClick={handleShow} type="submit" className="bg-blue-400 py-2 px-2 text-white font-semibold shadow rounded">check</button></div>
   </div>
 
 </div>
+
+
+
+{detail?
+
+<div>
+   
+   {data2.map((item,key)=>{
+        return( <div>
+  <h3 key={key}>Dear <span className="text-blue-500 font-semiblod capitalize" >{item.firstname} {item.lastname}</span></h3>
+        <p>if is you please accept isn't you you can Decline</p>
+  <div className="flex">
+    <div className="w-1/2"><button onClick={accept}  className="bg-green-500 py-2 px-2 rounded text-white focus:outline-none focus:shadow-outline">Accept</button></div>
+    <div className="w-1/2 float-right"><button  onClick={decline}  className="bg-red-500 py-2 px-2 rounded text-white focus:outline-none focus:shadow-outline">Decline</button></div>
+</div> </div> 
+)
+}
+)}
+</div>
+ 
+
+
+:<div></div>}
+
+
+
+
+
+
+
+
   </form>
   <br/><br/><br/>
 
