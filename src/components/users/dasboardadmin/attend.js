@@ -45,9 +45,10 @@ const handle=(e)=>{
     "status":attend,
     "dateattend":dateattend,
     "classroom":classrom,
+    "school": auth,
    }
  
-  axios.post("http://localhost:8000/attendance-creation/",data)
+  axios.post("http://localhost:8000/student-attendance/",data)
   .then((res)=>{
     sessionStorage.removeItem("usercode");
     setTemp("")

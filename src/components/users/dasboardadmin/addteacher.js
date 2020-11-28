@@ -519,7 +519,8 @@ const handleclicked=()=>{
   </form>
   
   <div className="table">
-  <table id="example" class="display" >
+  {/* <table id="example" class="display" > */}
+  <table>
         <thead>
             <tr>
                 <th>First name</th>

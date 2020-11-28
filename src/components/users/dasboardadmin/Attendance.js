@@ -149,6 +149,22 @@ const checknumber =(e)=> {
   }
 
 
+  const [data3, setData3] = useState([]);useEffect( ()=>{
+    // async await
+   const response = axios.get('http://127.0.0.1:8000/student-attendance/')
+  //  print(response);
+   .then(res=>{
+     setData3(res.data);
+     console.log(res)
+   })
+   .catch((err)=>{
+     console.log(err)
+   })
+  },[]
+  );
+  
+
+
 
 
 
@@ -549,56 +565,8 @@ const handleclicked=()=>{
 
 
   </form>
-  <br/><br/><br/>
+  <br/><br/>
 
-  <div className="table">
-  <table id="example" class="display" >
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Telephone</th>
-               
-                <th>id</th>
-                <th>Date</th>
-                <th>Option</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td>Irakoze</td>
-                <td>benjam</td>
-                <td>078324343</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>
-                  <a href="#" className="bg-red-500 hover:bg-red-700 text-white mr-1 font-bold py-2 px-4 rounded">yes</a>
-                  <a href="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">no</a>
-                </td>
-            </tr>
-        </tbody>
-        <tbody>
-            <tr>
-                <td>Cyusa</td>
-                <td>Hamissa</td>
-                <td>1324324</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>
-                  <a href="#" className="bg-red-500 hover:bg-red-700 text-white mr-1 font-bold py-2 px-4 rounded">yes</a>
-                  <a href="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">no</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-
-
-      
-  </div>
-
-  <br/><br/><br/><br/><br/><br/>
 
   <form onSubmit={checknumber} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
 
@@ -617,44 +585,105 @@ const handleclicked=()=>{
   </div>
   </div>
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <br/><br/><br/><br/>
+
+  {/* <form onSubmit={checknumber} className=" shadow-sm rounded px-8 pt-6 pb-8 mb-4 bg-gray-100">
+
+<div className="md:flex lg:flex  gap-2 mb-4">
+      <div className="w-2/2 md:w-1/2 lg:w-1/2">
+    <label className="block text-gray-700 text-sm font-semibold mb-2" for="username">
+      Telephone
+    </label>
+    <input value={number} onChange={event=>setNumber(event.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" />
+    </div>
+    <div className="flex items-center justify-between">
+    <button type="Submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-6 rounded focus:outline-none focus:shadow-outline" >
+    Check
+    </button>
+    
+  </div>
+  </div>
+</form> */}
+
+
+
 <div className="table">
+  {/* <table id="example" class="display" > */}
   <table>
         <thead>
             <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Telephone</th>
-                <th>Code</th>
-               
+                 {/* <th>First name</th>
+                <th>Last name</th> */}
+                <th>Student Code</th>
+                <th>Status</th>
+                <th>Date of Attend</th>
+                <th>Classroom</th>
+                <th>School</th>
+                <th>Option</th>
+
             </tr>
         </thead>
+
         <tbody>
 
-        {data.map((item,key)=>{
+        {data3.map((item,key)=>{
             return( 
             <tr key={key}> 
-              <td>  {item.firstname}</td>
-              <td>  {item.lastname}</td>
-              <td>  {item.telephone}</td>
+              {/* <td>  {item.firstname}</td>
+              <td>  {item.lastname}</td> */}
               <td>  {item.studentcode}</td>
-         
+              <td>  {item.status}</td>
+              <td>  {item.dateattend}</td>
+              <td>  {item.classroom}</td>
+              <td>  {item.school}</td>
+         <td>
+                  <a href="#" className="bg-red-500 hover:bg-red-700 text-white mr-1 font-bold py-2 px-4 rounded">yes</a>
+                  <a href="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">no</a>
+                  </td>
             </tr>
-  
-
-
-     
+                
   )
 }
 )}
-
-
         </tbody>
+        {/* <tbody>
+            <tr>
+                <td>Cyusa</td>
+                <td>Hamissa</td>
+                <td>1324324</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>
+                  <a href="#" className="bg-red-500 hover:bg-red-700 text-white mr-1 font-bold py-2 px-4 rounded">yes</a>
+                  <a href="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">no</a>
+                </td>
+            </tr>
+        </tbody> */}
     </table>
 
 
 
       
   </div>
+
+
 
 
 </div>

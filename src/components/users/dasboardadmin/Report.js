@@ -43,9 +43,9 @@ const Students = () => {
           setDropmenu(0);
       }
    } 
-//   if(!auth){
-//     history.push("/login");
-// }
+  if(!auth){
+    history.push("/login");
+}
 
 
 
